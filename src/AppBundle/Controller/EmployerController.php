@@ -53,6 +53,50 @@ class EmployerController extends FOSRestController
 
     /**
      * @Rest\View()
+     * @Rest\Post("/rich/search/employers")
+     */
+    public function richAllEmployersAction(Request $request)
+    {
+        $ordre = $request->get('employerOrdre');
+        $search = $request->get('search');
+
+
+        $oEmployer = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Employer')
+            ->findAllEmployers($search);
+
+        if ($ordre == "ASC")
+            asort($oEmployer);
+        if ($ordre == "DESC")
+            arsort($oEmployer);
+
+        $aEmployerList = [];
+
+        foreach ($oEmployer as $toEmployer) {
+            $aEmployerList [] = [
+                'id' => $toEmployer->getId(),
+                'nom' => $toEmployer->getEmployerNom(),
+                'prenom' => $toEmployer->getEmployerPrenom(),
+                'dateNaissance' => $toEmployer->getEmployerDateNaissance(),
+                'cin' => $toEmployer->getEmployerCin(),
+                'lieuNaissance' => $toEmployer->getEmployerLieuNaissance(),
+                'situation' => $toEmployer->getEmployerSituation(),
+                'sexe' => $toEmployer->getEmployerSexe(),
+                'addresse' => $toEmployer->getEmployerAddresse(),
+            ];
+        }
+
+        $view = $this->view($aEmployerList)
+            ->setTemplateVar('employers')
+            ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
+
+        return $this->handleView($view);
+    }
+
+    /**
+     * @Rest\View()
      * @Rest\Get("/all/show/employers")
      */
     public function showAllEmployersAction(Request $request)
@@ -210,4 +254,23 @@ class EmployerController extends FOSRestController
 
         return $this->redirect($this->generateUrl('show_all_employers'));
     }
+
+    private function arrayOrderBy(&$_toDatas, $_toSortingSettings)
+    {
+        $toSortingFuncArgs = [];
+        foreach ($_toSortingSettings as $zSortingField => $zSortingDirection) {
+            $toTmp = [];
+            foreach ($_toDatas as $zKey => $oData) {
+                $toTmp[$zKey] = $oData[$zSortingField];
+            }
+            $toSortingFuncArgs[] = $toTmp;
+            $toSortingFuncArgs[] = $zSortingDirection;
+            $toSortingFuncArgs[] = SORT_STRING;
+        }
+        $toSortingFuncArgs[] = &$_toDatas;
+        call_user_func_array('\array_multisort', $toSortingFuncArgs);
+
+        return array_pop($toSortingFuncArgs);
+    }
+
 }

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="026106cc-5c84-4e50-9c7a-d70865b9292c" name="Default" comment="" />
+    <list default="true" id="026106cc-5c84-4e50-9c7a-d70865b9292c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/EmployerController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/EmployerController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Repository/EmployerRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/EmployerRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/Public/gfe.js" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/Public/gfe.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/getEmployers.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/getEmployers.html.twig" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,21 +18,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="showAccueil.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Default/showAccueil.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EmployerController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EmployerController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/EmployerController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="138" column="73" lean-forward="false" selection-start-line="138" selection-start-column="73" selection-end-line="138" selection-end-column="73" />
+            <state relative-caret-position="349">
+              <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
               <folding>
                 <element signature="e#40#97#0#PHP" expanded="true" />
               </folding>
@@ -37,53 +33,59 @@
       <file leaf-file-name="preUpdateEmployer.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/preUpdateEmployer.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="876">
+            <state relative-caret-position="578">
               <caret line="106" column="22" lean-forward="false" selection-start-line="106" selection-start-column="22" selection-end-line="106" selection-end-column="22" />
               <folding>
-                <element signature="e#124#150#0#HTML" expanded="true" />
+                <element signature="e#1306#1325#0#HTML" expanded="true" />
+                <element signature="e#1914#1933#0#HTML" expanded="true" />
+                <element signature="e#3934#3953#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/base.html.twig">
+      <file leaf-file-name="preCreateEmployer.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/preCreateEmployer.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="40" column="33" lean-forward="false" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
-              <folding />
+            <state relative-caret-position="442">
+              <caret line="59" column="106" lean-forward="false" selection-start-line="59" selection-start-column="72" selection-end-line="59" selection-end-column="106" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getEmployers.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EmployerRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/EmployerRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding>
+                <marker date="1507728295226" expanded="true" signature="332:644" ph="SELECT m FRO... AppBundle" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getEmployers.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/getEmployers.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="124" column="51" lean-forward="false" selection-start-line="124" selection-start-column="51" selection-end-line="124" selection-end-column="58" />
+            <state relative-caret-position="791">
+              <caret line="58" column="27" lean-forward="true" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
               <folding>
                 <element signature="e#196#256#0#HTML" expanded="true" />
                 <element signature="e#557#578#0#HTML" expanded="true" />
-                <element signature="e#864#892#0#HTML" expanded="true" />
-                <element signature="e#971#978#1#HTML" expanded="true" />
-                <element signature="e#1032#1052#0#HTML" expanded="true" />
-                <element signature="e#7626#7647#0#HTML" expanded="true" />
-                <element signature="e#16106#16130#0#HTML" expanded="true" />
-                <element signature="e#16237#16244#1#HTML" expanded="true" />
-                <element signature="e#16326#16346#0#HTML" expanded="true" />
-                <element signature="e#16886#16923#0#HTML" expanded="true" />
-                <element signature="e#17071#17110#0#HTML" expanded="true" />
+                <element signature="e#731#752#0#HTML" expanded="true" />
+                <element signature="e#921#948#0#HTML" expanded="true" />
+                <element signature="e#6115#6139#0#HTML" expanded="true" />
+                <element signature="e#6246#6253#1#HTML" expanded="true" />
+                <element signature="e#6335#6355#0#HTML" expanded="true" />
+                <element signature="e#6895#6932#0#HTML" expanded="true" />
+                <element signature="e#7080#7119#0#HTML" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="17" column="26" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="26" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -147,7 +149,6 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/config/validation.yml" />
         <option value="E:/projets/js/AdminController.js" />
-        <option value="E:/projets/index.html" />
         <option value="E:/Pactages/lien.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/Employer/index.html.twig" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
@@ -170,18 +171,23 @@
         <option value="E:/Martin/Gestion/bootemplates.com/themes/srikandi/v2/index.html" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Repository/EmployerRepository.php" />
         <option value="E:/brocateurs/gentelella/colorlib.com/polygon/gentelella/form.html" />
         <option value="E:/brocateurs/gentelella/colorlib.com/polygon/gentelella/form_upload.html" />
         <option value="E:/Martin/http___www.dropzonejs.com_bootstrap.html/www.dropzonejs.com/bootstrap.html" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/EmployerType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Employer.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/preUpdateEmployer.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/showAccueil.html.twig" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/base.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/getEmployers.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/preCreateEmployer.html.twig" />
+        <option value="$PROJECT_DIR$/web/bundles/app/gfe.js" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/preUpdateEmployer.html.twig" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/Public/gfe.js" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Repository/EmployerRepository.php" />
+        <option value="$PROJECT_DIR$/../projets/cnb-annuaire/srcs/src/AppBundle/Controller/LdapController.php" />
+        <option value="E:/projets/index.html" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/EmployerController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/getEmployers.html.twig" />
       </list>
     </option>
   </component>
@@ -611,16 +617,16 @@
     <property name="SearchEverywhereHistoryKey" value="employ&#9;FILE&#9;file://E:/Installations/wamp64/www/rest-api/src/AppBundle/Entity/Employer.php" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Resources\views" />
-      <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Resources\views\Employer" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Resources\Public" />
       <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Resources\views" />
       <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Resources\views\Employer" />
       <recent name="E:\Installations\wamp64\www\rest-api\app\Resources\views" />
       <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Resources" />
-      <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Controller" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Resources\views" />
+      <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Resources\views\Employer" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -716,12 +722,12 @@
       <updated>1507535595214</updated>
       <workItem from="1507535596501" duration="27787000" />
       <workItem from="1507617159640" duration="41515000" />
-      <workItem from="1507701847407" duration="12877000" />
+      <workItem from="1507701847407" duration="24965000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82179000" />
+    <option name="totallyTimeSpent" value="94267000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -758,11 +764,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/Public/font-awesome.min.css" />
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/Public/bootstrap.min.css" />
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/Public/jquery.min.js" />
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/Public/bootstrap.min.js" />
-    <entry file="file://$PROJECT_DIR$/web/bundles/app/bootstrap.min.css" />
     <entry file="file://$PROJECT_DIR$/web/bundles/app/angular.min.js" />
     <entry file="file://$PROJECT_DIR$/web/bundles/app/bootstrap.min.js" />
     <entry file="file://$PROJECT_DIR$/web/bundles/app/font-awesome.min.css" />
@@ -863,20 +864,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/EmployerRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="55" lean-forward="false" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
-          <folding>
-            <marker date="1507650555574" expanded="true" signature="332:387" ph="SELECT m FRO... AppBundle" />
-            <marker date="1507650555574" expanded="true" signature="332:391" ph="SELECT m FRO... AppBundle" />
-            <marker date="1507650555574" expanded="true" signature="332:392" ph="SELECT m FRO... AppBundle" />
-            <marker date="1507650555574" expanded="true" signature="332:432" ph="SELECT m FRO... AppBundle" />
-            <marker date="1507650555574" expanded="true" signature="332:434" ph="SELECT m FRO... AppBundle" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://E:/Pactages/template.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-731">
@@ -918,14 +905,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="17" column="26" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -998,6 +977,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="17" column="26" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Default/showAccueil.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="553">
@@ -1006,58 +993,112 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/preUpdateEmployer.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="106" column="22" lean-forward="false" selection-start-line="106" selection-start-column="22" selection-end-line="106" selection-end-column="22" />
+          <folding>
+            <element signature="e#1306#1325#0#HTML" expanded="true" />
+            <element signature="e#1914#1933#0#HTML" expanded="true" />
+            <element signature="e#3934#3953#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="306">
+          <caret line="18" column="7" lean-forward="false" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/preUpdateEmployer.html.twig">
+    <entry file="file://$PROJECT_DIR$/web/bundles/app/gfe.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="876">
-          <caret line="106" column="22" lean-forward="false" selection-start-line="106" selection-start-column="22" selection-end-line="106" selection-end-column="22" />
-          <folding>
-            <element signature="e#124#150#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="596">
+          <caret line="154" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="155" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/Public/gfe.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="134" column="22" lean-forward="false" selection-start-line="134" selection-start-column="22" selection-end-line="134" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="40" column="33" lean-forward="false" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
+        <state relative-caret-position="434">
+          <caret line="41" column="28" lean-forward="false" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/getEmployers.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/preCreateEmployer.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="124" column="51" lean-forward="false" selection-start-line="124" selection-start-column="51" selection-end-line="124" selection-end-column="58" />
+        <state relative-caret-position="442">
+          <caret line="59" column="106" lean-forward="false" selection-start-line="59" selection-start-column="72" selection-end-line="59" selection-end-column="106" />
           <folding>
-            <element signature="e#196#256#0#HTML" expanded="true" />
-            <element signature="e#557#578#0#HTML" expanded="true" />
-            <element signature="e#864#892#0#HTML" expanded="true" />
-            <element signature="e#971#978#1#HTML" expanded="true" />
-            <element signature="e#1032#1052#0#HTML" expanded="true" />
-            <element signature="e#7626#7647#0#HTML" expanded="true" />
-            <element signature="e#16106#16130#0#HTML" expanded="true" />
-            <element signature="e#16237#16244#1#HTML" expanded="true" />
-            <element signature="e#16326#16346#0#HTML" expanded="true" />
-            <element signature="e#16886#16923#0#HTML" expanded="true" />
-            <element signature="e#17071#17110#0#HTML" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../projets/cnb-annuaire/srcs/src/AppBundle/Controller/LdapController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="171" column="97" lean-forward="false" selection-start-line="171" selection-start-column="89" selection-end-line="171" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/projets/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="2" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/EmployerRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <marker date="1507728295226" expanded="true" signature="332:644" ph="SELECT m FRO... AppBundle" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/EmployerController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="138" column="73" lean-forward="false" selection-start-line="138" selection-start-column="73" selection-end-line="138" selection-end-column="73" />
+        <state relative-caret-position="349">
+          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
           <folding>
             <element signature="e#40#97#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/getEmployers.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="791">
+          <caret line="58" column="27" lean-forward="true" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
+          <folding>
+            <element signature="e#196#256#0#HTML" expanded="true" />
+            <element signature="e#557#578#0#HTML" expanded="true" />
+            <element signature="e#731#752#0#HTML" expanded="true" />
+            <element signature="e#921#948#0#HTML" expanded="true" />
+            <element signature="e#6115#6139#0#HTML" expanded="true" />
+            <element signature="e#6246#6253#1#HTML" expanded="true" />
+            <element signature="e#6335#6355#0#HTML" expanded="true" />
+            <element signature="e#6895#6932#0#HTML" expanded="true" />
+            <element signature="e#7080#7119#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

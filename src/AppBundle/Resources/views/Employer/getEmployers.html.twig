@@ -28,12 +28,12 @@
                     <h3>Votre recherche</h3>
                     <br/>
 
-                    <form class="form-horizontal form-label-left" action=""
+                    <form class="form-horizontal form-label-left" action="{{ path('rich_all_employers') }}"
                           method="post">
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Trier par ordre</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <select class="form-control" name="employerSexe">
+                                <select class="form-control" name="employerOrdre">
                                     <option value="">Trier par ordre</option>
                                     <option value="DESC">Décroissant</option>
                                     <option value="ASC">Croissant</option>
@@ -42,90 +42,17 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Trier par critere</label>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Votre recherche</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <select class="form-control" name="employerSexe">
-                                    <option value="">Trier par critere</option>
-                                    <option value="employerNom">Nom</option>
-                                    <option value="employerPrenom">Prenom</option>
-                                    <option value="employerDateNaissance">Date de naissance</option>
-                                    <option value="employerLieuNaissance">Lieu de naissance</option>
-                                    <option value="employerCin">CIN</option>
-                                    <option value="employerSexe">Sexe</option>
-                                    <option value="employerSituation">Situation matrimoniale</option>
-                                    <option value="employerAddresse">Addresse</option>
-                                </select>
+                                <input type="text" class="form-control" value="" name="search"
+                                       placeholder="Votre recherche">
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nom</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" name="employerNom" value=""
-                                       placeholder="Nom">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Prenom</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" name="employerPrenom" value=""
-                                       placeholder="Prenom">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Date de naissance</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" name="employerDateNaissance" class="form-control has-feedback-left"
-                                       value="" id="single_cal1"
-                                       placeholder="Date de naissance" aria-describedby="inputSuccess2Status">
-                                <span class="fa fa-calendar-o form-control-feedback left"
-                                      aria-hidden="true"></span>
-                                <span id="inputSuccess2Status" class="sr-only">(success)</span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Lieu de naissance</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" value=""
-                                       name="employerLieuNaissance"
-                                       placeholder="Lieu de naissance">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">CIN</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" value="" name="employerCin"
-                                       placeholder="CIN">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Sexe</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                <select class="form-control" name="employerSexe">
-                                    <option value="">Votre sexe</option>
-                                    <option value="femme">Femme</option>
-                                    <option value="homme">Homme</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Situation matrimoniale</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" value="" name="employerSituation"
-                                       placeholder="Situation matrimoniale">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Addresse</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" value="" name="employerAddresse"
-                                       placeholder="Addresse">
-                            </div>
-                        </div>
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                <a href="{{ path('show_all_employers') }}" class="btn btn-primary">Rechercher</a>
+                                <input type="submit" class="btn btn-primary" value="Rechercher"/>
                             </div>
                         </div>
 
