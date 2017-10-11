@@ -123,6 +123,15 @@ class EmployerController extends FOSRestController
 
     /**
      * @Rest\View()
+     * @Rest\Get("/pre/create/employer")
+     */
+    public function preCreateEmployerAction(Request $request)
+    {
+
+    }
+
+    /**
+     * @Rest\View()
      * @Rest\Post("/one/create/employers")
      */
     public function createOneEmployerAction(Request $request)

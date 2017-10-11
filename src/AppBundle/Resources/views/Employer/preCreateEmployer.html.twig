@@ -5,8 +5,8 @@
         <div class="col-md-12 col-xs-12" style="padding-left: 0px;">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Modification du
-                        <small>{{ nom~' '~prenom }}</small>
+                    <h2>Inscription d'un nouveau personnel
+
                     </h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -16,22 +16,22 @@
                 </div>
                 <div class="x_content">
                     <br/>
-                    <form class="form-horizontal form-label-left" action="{{ path('update_employer',{'id': id}) }}"
+                    <form class="form-horizontal form-label-left" action="{{ path('create_one_employer') }}"
                           method="post">
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nom</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" id="employerNomNew" name="employerNom" value="{{ nom }}"
-                                       placeholder="Nom" required>
+                                <input type="text" class="form-control" id="employerNomNew" name="employerNom" value=""
+                                       placeholder="Nom">
                                 <span style="color: red;" id="msgNom">Nom ne peut pas contenir une chiffre.</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Prenom</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" id="employerPrenomNew" name="employerPrenom" value="{{ prenom }}"
-                                       placeholder="Prenom" required>
+                                <input type="text" class="form-control" name="employerPrenom" id="employerPrenomNew"value=""
+                                       placeholder="Prenom">
                                 <span style="color: red;" id="msgPrenom">Prenom ne peut pas contenir une chiffre.</span>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Date de naissance</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <input type="text" name="employerDateNaissance" class="form-control has-feedback-left"
-                                       value="{{ dateNaissance }}" id="single_cal1"
+                                       value="" id="single_cal1"
                                        placeholder="Date de naissance" aria-describedby="inputSuccess2Status">
                                 <span class="fa fa-calendar-o form-control-feedback left"
                                       aria-hidden="true"></span>
@@ -49,15 +49,15 @@
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Lieu de naissance</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" value="{{ lieuNaissance }}"
+                                <input type="text" class="form-control" value=""
                                        name="employerLieuNaissance"
-                                       placeholder="Lieu de naissance" required>
+                                       placeholder="Lieu de naissance">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">CIN</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" value="{{ cin }}" id="employerCinNew" maxlength="12" name="employerCin"
+                                <input type="text" class="form-control" id="employerCinNew" maxlength="12" name="employerCin"
                                        placeholder="CIN" required>
                                 <span style="color: red;" id="msgCin">Cin doit etre des conbinnaison de 12 chiffre et ne peut pas contenir une letre.</span>
                             </div>
@@ -65,41 +65,30 @@
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Sexe</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <select class="form-control" name="employerSexe" required>
-                                    {% if sexe == "femme" %}
-                                        <option value="femme">Femme</option>
-                                        <option value="homme">Homme</option>
-                                    {% elseif sexe == "homme" %}
-                                        <option value="homme">Homme</option>
-                                        <option value="femme">Femme</option>
-                                    {% else %}
-                                        <option value="">Votre sexe</option>
-                                        <option value="femme">Femme</option>
-                                        <option value="homme">Homme</option>
-                                    {% endif %}
+                                <select class="form-control" name="employerSexe">
+                                    <option value="">Votre sexe</option>
+                                    <option value="homme">Homme</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Situation matrimoniale</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" value="{{ situation }}" name="employerSituation"
-                                       placeholder="Situation matrimoniale" required>
+                                <input type="text" class="form-control" value="" name="employerSituation"
+                                       placeholder="Situation matrimoniale">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Addresse</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" value="{{ addresse }}" name="employerAddresse"
-                                       placeholder="Addresse" required>
+                                <input type="text" class="form-control" value="" name="employerAddresse"
+                                       placeholder="Addresse">
                             </div>
                         </div>
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                <a href="{{ path('show_all_employers') }}" class="btn btn-primary">Annuler</a>
-                                <button type="reset" class="btn btn-primary">Reset</button>
-                                <button type="submit" class="btn btn-success">Modifier</button>
+                                <button type="submit" class="btn btn-primary">Ajouter</button>
                             </div>
                         </div>
 
@@ -108,4 +97,5 @@
             </div>
         </div>
     </div>
+
 {% endblock %}

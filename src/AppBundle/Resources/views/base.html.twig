@@ -35,19 +35,7 @@
     <!-- Custom Theme Style -->
     <link href="{{ asset('bundles/app/build/css/custom.min.css') }}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-
-        $(document).ready(function(){
-            $("#avancer").hide();
-            $("#test").click(function(){
-               $("#search").val($("#editor-one").html());
-            });
-            $(".avancer").click(function(){
-                $("#avancer").slideToggle(500);
-                $("#news").slideToggle();
-            });
-        });
-    </script>
+    <script src="{{ asset('bundles/app/gfe.js') }}"></script>
 </head>
 
 <body class="nav-md">

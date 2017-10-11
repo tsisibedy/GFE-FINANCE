@@ -13,7 +13,7 @@ class EmployerRepository extends \Doctrine\ORM\EntityRepository
 
     public function findAllEmployers($search)
     {
-        $query = $this->_em->createQuery("SELECT m FROM AppBundle:employer m where m.employerNom like :search or m.employerPrenom like :search");
+        $query = $this->_em->createQuery("SELECT m FROM AppBundle:employer m where m.employerNom like :search or m.employerPrenom like :search or m.employerDateNaissance like :search or m.employerLieuNaissance like :search or m.employerCin like :search or m.employerSexe like :search or m.employerAddresse like :search or m.employerSituation like :search");
         $query->setParameter('search','%'.$search.'%');
         $results = $query->getResult();
         return $results;

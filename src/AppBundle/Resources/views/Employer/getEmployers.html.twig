@@ -18,107 +18,7 @@
         </form>
     </center>
 
-    <div id="nouveauEmployer" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header" style="background: #2a6496;">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" style="color:white;">Inscription d'un nouveau personnel</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row" style="">
-                        <div class="col-md-12 col-xs-15" style="">
-                            <div class="x_panel" >
-                                <div class="x_content">
-
-                                    <form class="form-horizontal form-label-left" action="{{ path('create_one_employer') }}"
-                                          method="post">
-
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nom</label>
-                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="text" class="form-control" name="employerNom" value=""
-                                                       placeholder="Nom">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Prenom</label>
-                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="text" class="form-control" name="employerPrenom" value=""
-                                                       placeholder="Prenom">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Date de naissance</label>
-                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="text" name="employerDateNaissance" class="form-control has-feedback-left"
-                                                       value="" id="single_cal1"
-                                                       placeholder="Date de naissance" aria-describedby="inputSuccess2Status">
-                                                <span class="fa fa-calendar-o form-control-feedback left"
-                                                      aria-hidden="true"></span>
-                                                <span id="inputSuccess2Status" class="sr-only">(success)</span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Lieu de naissance</label>
-                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="text" class="form-control" value=""
-                                                       name="employerLieuNaissance"
-                                                       placeholder="Lieu de naissance">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">CIN</label>
-                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="text" class="form-control" value="" name="employerCin"
-                                                       placeholder="CIN">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Sexe</label>
-                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <select class="form-control" name="employerSexe">
-                                                    <option value="">Votre sexe</option>
-                                                    <option value="femme">Femme</option>
-                                                    <option value="homme">Homme</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Situation matrimoniale</label>
-                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="text" class="form-control" value="" name="employerSituation"
-                                                       placeholder="Situation matrimoniale">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Addresse</label>
-                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <input type="text" class="form-control" value="" name="employerAddresse"
-                                                       placeholder="Addresse">
-                                            </div>
-                                        </div>
-                                        <div class="ln_solid"></div>
-                                        <div class="form-group">
-                                            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                                <button type="submit" class="btn btn-primary">Ajouter</button>
-                                            </div>
-                                        </div>
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <span id="news" class="btn btn-primary" data-toggle="modal" data-target="#nouveauEmployer" style="float: right;"><i class="fa fa-plus"></i> Nouveau</span>
+    <a href="{{ path('pre_create_employer') }}" id="news" class="btn btn-primary"  style="float: right;"><i class="fa fa-plus"></i> Nouveau</a>
 
     <div class="row" id="avancer" style="">
         <div class="col-md-12 col-xs-15" style="">
@@ -130,6 +30,33 @@
 
                     <form class="form-horizontal form-label-left" action=""
                           method="post">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Trier par ordre</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <select class="form-control" name="employerSexe">
+                                    <option value="">Trier par ordre</option>
+                                    <option value="DESC">Décroissant</option>
+                                    <option value="ASC">Croissant</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Trier par critere</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <select class="form-control" name="employerSexe">
+                                    <option value="">Trier par critere</option>
+                                    <option value="employerNom">Nom</option>
+                                    <option value="employerPrenom">Prenom</option>
+                                    <option value="employerDateNaissance">Date de naissance</option>
+                                    <option value="employerLieuNaissance">Lieu de naissance</option>
+                                    <option value="employerCin">CIN</option>
+                                    <option value="employerSexe">Sexe</option>
+                                    <option value="employerSituation">Situation matrimoniale</option>
+                                    <option value="employerAddresse">Addresse</option>
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nom</label>
@@ -256,12 +183,12 @@
                                     <small type="submit">Modifier</small>
                                 </a>
                                 <a href="#">
-                                    <small data-toggle="modal" data-target="#supprimerEmployer">Supprimer</small>
+                                    <small data-toggle="modal" data-target="#supprimerEmployer{{ employer.id }}">Supprimer</small>
                                 </a>
                                 <a href="#">
                                     <small>Plus de datails</small>
                                 </a>
-                                <div id="supprimerEmployer" class="modal fade" role="dialog">
+                                <div id="supprimerEmployer{{ employer.id }}" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
 
                                         <!-- Modal content-->
