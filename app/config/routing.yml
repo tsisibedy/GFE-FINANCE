@@ -1,0 +1,15 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+accueil:
+    type: rest
+    resource: AppBundle\Controller\DefaultController
+
+employers:
+    type: rest
+    resource: AppBundle\Controller\EmployerController
+
+users:
+    type: rest
+    resource: AppBundle\Controller\UserController

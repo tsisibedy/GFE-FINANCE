@@ -1,0 +1,293 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block admin %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <form action="{{ path('search_all_employers') }}" method="post"
+              style="box-shadow: 0px 0px 10px;padding: 30px;width: 900px;">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control">
+                <span class="input-group-btn">
+                <button type="submit" class="btn btn-primary">Chercher</button>
+            </span>
+            </div>
+            <a href="#" style="float: right;" class="avancer">Recherche avancée</a>
+        </form>
+    </center>
+
+    <div id="nouveauEmployer" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="background: #2a6496;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="color:white;">Inscription d'un nouveau personnel</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="">
+                        <div class="col-md-12 col-xs-15" style="">
+                            <div class="x_panel" >
+                                <div class="x_content">
+
+                                    <form class="form-horizontal form-label-left" action="{{ path('create_one_employer') }}"
+                                          method="post">
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nom</label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input type="text" class="form-control" name="employerNom" value=""
+                                                       placeholder="Nom">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Prenom</label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input type="text" class="form-control" name="employerPrenom" value=""
+                                                       placeholder="Prenom">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Date de naissance</label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input type="text" name="employerDateNaissance" class="form-control has-feedback-left"
+                                                       value="" id="single_cal1"
+                                                       placeholder="Date de naissance" aria-describedby="inputSuccess2Status">
+                                                <span class="fa fa-calendar-o form-control-feedback left"
+                                                      aria-hidden="true"></span>
+                                                <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Lieu de naissance</label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input type="text" class="form-control" value=""
+                                                       name="employerLieuNaissance"
+                                                       placeholder="Lieu de naissance">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">CIN</label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input type="text" class="form-control" value="" name="employerCin"
+                                                       placeholder="CIN">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Sexe</label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <select class="form-control" name="employerSexe">
+                                                    <option value="">Votre sexe</option>
+                                                    <option value="femme">Femme</option>
+                                                    <option value="homme">Homme</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Situation matrimoniale</label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input type="text" class="form-control" value="" name="employerSituation"
+                                                       placeholder="Situation matrimoniale">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Addresse</label>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input type="text" class="form-control" value="" name="employerAddresse"
+                                                       placeholder="Addresse">
+                                            </div>
+                                        </div>
+                                        <div class="ln_solid"></div>
+                                        <div class="form-group">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                                <button type="submit" class="btn btn-primary">Ajouter</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <span id="news" class="btn btn-primary" data-toggle="modal" data-target="#nouveauEmployer" style="float: right;"><i class="fa fa-plus"></i> Nouveau</span>
+
+    <div class="row" id="avancer" style="">
+        <div class="col-md-12 col-xs-15" style="">
+            <div class="x_panel" style="background:#2a6496;">
+                <div class="x_content">
+                    <br/>
+                    <h3>Votre recherche</h3>
+                    <br/>
+
+                    <form class="form-horizontal form-label-left" action=""
+                          method="post">
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nom</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" name="employerNom" value=""
+                                       placeholder="Nom">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Prenom</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" name="employerPrenom" value=""
+                                       placeholder="Prenom">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Date de naissance</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" name="employerDateNaissance" class="form-control has-feedback-left"
+                                       value="" id="single_cal1"
+                                       placeholder="Date de naissance" aria-describedby="inputSuccess2Status">
+                                <span class="fa fa-calendar-o form-control-feedback left"
+                                      aria-hidden="true"></span>
+                                <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Lieu de naissance</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" value=""
+                                       name="employerLieuNaissance"
+                                       placeholder="Lieu de naissance">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">CIN</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" value="" name="employerCin"
+                                       placeholder="CIN">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Sexe</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <select class="form-control" name="employerSexe">
+                                    <option value="">Votre sexe</option>
+                                    <option value="femme">Femme</option>
+                                    <option value="homme">Homme</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Situation matrimoniale</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" value="" name="employerSituation"
+                                       placeholder="Situation matrimoniale">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Addresse</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" value="" name="employerAddresse"
+                                       placeholder="Addresse">
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                <a href="{{ path('show_all_employers') }}" class="btn btn-primary">Rechercher</a>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>List des employers
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <ul class="list-unstyled timeline">
+                {% for employer in employers %}
+                    <li>
+                        <div class="block">
+                            <div class="tags">
+                                <a href="#" class="tag">
+                                    <span>N° : {{ employer.id }}</span>
+                                </a>
+                            </div>
+                            <div class="block_content">
+                                <h2 class="title">
+                                    <a>{{ employer.nom~' '~employer.prenom }}</a>
+                                </h2>
+                                <div class="byline">
+                                    <span>Date de naissance</span> : <a>{{ employer.dateNaissance }}</a>
+                                </div>
+                                <div class="byline">
+                                    <span>CIN</span> : <a>{{ employer.cin }}</a>
+                                </div>
+                                <div class="byline">
+                                    <span>Lieu de naissance</span> : <a>{{ employer.lieuNaissance }}</a>
+                                </div>
+                                <div class="byline">
+                                    <span>Sexe</span> : <a>{{ employer.sexe }}</a>
+                                </div>
+                                <div class="byline">
+                                    <span>Situation</span> : <a>{{ employer.situation }}</a>
+                                </div>
+                                <div class="byline">
+                                    <span>Addresse</span> : <a>{{ employer.addresse }}</a>
+                                </div>
+                                <a href="{{ path('pre_update_employer',{'id':employer.id,'nom':employer.nom,'prenom':employer.prenom,'dateNaissance':employer.dateNaissance,'cin':employer.cin,'lieuNaissance':employer.lieuNaissance,'sexe':employer.sexe,'situation':employer.situation,'addresse':employer.addresse}) }}">
+                                    <small type="submit">Modifier</small>
+                                </a>
+                                <a href="#">
+                                    <small data-toggle="modal" data-target="#supprimerEmployer">Supprimer</small>
+                                </a>
+                                <a href="#">
+                                    <small>Plus de datails</small>
+                                </a>
+                                <div id="supprimerEmployer" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header" style="background: red;">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title" style="color:white;">Avertissement de suppression du {{ employer.nom~' '~employer.prenom }}</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Voulez vous vraiment supprimer cette personne de la liste?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="{{ path('remove_one_user',{'id':employer.id}) }}" style="background: red;color: white;" class="btn btn-default">Oui</a>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal" style="background: green;color: white;">Non</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+
+{% endblock %}
