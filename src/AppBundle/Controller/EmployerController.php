@@ -12,6 +12,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 use AppBundle\Form\EmployerType;
 use FOS\RestBundle\View\View;
 use AppBundle\Entity\Employer;
+use AppBundle\Entity\Information;
 
 class EmployerController extends FOSRestController
 {
@@ -22,8 +23,7 @@ class EmployerController extends FOSRestController
      */
     public function searchAllEmployersAction(Request $request)
     {
-        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
-        {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
 
@@ -88,7 +88,7 @@ class EmployerController extends FOSRestController
         }
 
         $view = $this->view()
-            ->setData(array('count' => 'app_employer_searchallemployers_1','search'=>$test, 'employers' => $aEmployerList, 'page' => $aNombrePage))
+            ->setData(array('count' => 'app_employer_searchallemployers_1', 'search' => $test, 'employers' => $aEmployerList, 'page' => $aNombrePage))
             ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
 
         return $this->handleView($view);
@@ -102,8 +102,7 @@ class EmployerController extends FOSRestController
      */
     public function richAllEmployersAction(Request $request)
     {
-        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
-        {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
 
@@ -177,7 +176,7 @@ class EmployerController extends FOSRestController
         }
 
         $view = $this->view()
-            ->setData(array('count' => 'app_employer_richallemployers_1','search'=>$search,'ordre'=>$ordre, 'employers' => $aEmployerList, 'page' => $aNombrePage))
+            ->setData(array('count' => 'app_employer_richallemployers_1', 'search' => $search, 'ordre' => $ordre, 'employers' => $aEmployerList, 'page' => $aNombrePage))
             ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
 
         return $this->handleView($view);
@@ -189,8 +188,7 @@ class EmployerController extends FOSRestController
      */
     public function showAllEmployersAction(Request $request)
     {
-        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
-        {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
 
@@ -267,8 +265,7 @@ class EmployerController extends FOSRestController
      */
     public function showOneEmployerAction(Request $request)
     {
-        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
-        {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
 
@@ -307,8 +304,7 @@ class EmployerController extends FOSRestController
      */
     public function preCreateEmployerAction(Request $request)
     {
-        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
-        {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
 
@@ -346,8 +342,7 @@ class EmployerController extends FOSRestController
      */
     public function createOneEmployerAction(Request $request)
     {
-        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
-        {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
 
@@ -410,8 +405,7 @@ class EmployerController extends FOSRestController
      */
     public function removeOneUserAction(Request $request)
     {
-        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
-        {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
 
@@ -440,8 +434,7 @@ class EmployerController extends FOSRestController
      */
     public function preUpdateEmployerAction(Request $request)
     {
-        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
-        {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
 
@@ -458,8 +451,7 @@ class EmployerController extends FOSRestController
      */
     public function updateEmployerAction(Request $request)
     {
-        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
-        {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
 

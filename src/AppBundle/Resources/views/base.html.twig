@@ -19,6 +19,7 @@
     <link href="{{ asset('bundles/app/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- NProgress -->
     <link href="{{ asset('bundles/app/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/app/css/dropzone.css') }}" rel="stylesheet">
     <!-- iCheck -->
     <link href="{{ asset('bundles/app/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
 
@@ -36,6 +37,7 @@
     <link href="{{ asset('bundles/app/build/css/custom.min.css') }}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{ asset('bundles/app/gfe.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/dropzone.js') }}"></script>
 </head>
 
 <body class="nav-md">
@@ -105,7 +107,7 @@
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="javascript:;"> Profile</a></li>
+                                <li><a href="{{ path('fos_user_profile_edit') }}"> Profile</a></li>
                                 <li>
                                     <a href="javascript:;">
                                         <span class="badge bg-red pull-right">50%</span>

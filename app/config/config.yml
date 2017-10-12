@@ -88,3 +88,11 @@ fos_user:
     from_email:
         address: trazafimiandrisoa@gmail.com
         sender_name: You
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        devis:
+            uri_prefix: /upload/
+            upload_destination: '%kernel.root_dir%/../web/bundles/upload/'
+            namer: vich_uploader.namer_uniqid

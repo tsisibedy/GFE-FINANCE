@@ -16,3 +16,7 @@ employers:
 users:
     type: rest
     resource: AppBundle\Controller\UserController
+
+information:
+    type: rest
+    resource: AppBundle\Controller\InformationController
