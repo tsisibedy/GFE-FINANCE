@@ -18,48 +18,88 @@ class EmployerController extends FOSRestController
     /**
      * @Rest\View()
      * @Rest\Post("/all/search/employers")
+     * @Rest\Get("/all/search/employers")
      */
     public function searchAllEmployersAction(Request $request)
     {
         $test = $request->get('search');
+        $pageNum = $request->get('pageNum');
         $oEmployer = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('AppBundle:Employer')
             ->findAllEmployers($request->get('search'));
 
-        $aEmployerList = [];
+        $coutEmployer = count($oEmployer);
+        $pageLimiteContent = $this->getParameter('page_sige');
 
-        foreach ($oEmployer as $toEmployer) {
-            $aEmployerList [] = [
-                'id' => $toEmployer->getId(),
-                'nom' => $toEmployer->getEmployerNom(),
-                'prenom' => $toEmployer->getEmployerPrenom(),
-                'dateNaissance' => $toEmployer->getEmployerDateNaissance(),
-                'cin' => $toEmployer->getEmployerCin(),
-                'lieuNaissance' => $toEmployer->getEmployerLieuNaissance(),
-                'situation' => $toEmployer->getEmployerSituation(),
-                'sexe' => $toEmployer->getEmployerSexe(),
-                'addresse' => $toEmployer->getEmployerAddresse(),
-            ];
+        if (isset($pageNum)) {
+
+        } else {
+            $pageNum = 1;
         }
 
-        $coutEmployer = count($oEmployer);
+        $reference = $pageLimiteContent * $pageNum;
+
+        //Definition du debut du page et la fin du page
+        $pageElementDebut = $reference - $pageLimiteContent;
+        $pageElementFin = $reference - 1;
+
+        //calcul nombre de page
+        $nombrePage = 1;
+        $clonePageLimit = $pageLimiteContent;
+        for ($a = 0; $a <= $coutEmployer; $a++) {
+            if ($clonePageLimit < $a) {
+                $clonePageLimit += $pageLimiteContent;
+                $nombrePage++;
+            }
+        }
+
+        //recuperation du page
+        $aNombrePage = [];
+        for ($i = 1; $i <= $nombrePage; $i++) {
+            $aNombrePage[] = $i;
+        }
+
+        $aEmployerList = [];
+        $iIncrimentation = 0;
+        foreach ($oEmployer as $toEmployer) {
+
+            if ($pageElementDebut <= $iIncrimentation and $iIncrimentation <= $pageElementFin) {
+                $aEmployerList [] = [
+                    'id' => $toEmployer->getId(),
+                    'nom' => $toEmployer->getEmployerNom(),
+                    'prenom' => $toEmployer->getEmployerPrenom(),
+                    'dateNaissance' => $toEmployer->getEmployerDateNaissance(),
+
+                    'cin' => $toEmployer->getEmployerCin(),
+                    'lieuNaissance' => $toEmployer->getEmployerLieuNaissance(),
+                    'situation' => $toEmployer->getEmployerSituation(),
+                    'sexe' => $toEmployer->getEmployerSexe(),
+                    'addresse' => $toEmployer->getEmployerAddresse(),
+                ];
+            }
+            $iIncrimentation++;
+        }
+
         $view = $this->view()
-            ->setData(array('count' => $coutEmployer, 'employers' => $aEmployerList))
+            ->setData(array('count' => 'app_employer_searchallemployers_1','search'=>$test, 'employers' => $aEmployerList, 'page' => $aNombrePage))
             ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
+
+        return $this->handleView($view);
     }
 
     /**
      * @Rest\View()
      * @Rest\Post("/rich/search/employers")
+     * @Rest\Get("/rich/search/employers")
      *
      */
     public function richAllEmployersAction(Request $request)
     {
         $ordre = $request->get('employerOrdre');
         $search = $request->get('search');
-
+        $pageNum = $request->get('pageNum');
 
         $oEmployer = $this
             ->getDoctrine()
@@ -73,22 +113,60 @@ class EmployerController extends FOSRestController
             arsort($oEmployer);
 
 
-        foreach ($oEmployer as $toEmployer) {
-            $aEmployerList [] = [
-                'id' => $toEmployer->getId(),
-                'nom' => $toEmployer->getEmployerNom(),
-                'prenom' => $toEmployer->getEmployerPrenom(),
-                'dateNaissance' => $toEmployer->getEmployerDateNaissance(),
-                'cin' => $toEmployer->getEmployerCin(),
-                'lieuNaissance' => $toEmployer->getEmployerLieuNaissance(),
-                'situation' => $toEmployer->getEmployerSituation(),
-                'sexe' => $toEmployer->getEmployerSexe(),
-                'addresse' => $toEmployer->getEmployerAddresse(),
-            ];
-        }
         $coutEmployer = count($oEmployer);
+        $pageLimiteContent = $this->getParameter('page_sige');
+
+        if (isset($pageNum)) {
+
+        } else {
+            $pageNum = 1;
+        }
+
+        $reference = $pageLimiteContent * $pageNum;
+
+        //Definition du debut du page et la fin du page
+        $pageElementDebut = $reference - $pageLimiteContent;
+        $pageElementFin = $reference - 1;
+
+        //calcul nombre de page
+        $nombrePage = 1;
+        $clonePageLimit = $pageLimiteContent;
+        for ($a = 0; $a <= $coutEmployer; $a++) {
+            if ($clonePageLimit < $a) {
+                $clonePageLimit += $pageLimiteContent;
+                $nombrePage++;
+            }
+        }
+
+        //recuperation du page
+        $aNombrePage = [];
+        for ($i = 1; $i <= $nombrePage; $i++) {
+            $aNombrePage[] = $i;
+        }
+
+        $aEmployerList = [];
+        $iIncrimentation = 0;
+        foreach ($oEmployer as $toEmployer) {
+
+            if ($pageElementDebut <= $iIncrimentation and $iIncrimentation <= $pageElementFin) {
+                $aEmployerList [] = [
+                    'id' => $toEmployer->getId(),
+                    'nom' => $toEmployer->getEmployerNom(),
+                    'prenom' => $toEmployer->getEmployerPrenom(),
+                    'dateNaissance' => $toEmployer->getEmployerDateNaissance(),
+
+                    'cin' => $toEmployer->getEmployerCin(),
+                    'lieuNaissance' => $toEmployer->getEmployerLieuNaissance(),
+                    'situation' => $toEmployer->getEmployerSituation(),
+                    'sexe' => $toEmployer->getEmployerSexe(),
+                    'addresse' => $toEmployer->getEmployerAddresse(),
+                ];
+            }
+            $iIncrimentation++;
+        }
+
         $view = $this->view()
-            ->setData(array('count' => $coutEmployer, 'employers' => $aEmployerList))
+            ->setData(array('count' => 'app_employer_richallemployers_1','search'=>$search,'ordre'=>$ordre, 'employers' => $aEmployerList, 'page' => $aNombrePage))
             ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
 
         return $this->handleView($view);
@@ -100,6 +178,7 @@ class EmployerController extends FOSRestController
      */
     public function showAllEmployersAction(Request $request)
     {
+        $pageNum = $request->get('pageNum');
         $oEmployer = $this
             ->getDoctrine()
             ->getManager()
@@ -109,28 +188,57 @@ class EmployerController extends FOSRestController
         $coutEmployer = count($oEmployer);
         $pageLimiteContent = $this->getParameter('page_sige');
 
-       /* if (isset($pageLimiteContent)) {
+        if (isset($pageNum)) {
 
-        }*/
+        } else {
+            $pageNum = 1;
+        }
+
+        $reference = $pageLimiteContent * $pageNum;
+
+        //Definition du debut du page et la fin du page
+        $pageElementDebut = $reference - $pageLimiteContent;
+        $pageElementFin = $reference - 1;
+
+        //calcul nombre de page
+        $nombrePage = 1;
+        $clonePageLimit = $pageLimiteContent;
+        for ($a = 0; $a <= $coutEmployer; $a++) {
+            if ($clonePageLimit < $a) {
+                $clonePageLimit += $pageLimiteContent;
+                $nombrePage++;
+            }
+        }
+
+        //recuperation du page
+        $aNombrePage = [];
+        for ($i = 1; $i <= $nombrePage; $i++) {
+            $aNombrePage[] = $i;
+        }
 
         $aEmployerList = [];
+        $iIncrimentation = 0;
         foreach ($oEmployer as $toEmployer) {
-            $aEmployerList [] = [
-                'id' => $toEmployer->getId(),
-                'nom' => $toEmployer->getEmployerNom(),
-                'prenom' => $toEmployer->getEmployerPrenom(),
-                'dateNaissance' => $toEmployer->getEmployerDateNaissance(),
 
-                'cin' => $toEmployer->getEmployerCin(),
-                'lieuNaissance' => $toEmployer->getEmployerLieuNaissance(),
-                'situation' => $toEmployer->getEmployerSituation(),
-                'sexe' => $toEmployer->getEmployerSexe(),
-                'addresse' => $toEmployer->getEmployerAddresse(),
-            ];
+            if ($pageElementDebut <= $iIncrimentation and $iIncrimentation <= $pageElementFin) {
+                $aEmployerList [] = [
+                    'id' => $toEmployer->getId(),
+                    'nom' => $toEmployer->getEmployerNom(),
+                    'prenom' => $toEmployer->getEmployerPrenom(),
+                    'dateNaissance' => $toEmployer->getEmployerDateNaissance(),
+
+                    'cin' => $toEmployer->getEmployerCin(),
+                    'lieuNaissance' => $toEmployer->getEmployerLieuNaissance(),
+                    'situation' => $toEmployer->getEmployerSituation(),
+                    'sexe' => $toEmployer->getEmployerSexe(),
+                    'addresse' => $toEmployer->getEmployerAddresse(),
+                ];
+            }
+            $iIncrimentation++;
         }
 
         $view = $this->view()
-            ->setData(array('count' => $coutEmployer, 'employers' => $aEmployerList))
+            ->setData(array('count' => 'show_all_employers', 'employers' => $aEmployerList, 'page' => $aNombrePage))
             ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
 
         return $this->handleView($view);
@@ -233,8 +341,8 @@ class EmployerController extends FOSRestController
         }
         $cout = count($testExiste);
         $php_errormsg = "";
-        for ($testIncriment = 0;$testIncriment<$cout;$testIncriment++){
-            if($request->get('employerNom')==$aEmployerList[$testIncriment]['nom'] and $request->get('employerPrenom')==$aEmployerList[$testIncriment]['prenom']){
+        for ($testIncriment = 0; $testIncriment < $cout; $testIncriment++) {
+            if ($request->get('employerNom') == $aEmployerList[$testIncriment]['nom'] and $request->get('employerPrenom') == $aEmployerList[$testIncriment]['prenom']) {
                 $php_errormsg = "Personne exit deja dans la base de donnée";
                 $view = $this->view()
                     ->setData(array('msg' => $php_errormsg, 'employers' => $aEmployerList))
@@ -242,7 +350,7 @@ class EmployerController extends FOSRestController
 
                 return $this->handleView($view);
             }
-            if($request->get('employerCin')==$aEmployerList[$testIncriment]['cin']){
+            if ($request->get('employerCin') == $aEmployerList[$testIncriment]['cin']) {
                 $php_errormsg = "CIN exit deja dans la base de donnée";
                 $view = $this->view()
                     ->setData(array('msg' => $php_errormsg, 'employers' => $aEmployerList))

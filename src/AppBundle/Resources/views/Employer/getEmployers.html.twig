@@ -68,7 +68,7 @@
     <div class="x_panel">
         <div class="x_title">
             <h2>List des employers
-                    <small style="color: red;">{% if msg is defined %} {{ msg }} {% endif %}</small>
+                <small style="color: red;">{% if msg is defined %} {{ msg }} {% endif %}</small>
             </h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -152,9 +152,26 @@
 
         </div>
         <ul class="pagination" style="float: right;">
-            <li><a href="#">précedent</a></li>
-            <li><a href="#" class="active">1</a></li>
-            <li><a href="#">suivant</a></li>
+            {% if page is defined %}
+                {% if search is defined %}
+                    {% if ordre is defined %}
+                        {% for pages in page %}
+                            <li><a href="{{ path(count,{'pageNum':pages,'employerOrdre':ordre,'search':search}) }}"
+                                   method="post" class="active">{{ pages }}</a></li>
+                        {% endfor %}
+                    {% else %}
+                        {% for pages in page %}
+                            <li><a href="{{ path(count,{'pageNum':pages,'search':search}) }}" method="post"
+                                   class="active">{{ pages }}</a></li>
+                        {% endfor %}
+                    {% endif %}
+                {% else %}
+                    {% for pages in page %}
+                        <li><a href="{{ path(count,{'pageNum':pages}) }}" method="post" class="active">{{ pages }}</a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
         </ul>
     </div>
 
