@@ -44,16 +44,16 @@ class EmployerController extends FOSRestController
             ];
         }
 
-        $view = $this->view($aEmployerList)
-            ->setTemplateVar('employers')
+        $coutEmployer = count($oEmployer);
+        $view = $this->view()
+            ->setData(array('count' => $coutEmployer, 'employers' => $aEmployerList))
             ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
-
-        return $this->handleView($view);
     }
 
     /**
      * @Rest\View()
      * @Rest\Post("/rich/search/employers")
+     *
      */
     public function richAllEmployersAction(Request $request)
     {
@@ -72,7 +72,6 @@ class EmployerController extends FOSRestController
         if ($ordre == "DESC")
             arsort($oEmployer);
 
-        $aEmployerList = [];
 
         foreach ($oEmployer as $toEmployer) {
             $aEmployerList [] = [
@@ -87,9 +86,9 @@ class EmployerController extends FOSRestController
                 'addresse' => $toEmployer->getEmployerAddresse(),
             ];
         }
-
-        $view = $this->view($aEmployerList)
-            ->setTemplateVar('employers')
+        $coutEmployer = count($oEmployer);
+        $view = $this->view()
+            ->setData(array('count' => $coutEmployer, 'employers' => $aEmployerList))
             ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
 
         return $this->handleView($view);
@@ -107,14 +106,21 @@ class EmployerController extends FOSRestController
             ->getRepository('AppBundle:Employer')
             ->findAll();
 
-        $aEmployerList = [];
+        $coutEmployer = count($oEmployer);
+        $pageLimiteContent = $this->getParameter('page_sige');
 
+       /* if (isset($pageLimiteContent)) {
+
+        }*/
+
+        $aEmployerList = [];
         foreach ($oEmployer as $toEmployer) {
             $aEmployerList [] = [
                 'id' => $toEmployer->getId(),
                 'nom' => $toEmployer->getEmployerNom(),
                 'prenom' => $toEmployer->getEmployerPrenom(),
                 'dateNaissance' => $toEmployer->getEmployerDateNaissance(),
+
                 'cin' => $toEmployer->getEmployerCin(),
                 'lieuNaissance' => $toEmployer->getEmployerLieuNaissance(),
                 'situation' => $toEmployer->getEmployerSituation(),
@@ -123,8 +129,8 @@ class EmployerController extends FOSRestController
             ];
         }
 
-        $view = $this->view($aEmployerList)
-            ->setTemplateVar('employers')
+        $view = $this->view()
+            ->setData(array('count' => $coutEmployer, 'employers' => $aEmployerList))
             ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
 
         return $this->handleView($view);
@@ -171,7 +177,32 @@ class EmployerController extends FOSRestController
      */
     public function preCreateEmployerAction(Request $request)
     {
+        $oEmployer = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Employer')
+            ->findAll();
 
+        $aEmployerList = [];
+        foreach ($oEmployer as $toEmployer) {
+            $aEmployerList [] = [
+                'id' => $toEmployer->getId(),
+                'nom' => $toEmployer->getEmployerNom(),
+                'prenom' => $toEmployer->getEmployerPrenom(),
+                'dateNaissance' => $toEmployer->getEmployerDateNaissance(),
+                'cin' => $toEmployer->getEmployerCin(),
+                'lieuNaissance' => $toEmployer->getEmployerLieuNaissance(),
+                'situation' => $toEmployer->getEmployerSituation(),
+                'sexe' => $toEmployer->getEmployerSexe(),
+                'addresse' => $toEmployer->getEmployerAddresse(),
+            ];
+        }
+
+        $view = $this->view()
+            ->setData(array('employers' => $aEmployerList))
+            ->setTemplate('AppBundle:Employer:preCreateEmployer.html.twig');
+
+        return $this->handleView($view);
     }
 
     /**
@@ -180,6 +211,47 @@ class EmployerController extends FOSRestController
      */
     public function createOneEmployerAction(Request $request)
     {
+        $testExiste = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Employer')
+            ->findAll();
+
+        $aEmployerList = [];
+        foreach ($testExiste as $toEmployer) {
+            $aEmployerList [] = [
+                'id' => $toEmployer->getId(),
+                'nom' => $toEmployer->getEmployerNom(),
+                'prenom' => $toEmployer->getEmployerPrenom(),
+                'dateNaissance' => $toEmployer->getEmployerDateNaissance(),
+                'cin' => $toEmployer->getEmployerCin(),
+                'lieuNaissance' => $toEmployer->getEmployerLieuNaissance(),
+                'situation' => $toEmployer->getEmployerSituation(),
+                'sexe' => $toEmployer->getEmployerSexe(),
+                'addresse' => $toEmployer->getEmployerAddresse(),
+            ];
+        }
+        $cout = count($testExiste);
+        $php_errormsg = "";
+        for ($testIncriment = 0;$testIncriment<$cout;$testIncriment++){
+            if($request->get('employerNom')==$aEmployerList[$testIncriment]['nom'] and $request->get('employerPrenom')==$aEmployerList[$testIncriment]['prenom']){
+                $php_errormsg = "Personne exit deja dans la base de donnée";
+                $view = $this->view()
+                    ->setData(array('msg' => $php_errormsg, 'employers' => $aEmployerList))
+                    ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
+
+                return $this->handleView($view);
+            }
+            if($request->get('employerCin')==$aEmployerList[$testIncriment]['cin']){
+                $php_errormsg = "CIN exit deja dans la base de donnée";
+                $view = $this->view()
+                    ->setData(array('msg' => $php_errormsg, 'employers' => $aEmployerList))
+                    ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
+
+                return $this->handleView($view);
+            }
+        }
+
         $employer = new Employer();
 
         $form = $this->createForm(EmployerType::class, $employer);

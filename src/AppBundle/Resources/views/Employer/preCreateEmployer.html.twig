@@ -22,16 +22,16 @@
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nom</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" id="employerNomNew" name="employerNom" value=""
-                                       placeholder="Nom">
+                                <input type="text" class="form-control" id="employerNomNew" name="employerNom"
+                                       placeholder="Nom" required>
                                 <span style="color: red;" id="msgNom">Nom ne peut pas contenir une chiffre.</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Prenom</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" name="employerPrenom" id="employerPrenomNew"value=""
-                                       placeholder="Prenom">
+                                <input type="text" class="form-control" name="employerPrenom" id="employerPrenomNew"
+                                       placeholder="Prenom" required>
                                 <span style="color: red;" id="msgPrenom">Prenom ne peut pas contenir une chiffre.</span>
                             </div>
                         </div>
@@ -51,13 +51,14 @@
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <input type="text" class="form-control" value=""
                                        name="employerLieuNaissance"
-                                       placeholder="Lieu de naissance">
+                                       placeholder="Lieu de naissance" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">CIN</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" id="employerCinNew" maxlength="12" name="employerCin"
+                                <input type="text" class="form-control" id="employerCinNew" maxlength="12"
+                                       name="employerCin"
                                        placeholder="CIN" required>
                                 <span style="color: red;" id="msgCin">Cin doit etre des conbinnaison de 12 chiffre et ne peut pas contenir une letre.</span>
                             </div>
@@ -65,8 +66,9 @@
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Sexe</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <select class="form-control" name="employerSexe">
+                                <select class="form-control" name="employerSexe" required>
                                     <option value="">Votre sexe</option>
+                                    <option value="femme">Femme</option>
                                     <option value="homme">Homme</option>
                                 </select>
                             </div>
@@ -75,14 +77,14 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Situation matrimoniale</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <input type="text" class="form-control" value="" name="employerSituation"
-                                       placeholder="Situation matrimoniale">
+                                       placeholder="Situation matrimoniale" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Addresse</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <input type="text" class="form-control" value="" name="employerAddresse"
-                                       placeholder="Addresse">
+                                       placeholder="Addresse" required>
                             </div>
                         </div>
                         <div class="ln_solid"></div>

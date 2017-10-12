@@ -18,7 +18,8 @@
         </form>
     </center>
 
-    <a href="{{ path('pre_create_employer') }}" id="news" class="btn btn-primary"  style="float: right;"><i class="fa fa-plus"></i> Nouveau</a>
+    <a href="{{ path('pre_create_employer') }}" id="news" class="btn btn-primary" style="float: right;"><i
+                class="fa fa-plus"></i> Nouveau</a>
 
     <div class="row" id="avancer" style="">
         <div class="col-md-12 col-xs-15" style="">
@@ -67,6 +68,7 @@
     <div class="x_panel">
         <div class="x_title">
             <h2>List des employers
+                    <small style="color: red;">{% if msg is defined %} {{ msg }} {% endif %}</small>
             </h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -110,10 +112,12 @@
                                     <small type="submit">Modifier</small>
                                 </a>
                                 <a href="#">
-                                    <small data-toggle="modal" data-target="#supprimerEmployer{{ employer.id }}">Supprimer</small>
+                                    <small data-toggle="modal" data-target="#supprimerEmployer{{ employer.id }}">
+                                        Supprimer
+                                    </small>
                                 </a>
                                 <a href="#">
-                                    <small>Plus de datails</small>
+                                    <small>Plus d'information</small>
                                 </a>
                                 <div id="supprimerEmployer{{ employer.id }}" class="modal fade" role="dialog">
                                     <div class="modal-dialog">
@@ -121,15 +125,20 @@
                                         <!-- Modal content-->
                                         <div class="modal-content">
                                             <div class="modal-header" style="background: red;">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title" style="color:white;">Avertissement de suppression du {{ employer.nom~' '~employer.prenom }}</h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;
+                                                </button>
+                                                <h4 class="modal-title" style="color:white;">Avertissement de
+                                                    suppression du {{ employer.nom~' '~employer.prenom }}</h4>
                                             </div>
                                             <div class="modal-body">
                                                 <p>Voulez vous vraiment supprimer cette personne de la liste?</p>
                                             </div>
                                             <div class="modal-footer">
-                                                <a href="{{ path('remove_one_user',{'id':employer.id}) }}" style="background: red;color: white;" class="btn btn-default">Oui</a>
-                                                <button type="button" class="btn btn-default" data-dismiss="modal" style="background: green;color: white;">Non</button>
+                                                <a href="{{ path('remove_one_user',{'id':employer.id}) }}"
+                                                   style="background: red;color: white;" class="btn btn-default">Oui</a>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal"
+                                                        style="background: green;color: white;">Non
+                                                </button>
                                             </div>
                                         </div>
 
@@ -142,6 +151,11 @@
             </ul>
 
         </div>
+        <ul class="pagination" style="float: right;">
+            <li><a href="#">précedent</a></li>
+            <li><a href="#" class="active">1</a></li>
+            <li><a href="#">suivant</a></li>
+        </ul>
     </div>
 
 {% endblock %}

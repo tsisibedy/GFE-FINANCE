@@ -14,14 +14,12 @@ $(document).ready(function () {
     //controlle ajout cin
     $("#employerCinNew").keyup(function () {
         if (12 < $("#employerCinNew").val().length) {
-            $("#employerCinNew").val('');
             $("#msgCin").show();
         }
         if (12 == $("#employerCinNew").val().length && !isNaN($("#employerCinNew").val())) {
             $("#msgCin").hide();
         }
         if (isNaN($("#employerCinNew").val())) {
-            $("#employerCinNew").val('');
             $("#msgCin").show();
         }
         if (12 > $("#employerCinNew").val().length) {
@@ -30,10 +28,16 @@ $(document).ready(function () {
     });
 
     $("#employerCinNew").blur(function () {
-        if (12 > $("#employerCinNew").val().length) {
+        if (isNaN($("#employerCinNew").val())) {
+            $("#employerCinNew").val("");
             $("#msgCin").show();
         }
+        if (12 > $("#employerCinNew").val().length) {
+            $("#msgCin").show();
+            $("#employerCinNew").val("");
+        }
         if (12 < $("#employerCinNew").val().length) {
+            $("#employerCinNew").val("");
             $("#msgCin").show();
         }
         if (12 == $("#employerCinNew").val().length && !isNaN($("#employerCinNew").val())) {
@@ -62,11 +66,14 @@ $(document).ready(function () {
         if (isNaN($("#employerNomNew").val())) {
             $("#msgNom").hide();
         }
-        for (var a = 0; a <= $nom.length; a++) {
-            if (!isNaN($nom[a])) {
-                $("#msgNom").show();
-                break;
-            }
+        var str = $("#employerNomNew").val();
+        var patt1 = /[0-9]/;
+        var patt2 = /[a-zA-Z]/;
+        var result = str.match(patt1);
+
+        if(result!=null)
+        {
+            $("#msgNom").show();
         }
     });
 
@@ -77,13 +84,14 @@ $(document).ready(function () {
         if (isNaN($("#employerNomNew").val())) {
             $("#msgNom").hide();
         }
-        $nom = $("#employerNomNew").val();
-        for (var a = 0; a <= $nom.length; a++) {
-            if (!isNaN($nom[a])) {
-                $("#msgNom").show();
-                $("#employerNomNew").val('');
-                break;
-            }
+        var str = $("#employerNomNew").val();
+        var patt1 = /[0-9]/;
+        var result = str.match(patt1);
+
+        if(result!=null)
+        {
+            $("#msgNom").show();
+            $("#employerNomNew").val("");
         }
 
     });
@@ -95,11 +103,13 @@ $(document).ready(function () {
         if (isNaN($("#employerNomNew").val())) {
             $("#msgNom").hide();
         }
-        for (var a = 0; a <= $nom.length; a++) {
-            if (!isNaN($nom[a])) {
-                $("#msgNom").show();
-                break;
-            }
+        var str = $("#employerNomNew").val();
+        var patt1 = /[0-9]/;
+        var result = str.match(patt1);
+
+        if(result!=null)
+        {
+            $("#msgNom").show();
         }
     });
 
@@ -112,11 +122,13 @@ $(document).ready(function () {
         if (isNaN($("#employerPrenomNew").val())) {
             $("#msgPrenom").hide();
         }
-        for (var a = 0; a <= $nom.length; a++) {
-            if (!isNaN($nom[a])) {
-                $("#msgPrenom").show();
-                break;
-            }
+        var str = $("#employerPrenomNew").val();
+        var patt1 = /[0-9]/;
+        var result = str.match(patt1);
+
+        if(result!=null)
+        {
+            $("#msgPrenom").show();
         }
     });
 
@@ -127,13 +139,14 @@ $(document).ready(function () {
         if (isNaN($("#employerPrenomNew").val())) {
             $("#msgPrenom").hide();
         }
-        $nom = $("#employerPrenomNew").val();
-        for (var a = 0; a <= $nom.length; a++) {
-            if (!isNaN($nom[a])) {
-                $("#msgPrenom").show();
-                $("#employerPrenomNew").val('');
-                break;
-            }
+        var str = $("#employerPrenomNew").val();
+        var patt1 = /[0-9]/;
+        var result = str.match(patt1);
+
+        if(result!=null)
+        {
+            $("#msgPrenom").show();
+            $("#employerPrenomNew").val("");
         }
 
     });
@@ -145,11 +158,13 @@ $(document).ready(function () {
         if (isNaN($("#employerPrenomNew").val())) {
             $("#msgPrenom").hide();
         }
-        for (var a = 0; a <= $nom.length; a++) {
-            if (!isNaN($nom[a])) {
-                $("#msgPrenom").show();
-                break;
-            }
+        var str = $("#employerPrenomNew").val();
+        var patt1 = /[0-9]/;
+        var result = str.match(patt1);
+
+        if(result!=null)
+        {
+            $("#msgPrenom").show();
         }
     });
 
