@@ -22,6 +22,11 @@ class EmployerController extends FOSRestController
      */
     public function searchAllEmployersAction(Request $request)
     {
+        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
+        {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $test = $request->get('search');
         $pageNum = $request->get('pageNum');
         $oEmployer = $this
@@ -97,6 +102,12 @@ class EmployerController extends FOSRestController
      */
     public function richAllEmployersAction(Request $request)
     {
+        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
+        {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
+
         $ordre = $request->get('employerOrdre');
         $search = $request->get('search');
         $pageNum = $request->get('pageNum');
@@ -178,6 +189,12 @@ class EmployerController extends FOSRestController
      */
     public function showAllEmployersAction(Request $request)
     {
+        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
+        {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
+
         $pageNum = $request->get('pageNum');
         $oEmployer = $this
             ->getDoctrine()
@@ -250,6 +267,11 @@ class EmployerController extends FOSRestController
      */
     public function showOneEmployerAction(Request $request)
     {
+        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
+        {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $oEmployer = $this
             ->getDoctrine()
             ->getManager()
@@ -285,6 +307,11 @@ class EmployerController extends FOSRestController
      */
     public function preCreateEmployerAction(Request $request)
     {
+        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
+        {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $oEmployer = $this
             ->getDoctrine()
             ->getManager()
@@ -319,6 +346,11 @@ class EmployerController extends FOSRestController
      */
     public function createOneEmployerAction(Request $request)
     {
+        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
+        {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $testExiste = $this
             ->getDoctrine()
             ->getManager()
@@ -378,6 +410,11 @@ class EmployerController extends FOSRestController
      */
     public function removeOneUserAction(Request $request)
     {
+        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
+        {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $oEmployer = $this
             ->getDoctrine()
             ->getManager()
@@ -403,6 +440,11 @@ class EmployerController extends FOSRestController
      */
     public function preUpdateEmployerAction(Request $request)
     {
+        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
+        {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $aModif = $request->query->all();
 
         return $aModif;
@@ -416,6 +458,11 @@ class EmployerController extends FOSRestController
      */
     public function updateEmployerAction(Request $request)
     {
+        if(!$this->isGranted('IS_AUTHENTICATED_FULLY'))
+        {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $oEmployer = $this
             ->get('doctrine.orm.entity_manager')
             ->getRepository('AppBundle:Employer')

@@ -15,7 +15,7 @@ class DefaultController extends FOSRestController
 {
     /**
      * @Rest\View()
-     * @Rest\Get("/accueil")
+     * @Rest\Get("/")
      */
     public function showAccueilAction(Request $request)
     {

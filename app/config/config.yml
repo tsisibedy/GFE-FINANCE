@@ -12,7 +12,7 @@ framework:
     serializer:
         enabled: true
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -80,3 +80,11 @@ fos_rest:
             - { path: '^/', priorities: ['text/html'], fallback_format: 'json' }
     body_listener:
         enabled: true
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    from_email:
+        address: trazafimiandrisoa@gmail.com
+        sender_name: You
