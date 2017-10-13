@@ -3,6 +3,8 @@ $(document).ready(function () {
     $("#msgCin").hide();
     $("#msgNom").hide();
     $("#msgPrenom").hide();
+    $("#msgIm").hide();
+    $("#msgIndice").hide();
     $("#test").click(function () {
         $("#search").val($("#editor-one").html());
     });
@@ -45,18 +47,6 @@ $(document).ready(function () {
         }
     });
 
-    $("#employerCinNew").focus(function () {
-        if (12 < $("#employerCinNew").val().length) {
-            $("#msgCin").show();
-        }
-        if (12 > $("#employerCinNew").val().length) {
-            $("#msgCin").show();
-        }
-        if (12 == $("#employerCinNew").val().length && !isNaN($("#employerCinNew").val())) {
-            $("#msgCin").hide();
-        }
-    });
-
 
     //controlle nom
     $("#employerNomNew").keyup(function () {
@@ -71,8 +61,7 @@ $(document).ready(function () {
         var patt2 = /[a-zA-Z]/;
         var result = str.match(patt1);
 
-        if(result!=null)
-        {
+        if (result != null) {
             $("#msgNom").show();
         }
     });
@@ -88,29 +77,11 @@ $(document).ready(function () {
         var patt1 = /[0-9]/;
         var result = str.match(patt1);
 
-        if(result!=null)
-        {
+        if (result != null) {
             $("#msgNom").show();
             $("#employerNomNew").val("");
         }
 
-    });
-
-    $("#employerNomNew").focus(function () {
-        if (!isNaN($("#employerNomNew").val())) {
-            $("#msgNom").show();
-        }
-        if (isNaN($("#employerNomNew").val())) {
-            $("#msgNom").hide();
-        }
-        var str = $("#employerNomNew").val();
-        var patt1 = /[0-9]/;
-        var result = str.match(patt1);
-
-        if(result!=null)
-        {
-            $("#msgNom").show();
-        }
     });
 
 
@@ -126,8 +97,7 @@ $(document).ready(function () {
         var patt1 = /[0-9]/;
         var result = str.match(patt1);
 
-        if(result!=null)
-        {
+        if (result != null) {
             $("#msgPrenom").show();
         }
     });
@@ -143,29 +113,84 @@ $(document).ready(function () {
         var patt1 = /[0-9]/;
         var result = str.match(patt1);
 
-        if(result!=null)
-        {
+        if (result != null) {
             $("#msgPrenom").show();
             $("#employerPrenomNew").val("");
         }
 
     });
 
-    $("#employerPrenomNew").focus(function () {
-        if (!isNaN($("#employerPrenomNew").val())) {
-            $("#msgPrenom").show();
+
+    //information Immatricule
+    $("#informationIm").keyup(function () {
+        if (isNaN($("#informationIm").val())) {
+            $("#msgIm").show();
         }
-        if (isNaN($("#employerPrenomNew").val())) {
-            $("#msgPrenom").hide();
+        if (!isNaN($("#informationIm").val())) {
+            $("#msgIm").hide();
         }
-        var str = $("#employerPrenomNew").val();
-        var patt1 = /[0-9]/;
+        var str = $("#informationIm").val();
+        var patt1 = /[a-zA-Z]/;
         var result = str.match(patt1);
 
-        if(result!=null)
-        {
-            $("#msgPrenom").show();
+        if (result != null) {
+            $("#msgIm").show();
         }
     });
+
+    $("#informationIm").blur(function () {
+        if (isNaN($("#informationIm").val())) {
+            $("#informationIm").val('');
+            $("#msgIm").show();
+        }
+        var str = $("#informationIm").val();
+        var patt1 = /[a-zA-Z]/;
+        var result = str.match(patt1);
+
+        if (result != null) {
+            $("#informationIm").val('');
+            $("#msgIm").show();
+        }
+        if (result == null) {
+            $("#msgIm").hide();
+        }
+    });
+
+
+    //information indice
+    $("#informationIndice").keyup(function () {
+        if (isNaN($("#informationIndice").val())) {
+            $("#msgIndice").show();
+        }
+        if (!isNaN($("#informationIndice").val())) {
+            $("#msgIndice").hide();
+        }
+        var str = $("#informationIndice").val();
+        var patt1 = /[a-zA-Z]/;
+        var result = str.match(patt1);
+
+        if (result != null) {
+            $("#msgIndice").show();
+        }
+    });
+
+    $("#informationIndice").blur(function () {
+        if (isNaN($("#informationIndice").val())) {
+            $("#informationIndice").val('');
+            $("#msgIndice").show();
+        }
+        var str = $("#informationIndice").val();
+        var patt1 = /[a-zA-Z]/;
+        var result = str.match(patt1);
+
+        if (result != null) {
+            $("#informationIndice").val('');
+            $("#msgIndice").show();
+        }
+        if (result == null) {
+            $("#msgIndice").hide();
+        }
+    });
+
 
 });

@@ -46,45 +46,69 @@ class InformationController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('AppBundle:Information')
+            ->findOneByEmployerId($request->get('id'));
+
+        $testExiste1 = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Information')
             ->findAll();
 
         $aEmployerListtTest = [];
 
 
-        foreach ($testExiste as $information) {
-            $aEmployerListtTest [] = [
-                'im' => $information->getInformationIm(),
-                'categorie' => $information->getInformationCategorie(),
-                'classe' => $information->getInformationClasse(),
-                'corp' => $information->getInformationCorp(),
-                'dateEffet' => $information->getInformationDateEffet(),
-                'echelon' => $information->getInformationEchelon(),
-                'emploiOccuper' => $information->getInformationEmploiOccuper(),
-                'fonction' => $information->getInformationFonction(),
-                'formation' => $information->getInformationFormation(),
-                'grade' => $information->getInformationGrade(),
-                'indice' => $information->getInformationIndice(),
-                'diplome' => $information->getInformationQualiteDiplome(),
-                'statut' => $information->getInformationStatut(),
-                'titreHonorifique' => $information->getInformationTitreHonorifique(),
-                'employerId'=>$information->getEmployerId(),
+        foreach ($testExiste1 as $testExiste){
+            $aEmployerListtT [] = [
+                'im' => $testExiste->getInformationIm(),
+                'categorie' => $testExiste->getInformationCategorie(),
+                'classe' => $testExiste->getInformationClasse(),
+                'corp' => $testExiste->getInformationCorp(),
+                'dateEffet' => $testExiste->getInformationDateEffet(),
+                'echelon' => $testExiste->getInformationEchelon(),
+                'emploiOccuper' => $testExiste->getInformationEmploiOccuper(),
+                'fonction' => $testExiste->getInformationFonction(),
+                'formation' => $testExiste->getInformationFormation(),
+                'grade' => $testExiste->getInformationGrade(),
+                'indice' => $testExiste->getInformationIndice(),
+                'diplome' => $testExiste->getInformationQualiteDiplome(),
+                'statut' => $testExiste->getInformationStatut(),
+                'titreHonorifique' => $testExiste->getInformationTitreHonorifique(),
+                'employerId' => $testExiste->getEmployerId(),
             ];
         }
-        $cout = count($testExiste);
 
+        $aEmployerListtTest [] = [
+            'im' => $testExiste->getInformationIm(),
+            'categorie' => $testExiste->getInformationCategorie(),
+            'classe' => $testExiste->getInformationClasse(),
+            'corp' => $testExiste->getInformationCorp(),
+            'dateEffet' => $testExiste->getInformationDateEffet(),
+            'echelon' => $testExiste->getInformationEchelon(),
+            'emploiOccuper' => $testExiste->getInformationEmploiOccuper(),
+            'fonction' => $testExiste->getInformationFonction(),
+            'formation' => $testExiste->getInformationFormation(),
+            'grade' => $testExiste->getInformationGrade(),
+            'indice' => $testExiste->getInformationIndice(),
+            'diplome' => $testExiste->getInformationQualiteDiplome(),
+            'statut' => $testExiste->getInformationStatut(),
+            'titreHonorifique' => $testExiste->getInformationTitreHonorifique(),
+            'employerId' => $testExiste->getEmployerId(),
+        ];
+
+        $cout = count($testExiste1);
         for ($testIncriment = 0; $testIncriment < $cout; $testIncriment++) {
-            if ($request->get('id') == $aEmployerListtTest[$testIncriment]['employerId']) {
+            if ($request->get('id') == $aEmployerListtT[$testIncriment]['employerId']) {
                 $existe = 1;
                 $view = $this->view()
-                    ->setData(array('exist'=>$existe, 'employers' => $aEmployerList))
+                    ->setData(array('exist'=>$existe, 'employers' => $aEmployerList,'information' => $aEmployerListtTest))
                     ->setTemplate('AppBundle:Information:plusEmployers.html.twig');
 
                 return $this->handleView($view);
             }
         }
 
-        $view = $this->view($aEmployerList)
-            ->setTemplateVar('employers')
+        $view = $this->view()
+            ->setData(array('employers' => $aEmployerList, 'information' => $aEmployerListtTest))
             ->setTemplate('AppBundle:Information:plusEmployers.html.twig');
 
         return $this->handleView($view);

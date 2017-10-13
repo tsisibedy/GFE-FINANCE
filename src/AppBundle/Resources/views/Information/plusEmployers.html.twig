@@ -7,8 +7,8 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>User Report
-                                <small>Activity report</small>
+                            <h2>Profil du
+                                <small>{{ value.nom~' '~value.prenom }}</small>
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -41,18 +41,29 @@
                                 <h3>{{ value.nom~' '~value.prenom }}</h3>
 
                                 <ul class="list-unstyled user_data">
-                                    <li><i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California,
-                                        USA
+                                    <li>
+                                        <i class="fa fa-external-link user-profile-icon"></i> {{ value.dateNaissance }}
                                     </li>
 
                                     <li>
-                                        <i class="fa fa-briefcase user-profile-icon"></i> Software Engineer
+                                        <i class="fa fa-external-link user-profile-icon"></i> {{ value.lieuNaissance }}
                                     </li>
 
-                                    <li class="m-top-xs">
-                                        <i class="fa fa-external-link user-profile-icon"></i>
-                                        <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
+                                    <li>
+                                        <i class="fa fa-external-link user-profile-icon"></i> {{ value.cin }}
                                     </li>
+
+                                    <li>
+                                        <i class="fa fa-external-link user-profile-icon"></i> {{ value.sexe }}
+                                    </li>
+
+                                    <li>
+                                        <i class="fa fa-external-link user-profile-icon"></i> {{ value.situation }}
+                                    </li>
+
+                                    <li><i class="fa fa-map-marker user-profile-icon"></i> {{ value.addresse }}
+                                    </li>
+
                                 </ul>
 
                                 <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
@@ -62,31 +73,10 @@
                                 <h4>Skills</h4>
                                 <ul class="list-unstyled user_data">
                                     <li>
-                                        <p>Web Applications</p>
+                                        <p>Profil</p>
                                         <div class="progress progress_sm">
                                             <div class="progress-bar bg-green" role="progressbar"
                                                  data-transitiongoal="100"></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p>Website Design</p>
-                                        <div class="progress progress_sm">
-                                            <div class="progress-bar bg-green" role="progressbar"
-                                                 data-transitiongoal="10"></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p>Automation & Testing</p>
-                                        <div class="progress progress_sm">
-                                            <div class="progress-bar bg-green" role="progressbar"
-                                                 data-transitiongoal="30"></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p>UI / UX</p>
-                                        <div class="progress progress_sm">
-                                            <div class="progress-bar bg-green" role="progressbar"
-                                                 data-transitiongoal="50"></div>
                                         </div>
                                     </li>
                                 </ul>
@@ -176,7 +166,7 @@
                 </div>
             </div>
         {% endfor %}
-    {% else %}
+    {% else %} Conception et realisation d'une appliaction web du conseil national des bareaux
         <div class="row">
             <div class="col-md-12 col-xs-12" style="padding-left: 0px;">
                 <div class="x_panel">
@@ -234,8 +224,8 @@
                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                     <input type="text" class="form-control" maxlength="4" id="informationIndice"
                                            name="informationIndice"
-                                           placeholder="Corp" required>
-                                    <span style="color: red;" id="msgIm">Indice ne peut pas contenir une lettre et doit etre une combinaison de 3 à 4 chifre.</span>
+                                           placeholder="Indice" required>
+                                    <span style="color: red;" id="msgIndice">Indice ne peut pas contenir une lettre et doit etre une combinaison de 3 à 4 chifre.</span>
                                 </div>
                             </div>
                             <div class="form-group">
