@@ -33,9 +33,15 @@
                                 <div class="profile_img">
                                     <div id="crop-avatar">
                                         <!-- Current avatar -->
-                                        <img class="img-responsive avatar-view"
-                                             src="{{ asset('bundles/app/images/picture.jpg') }}" alt="Avatar"
-                                             title="Change the avatar">
+                                        {% if value.sexe == "femme" %}
+                                            <img class="img-responsive avatar-view"
+                                                 src="{{ asset('bundles/app/images/icon-female.png') }}" alt="Avatar"
+                                                 title="Change the avatar">
+                                        {% elseif value.sexe is sameas("homme") %}
+                                            <img class="img-responsive avatar-view"
+                                                 src="{{ asset('bundles/app/images/picture.jpg') }}" alt="Avatar"
+                                                 title="Change the avatar">
+                                        {% endif %}
                                     </div>
                                 </div>
                                 <h3>{{ value.nom~' '~value.prenom }}</h3>
@@ -69,8 +75,7 @@
                                 <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
                                 <br/>
 
-                                <!-- start skills -->
-                                <h4>Skills</h4>
+
                                 <ul class="list-unstyled user_data">
                                     <li>
                                         <p>Profil</p>
@@ -87,14 +92,7 @@
 
                                 <div class="profile_title">
                                     <div class="col-md-6">
-                                        <h2>User Activity Report</h2>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div id="reportrange" class="pull-right"
-                                             style="margin-top: 5px; background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #E6E9ED">
-                                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                                            <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
-                                        </div>
+                                        <h2>Activité personnels</h2>
                                     </div>
                                 </div>
 
@@ -103,62 +101,154 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Project Name</th>
-                                        <th>Client Company</th>
-                                        <th class="hidden-phone">Hours Spent</th>
-                                        <th>Contribution</th>
+                                        <th>Information</th>
+                                        <th>Status</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>New Company Takeover Review</td>
-                                        <td>Deveint Inc</td>
-                                        <td class="hidden-phone">18</td>
-                                        <td class="vertical-align-mid">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-success"
-                                                     data-transitiongoal="35"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>New Partner Contracts Consultanci</td>
-                                        <td>Deveint Inc</td>
-                                        <td class="hidden-phone">13</td>
-                                        <td class="vertical-align-mid">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-danger"
-                                                     data-transitiongoal="15"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Partners and Inverstors report</td>
-                                        <td>Deveint Inc</td>
-                                        <td class="hidden-phone">30</td>
-                                        <td class="vertical-align-mid">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-success"
-                                                     data-transitiongoal="45"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>New Company Takeover Review</td>
-                                        <td>Deveint Inc</td>
-                                        <td class="hidden-phone">28</td>
-                                        <td class="vertical-align-mid">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-success"
-                                                     data-transitiongoal="75"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
+                                    {% for info in information %}
+                                        <tr>
+                                            <td>Corp</td>
+                                            <td class="hidden-phone">{{ info.im }}</td>
+                                            <td class="vertical-align-mid">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         data-transitiongoal="35"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Categorie</td>
+                                            <td class="hidden-phone">{{ info.categorie }}</td>
+                                            <td class="vertical-align-mid">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         data-transitiongoal="15"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Classe</td>
+                                            <td class="hidden-phone">{{ info.classe }}</td>
+                                            <td class="vertical-align-mid">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         data-transitiongoal="57"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Corp</td>
+                                            <td class="hidden-phone">{{ info.corp }}</td>
+                                            <td class="vertical-align-mid">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         data-transitiongoal="49"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Date Effet</td>
+                                            <td class="hidden-phone">{{ info.dateEffet }}</td>
+                                            <td class="vertical-align-mid">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         data-transitiongoal="70"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Echelon</td>
+                                            <td class="hidden-phone">{{ info.echelon }}</td>
+                                            <td class="vertical-align-mid">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         data-transitiongoal="42"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Emploi Occuper</td>
+                                            <td class="hidden-phone">{{ info.emploiOccuper }}</td>
+                                            <td class="vertical-align-mid">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         data-transitiongoal="90"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fonction</td>
+                                            <td class="hidden-phone">{{ info.fonction }}</td>
+                                            <td class="vertical-align-mid">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         data-transitiongoal="88"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Formation</td>
+                                            <td class="hidden-phone">{{ info.formation }}</td>
+                                            <td class="vertical-align-mid">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         data-transitiongoal="70"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Grade</td>
+                                            <td class="hidden-phone">{{ info.grade }}</td>
+                                            <td class="vertical-align-mid">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         data-transitiongoal="35"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Indice</td>
+                                            <td class="hidden-phone">{{ info.indice }}</td>
+                                            <td class="vertical-align-mid">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         data-transitiongoal="9"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Diplome</td>
+                                            <td class="hidden-phone">{{ info.diplome }}</td>
+                                            <td class="vertical-align-mid">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         data-transitiongoal="58"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Statut</td>
+                                            <td class="hidden-phone">{{ info.statut }}</td>
+                                            <td class="vertical-align-mid">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         data-transitiongoal="48"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Titre Honorifique</td>
+                                            <td class="hidden-phone">{{ info.titreHonorifique }}</td>
+                                            <td class="vertical-align-mid">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         data-transitiongoal="10"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    {% endfor %}
                                 </table>
                             </div>
                         </div>
