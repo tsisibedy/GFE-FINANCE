@@ -1,0 +1,166 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block admin %}
+    {% for info in information %}
+        <div class="row">
+            <div class="col-md-12 col-xs-12" style="padding-left: 0px;">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Modification d'information du personnel
+                        </h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br/>
+                        <form class="form-horizontal form-label-left" action="{{ path('update_information') }}"
+                              method="post">
+                              <input type="text" class="form-control" value="{{ info.id }}" maxlength="6" id="idInfo"
+                                           name="id"
+                                           placeholder="Matricule" required>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Personnel</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <select class="form-control" name="employerId" required>
+                                        {% for value in employers %}
+                                            <option value="{{ value.id }}">{{ value.nom~' '~value.prenom }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Imatricule</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="{{ info.im }}" maxlength="6" id="informationIm"
+                                           name="informationIm"
+                                           placeholder="Matricule" required>
+                                    <span style="color: red;"
+                                          id="msgIm">Immatricule ne peut pas contenir une lettre.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Corp</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="{{ info.corp }}"id="informationCorp" name="informationCorp"
+                                           placeholder="Corp" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Grade</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="{{ info.grade }}"id="informationGrade"
+                                           name="informationGrade"
+                                           placeholder="Grade" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Indice</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="{{ info.indice }}"maxlength="4" id="informationIndice"
+                                           name="informationIndice"
+                                           placeholder="Indice" required>
+                                    <span style="color: red;" id="msgIndice">Indice ne peut pas contenir une lettre et doit etre une combinaison de 3 à 4 chifre.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Emploi occuper</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="{{ info.emploiOccuper }}"id="informationEmploiOccuper"
+                                           name="informationEmploiOccuper"
+                                           placeholder="Emploi occuper" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Statut</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="{{ info.statut }}" id="informationStatut"
+                                           name="informationStatut"
+                                           placeholder="Statut" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Titre honorifique</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="{{ info.titreHonorifique }}" id="informationTitreHonorifique"
+                                           name="informationTitreHonorifique"
+                                           placeholder="Titre honorifique" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Qualite diplome</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="{{ info.diplome }}" id="informationQualiteDiplome"
+                                           name="informationQualiteDiplome"
+                                           placeholder="Qualite diplome" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Classe</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="{{ info.classe }}" id="informationClasse"
+                                           name="informationClasse"
+                                           placeholder="Classe" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Echelon</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="{{ info.echelon }}" id="informationEchelon"
+                                           name="informationEchelon"
+                                           placeholder="Echelon" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Categorie</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="{{ info.categorie }}"id="informationCategorie"
+                                           name="informationCategorie"
+                                           placeholder="Categorie" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Formation</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="{{ info.formation }}" id="informationFormation"
+                                           name="informationFormation"
+                                           placeholder="Formation" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Fonction</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="{{ info.fonction }}" id="informationFonction"
+                                           name="informationFonction"
+                                           placeholder="Fonction" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Date effet</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" name="informationDateEffet"
+                                           class="form-control has-feedback-left"
+                                           value="{{ info.dateEffet }}" id="single_cal1"
+                                           placeholder="Date d'entre" aria-describedby="inputSuccess2Status">
+                                    <span class="fa fa-calendar-o form-control-feedback left"
+                                          aria-hidden="true"></span>
+                                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                                </div>
+                            </div>
+
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                    <button type="submit" class="btn btn-primary">Modifier</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

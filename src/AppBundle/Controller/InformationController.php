@@ -78,6 +78,7 @@ class InformationController extends FOSRestController
         }
 
         $aEmployerListtTest [] = [
+            'id'=>$testExiste->getId(),
             'im' => $testExiste->getInformationIm(),
             'categorie' => $testExiste->getInformationCategorie(),
             'classe' => $testExiste->getInformationClasse(),
@@ -173,6 +174,96 @@ class InformationController extends FOSRestController
         $oManager = $this->getDoctrine()->getManager();
         $oManager->persist($info);
         $oManager->flush();
+
+        return $this->redirect($this->generateUrl('show_all_employers'));
+    }
+
+    /**
+     * @Rest\View()
+     * @Rest\Get("/pre/update/information")
+     */
+    public function preUpdateInformationAction(Request $request)
+    {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
+        $information = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Information')
+            ->find($request->get('idInformation'));
+       
+        $aInformationList [] = [
+            'id'=>$information->getId(),
+            'im' => $information->getInformationIm(),
+            'categorie' => $information->getInformationCategorie(),
+            'classe' => $information->getInformationClasse(),
+            'corp' => $information->getInformationCorp(),
+            'dateEffet' => $information->getInformationDateEffet(),
+            'echelon' => $information->getInformationEchelon(),
+            'emploiOccuper' => $information->getInformationEmploiOccuper(),
+            'fonction' => $information->getInformationFonction(),
+            'formation' => $information->getInformationFormation(),
+            'grade' => $information->getInformationGrade(),
+            'indice' => $information->getInformationIndice(),
+            'diplome' => $information->getInformationQualiteDiplome(),
+            'statut' => $information->getInformationStatut(),
+            'titreHonorifique' => $information->getInformationTitreHonorifique(),
+            'employerId'=>$information->getEmployerId(),
+        ];
+
+        $oEmployer = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Employer')
+            ->find($request->get('idEmployer'));
+
+        $aEmployerList [] = [
+            'id' => $oEmployer->getId(),
+            'nom' => $oEmployer->getEmployerNom(),
+            'prenom' => $oEmployer->getEmployerPrenom(),
+            'dateNaissance' => $oEmployer->getEmployerDateNaissance(),
+            'cin' => $oEmployer->getEmployerCin(),
+            'lieuNaissance' => $oEmployer->getEmployerLieuNaissance(),
+            'situation' => $oEmployer->getEmployerSituation(),
+            'sexe' => $oEmployer->getEmployerSexe(),
+            'addresse' => $oEmployer->getEmployerAddresse(),
+        ];
+        
+       
+        $view = $this->view()
+                        ->setData(array('employers'=>$aEmployerList,'information' => $aInformationList))
+                        ->setTemplate('AppBundle:Information:preUpdateInformation.html.twig');
+
+        return $this->handleView($view);
+    }
+
+    /**
+     * @Rest\View()
+     * @Rest\Post("/update/information/")
+     */
+    public function updateInformationAction(Request $request)
+    {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
+        $information = $this
+            ->get('doctrine.orm.entity_manager')
+            ->getRepository('AppBundle:Information')
+            ->find($request->request->get('id'));
+
+        if (empty($information)) {
+            return new JsonResponse(['Message' => 'Employer not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        $form = $this->createForm(InformationType::class, $information);
+        $form->submit($request->request->all());
+
+        $Manager = $this->getDoctrine()->getManager();
+        $Manager->merge($information);
+        $Manager->flush();
 
         return $this->redirect($this->generateUrl('show_all_employers'));
     }

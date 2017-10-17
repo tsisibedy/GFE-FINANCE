@@ -2,6 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="026106cc-5c84-4e50-9c7a-d70865b9292c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/IntegrationController.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/var/cache/.gitkeep" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/InformationController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/InformationController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/Public/build/css/custom.min.css" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/Public/build/css/custom.min.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/Information/plusEmployers.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/Information/plusEmployers.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,21 +21,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="showAccueil.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Default/showAccueil.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InformationController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="InformationController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/InformationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+            <state relative-caret-position="230">
+              <caret line="243" column="34" lean-forward="true" selection-start-line="243" selection-start-column="34" selection-end-line="243" selection-end-column="34" />
               <folding>
                 <element signature="e#40#75#0#PHP" expanded="true" />
               </folding>
@@ -36,32 +33,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plusEmployers.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="preUpdateInformation.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Information/preUpdateInformation.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="139" column="82" lean-forward="true" selection-start-line="139" selection-start-column="82" selection-end-line="139" selection-end-column="82" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plusEmployers.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Information/plusEmployers.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="757">
-              <caret line="135" column="80" lean-forward="false" selection-start-line="135" selection-start-column="80" selection-end-line="135" selection-end-column="80" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gfe.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/bundles/app/gfe.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="164" column="52" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="195" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gfe.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/Public/gfe.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="681">
-              <caret line="195" column="3" lean-forward="false" selection-start-line="195" selection-start-column="3" selection-end-line="195" selection-end-column="3" />
-              <folding />
+            <state relative-caret-position="1292">
+              <caret line="76" column="54" lean-forward="false" selection-start-line="76" selection-start-column="54" selection-end-line="76" selection-end-column="54" />
+              <folding>
+                <marker date="1508226181838" expanded="true" signature="3661:4298" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -69,8 +58,8 @@
       <file leaf-file-name="EmployerController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/EmployerController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="214" column="58" lean-forward="false" selection-start-line="214" selection-start-column="58" selection-end-line="214" selection-end-column="58" />
+            <state relative-caret-position="510">
+              <caret line="474" column="5" lean-forward="true" selection-start-line="447" selection-start-column="4" selection-end-line="474" selection-end-column="5" />
               <folding>
                 <element signature="e#40#97#0#PHP" expanded="true" />
               </folding>
@@ -89,7 +78,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>agent</find>
       <find>dynamic table</find>
       <find>store list</find>
       <find>Tally Box Design</find>
@@ -119,6 +107,7 @@
       <find>formation</find>
       <find>Raw denim you</find>
       <find>corp</find>
+      <find>#2A3F54</find>
     </findStrings>
     <replaceStrings>
       <replace>{{ asset('bundles/app/vendors/</replace>
@@ -132,6 +121,7 @@
     </replaceStrings>
     <dirStrings>
       <dir>E:\Installations\wamp64\www\rest-api</dir>
+      <dir>E:\Installations\wamp64\www\projetsEtudes\rest-api</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -140,9 +130,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/Public/bootstrap.min.css" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/Public/jquery.min.js" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/Public/bootstrap.min.js" />
         <option value="$PROJECT_DIR$/web/bundles/app/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/web/bundles/app/angular.min.js" />
         <option value="$PROJECT_DIR$/web/bundles/app/bootstrap.min.js" />
@@ -180,17 +167,20 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/preCreateEmployer.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/EmployerType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Employer.php" />
-        <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/plusEmployers.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/getEmployers.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/InformationType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Information.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/EmployerController.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/InformationController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/showAccueil.html.twig" />
         <option value="$PROJECT_DIR$/web/bundles/app/gfe.js" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/Public/gfe.js" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Information/plusEmployers.html.twig" />
+        <option value="$PROJECT_DIR$/app/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/IntegrationController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/Public/build/css/custom.min.css" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Information/preUpdateInformation.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/InformationController.php" />
       </list>
     </option>
   </component>
@@ -389,6 +379,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rest-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rest-api" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Information" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -766,19 +786,19 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="SearchEverywhereHistoryKey" value="employ&#9;FILE&#9;file://E:/Installations/wamp64/www/rest-api/src/AppBundle/Entity/Employer.php" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../projetsEtudes/GFE-FINANCE" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../projets/OGC-TELMA" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Resources\views\Information" />
-      <recent name="E:\Installations\wamp64\www\rest-api\app\Resources" />
-      <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Resources\views" />
-      <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Resources\views\Employer" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Installations\wamp64\www\projetsEtudes\rest-api\src\AppBundle\Controller" />
       <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Controller" />
       <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Resources\FOSUserBundle" />
       <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Resources\Public" />
+      <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Resources\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Resources\views\Information" />
+      <recent name="E:\Installations\wamp64\www\rest-api\app\Resources" />
       <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Resources\views" />
       <recent name="E:\Installations\wamp64\www\rest-api\src\AppBundle\Resources\views\Employer" />
     </key>
@@ -879,18 +899,20 @@
       <workItem from="1507701847407" duration="34559000" />
       <workItem from="1507790001429" duration="14886000" />
       <workItem from="1507807379418" duration="24088000" />
-      <workItem from="1507903830870" duration="4950000" />
+      <workItem from="1507903830870" duration="5847000" />
+      <workItem from="1508232050917" duration="70000" />
+      <workItem from="1508232184780" duration="1392000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147785000" />
+    <option name="totallyTimeSpent" value="150144000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.254298" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26146132" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="LDAP" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -921,33 +943,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/InformationRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/brocateurs/gentelella/colorlib.com/polygon/gentelella/tables_dynamic.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="3689" column="4" lean-forward="false" selection-start-line="3689" selection-start-column="4" selection-end-line="3703" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../conseil-bareaux/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/rest-bundle/Controller/ControllerTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="65" column="23" lean-forward="false" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -955,7 +954,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
           <caret line="272" column="34" lean-forward="false" selection-start-line="272" selection-start-column="20" selection-end-line="272" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -971,7 +969,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1129,13 +1126,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/preUpdateEmployer.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1802">
-          <caret line="106" column="22" lean-forward="false" selection-start-line="106" selection-start-column="22" selection-end-line="106" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/HttpFoundation/File/UploadedFile.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2346">
@@ -1158,9 +1148,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="25" column="37" lean-forward="false" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
-          <folding>
-            <element signature="e#34#74#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1171,18 +1158,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="46" lean-forward="false" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Employer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="44" column="7" lean-forward="false" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1197,7 +1176,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="30" column="41" lean-forward="false" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1205,7 +1183,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
           <caret line="474" column="5" lean-forward="false" selection-start-line="474" selection-start-column="5" selection-end-line="474" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1213,14 +1190,45 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="118" column="24" lean-forward="false" selection-start-line="118" selection-start-column="24" selection-end-line="118" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/Public/gfe.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="681">
+        <state relative-caret-position="3315">
           <caret line="195" column="3" lean-forward="false" selection-start-line="195" selection-start-column="3" selection-end-line="195" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/Public/build/css/custom.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="0" column="24268" lean-forward="false" selection-start-line="0" selection-start-column="24268" selection-end-line="0" selection-end-column="24268" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="47" lean-forward="false" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/IntegrationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bundles/app/gfe.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="164" column="52" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="195" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -1233,18 +1241,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/bundles/app/gfe.js">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Employer/preUpdateEmployer.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="164" column="52" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="195" selection-end-column="3" />
+        <state relative-caret-position="1802">
+          <caret line="106" column="22" lean-forward="false" selection-start-line="106" selection-start-column="22" selection-end-line="106" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Information/plusEmployers.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1292">
+          <caret line="76" column="54" lean-forward="false" selection-start-line="76" selection-start-column="54" selection-end-line="76" selection-end-column="54" />
+          <folding>
+            <marker date="1508226181838" expanded="true" signature="3661:4298" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Information/preUpdateInformation.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="139" column="82" lean-forward="true" selection-start-line="139" selection-start-column="82" selection-end-line="139" selection-end-column="82" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/EmployerController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="214" column="58" lean-forward="false" selection-start-line="214" selection-start-column="58" selection-end-line="214" selection-end-column="58" />
+        <state relative-caret-position="510">
+          <caret line="474" column="5" lean-forward="true" selection-start-line="447" selection-start-column="4" selection-end-line="474" selection-end-column="5" />
           <folding>
             <element signature="e#40#97#0#PHP" expanded="true" />
           </folding>
@@ -1253,19 +1279,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/InformationController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+        <state relative-caret-position="230">
+          <caret line="243" column="34" lean-forward="true" selection-start-line="243" selection-start-column="34" selection-end-line="243" selection-end-column="34" />
           <folding>
             <element signature="e#40#75#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Information/plusEmployers.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="757">
-          <caret line="135" column="80" lean-forward="false" selection-start-line="135" selection-start-column="80" selection-end-line="135" selection-end-column="80" />
-          <folding />
         </state>
       </provider>
     </entry>

@@ -13,18 +13,7 @@
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                       aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Settings 1</a>
-                                        </li>
-                                        <li><a href="#">Settings 2</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
+                                
                             </ul>
                             <div class="clearfix"></div>
                         </div>
@@ -71,10 +60,10 @@
                                     </li>
 
                                 </ul>
-
-                                <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+                                {% for info in information %}
+                                <a class="btn btn-success" href="{{ path('pre_update_information',{'idInformation':info.id,'idEmployer':value.id }) }}"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
                                 <br/>
-
+                                {% endfor %}
 
                                 <ul class="list-unstyled user_data">
                                     <li>
@@ -108,7 +97,7 @@
                                     <tbody>
                                     {% for info in information %}
                                         <tr>
-                                            <td>Corp</td>
+                                            <td>Imatricule</td>
                                             <td class="hidden-phone">{{ info.im }}</td>
                                             <td class="vertical-align-mid">
                                                 <div class="progress">

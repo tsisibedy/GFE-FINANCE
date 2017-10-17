@@ -1,20 +1,21 @@
-$(document).ready(function () {
+$(document).ready(function() {
     $("#avancer").hide();
     $("#msgCin").hide();
     $("#msgNom").hide();
     $("#msgPrenom").hide();
     $("#msgIm").hide();
     $("#msgIndice").hide();
-    $("#test").click(function () {
+    $("#idInfo").hide();
+    $("#test").click(function() {
         $("#search").val($("#editor-one").html());
     });
-    $(".avancer").click(function () {
+    $(".avancer").click(function() {
         $("#avancer").slideToggle(500);
         $("#news").slideToggle();
     });
 
     //controlle ajout cin
-    $("#employerCinNew").keyup(function () {
+    $("#employerCinNew").keyup(function() {
         if (12 < $("#employerCinNew").val().length) {
             $("#msgCin").show();
         }
@@ -29,7 +30,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#employerCinNew").blur(function () {
+    $("#employerCinNew").blur(function() {
         if (isNaN($("#employerCinNew").val())) {
             $("#employerCinNew").val("");
             $("#msgCin").show();
@@ -49,7 +50,7 @@ $(document).ready(function () {
 
 
     //controlle nom
-    $("#employerNomNew").keyup(function () {
+    $("#employerNomNew").keyup(function() {
         if (!isNaN($("#employerNomNew").val())) {
             $("#msgNom").show();
         }
@@ -66,7 +67,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#employerNomNew").blur(function () {
+    $("#employerNomNew").blur(function() {
         if (!isNaN($("#employerNomNew").val())) {
             $("#msgNom").show();
         }
@@ -86,7 +87,7 @@ $(document).ready(function () {
 
 
     //controlle prenom
-    $("#employerPrenomNew").keyup(function () {
+    $("#employerPrenomNew").keyup(function() {
         if (!isNaN($("#employerPrenomNew").val())) {
             $("#msgPrenom").show();
         }
@@ -102,7 +103,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#employerPrenomNew").blur(function () {
+    $("#employerPrenomNew").blur(function() {
         if (!isNaN($("#employerPrenomNew").val())) {
             $("#msgPrenom").show();
         }
@@ -122,7 +123,7 @@ $(document).ready(function () {
 
 
     //information Immatricule
-    $("#informationIm").keyup(function () {
+    $("#informationIm").keyup(function() {
         if (isNaN($("#informationIm").val())) {
             $("#msgIm").show();
         }
@@ -138,7 +139,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#informationIm").blur(function () {
+    $("#informationIm").blur(function() {
         if (isNaN($("#informationIm").val())) {
             $("#informationIm").val('');
             $("#msgIm").show();
@@ -158,7 +159,7 @@ $(document).ready(function () {
 
 
     //information indice
-    $("#informationIndice").keyup(function () {
+    $("#informationIndice").keyup(function() {
         if (isNaN($("#informationIndice").val())) {
             $("#msgIndice").show();
         }
@@ -174,7 +175,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#informationIndice").blur(function () {
+    $("#informationIndice").blur(function() {
         if (isNaN($("#informationIndice").val())) {
             $("#informationIndice").val('');
             $("#msgIndice").show();
