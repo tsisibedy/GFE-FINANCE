@@ -5,16 +5,128 @@
     <br>
     <br>
     <br>
-    <center>
-        <form action="{{ path('search_all_employers') }}" method="post"
-              style="box-shadow: 0px 0px 10px;padding: 30px;width: 900px;">
-            <div class="input-group">
-                <input type="text" name="search" class="form-control">
-                <span class="input-group-btn">
-                <button type="submit" class="btn btn-primary">Chercher</button>
-            </span>
+    {% if integration is defined %}
+        <div class="row">
+            <div class="col-md-12 col-xs-12" style="padding-left: 0px;">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Integration d'un personnel etape finale
+
+                        </h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br/>
+                        <form class="form-horizontal form-label-left" action="{{ path('debut_integration') }}"
+                              method="post">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Personnel</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <select class="form-control" name="id" required>
+                                        {% for value in employers %}
+                                            <option value="{{ value.id }}">{{ value.nom~' '~value.prenom }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            {% for value in employers %}
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Date de naissance</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" name="employerDateNaissance"
+                                               class="form-control has-feedback-left"
+                                               value="{{ value.dateNaissance }}" id="single_cal1"
+                                               placeholder="Date de naissance" aria-describedby="inputSuccess2Status" disabled="disabled">
+                                        <span class="fa fa-calendar-o form-control-feedback left"
+                                              aria-hidden="true"></span>
+                                        <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Lieu de naissance</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" value=""
+                                               name="employerLieuNaissance"
+                                               placeholder="Lieu de naissance" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">CIN</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" id="employerCinNew" maxlength="12"
+                                               name="employerCin"
+                                               placeholder="CIN" required>
+                                        <span style="color: red;" id="msgCin">Cin doit etre des conbinnaison de 12 chiffre et ne peut pas contenir une letre.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Sexe</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <select class="form-control" name="employerSexe" required>
+                                            <option value="">Votre sexe</option>
+                                            <option value="femme">Femme</option>
+                                            <option value="homme">Homme</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
             </div>
-            <a href="#" style="float: right;" class="avancer">Recherche avancée</a>
-        </form>
-    </center>
+        </div>
+    {% else %}
+        <center>
+            <div class="row">
+                <div class="col-md-12 col-xs-12" style="padding-left: 0px;">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Integration d'un personnel etape 1
+
+                            </h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <br/>
+                            <form class="form-horizontal form-label-left" action="{{ path('debut_integration') }}"
+                                  method="post" style="box-shadow: 0px 0px 10px;padding: 30px;width: 900px;">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Personnel</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <select class="form-control" name="id" required>
+                                            {% for value in employers %}
+                                                <option value="{{ value.id }}">{{ value.nom~' '~value.prenom }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                        <button type="submit" class="btn btn-primary">Commencer l'integration</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </center>
+    {% endif %}
+
 {% endblock %}

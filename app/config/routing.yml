@@ -16,3 +16,7 @@ employers:
 information:
     type: rest
     resource: AppBundle\Controller\InformationController
+
+integration:
+    type: rest
+    resource: AppBundle\Controller\IntegrationController
