@@ -24,29 +24,27 @@ class InformationController extends FOSRestController
      */
     public function plusEmployersAction(Request $request)
     {
-        $oEmployer = $this
+        $oEmployers = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('AppBundle:Employer')
-            ->find($request->get('id'));
-
-        $aEmployerList [] = [
-            'id' => $oEmployer->getId(),
-            'nom' => $oEmployer->getEmployerNom(),
-            'prenom' => $oEmployer->getEmployerPrenom(),
-            'dateNaissance' => $oEmployer->getEmployerDateNaissance(),
-            'cin' => $oEmployer->getEmployerCin(),
-            'lieuNaissance' => $oEmployer->getEmployerLieuNaissance(),
-            'situation' => $oEmployer->getEmployerSituation(),
-            'sexe' => $oEmployer->getEmployerSexe(),
-            'addresse' => $oEmployer->getEmployerAddresse(),
-        ];
-
-        $testExiste = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('AppBundle:Information')
-            ->findOneByEmployerId($request->get('id'));
+            ->findAll();
+        $aEmployerList =[];
+        foreach ($oEmployers as $oEmployer) {
+            if ($oEmployer->getId() == $request->get('id')) {
+                $aEmployerList [] = [
+                    'id' => $oEmployer->getId(),
+                    'nom' => $oEmployer->getEmployerNom(),
+                    'prenom' => $oEmployer->getEmployerPrenom(),
+                    'dateNaissance' => $oEmployer->getEmployerDateNaissance(),
+                    'cin' => $oEmployer->getEmployerCin(),
+                    'lieuNaissance' => $oEmployer->getEmployerLieuNaissance(),
+                    'situation' => $oEmployer->getEmployerSituation(),
+                    'sexe' => $oEmployer->getEmployerSexe(),
+                    'addresse' => $oEmployer->getEmployerAddresse(),
+                ];
+            }
+        }
 
         $testExiste1 = $this
             ->getDoctrine()
@@ -54,65 +52,44 @@ class InformationController extends FOSRestController
             ->getRepository('AppBundle:Information')
             ->findAll();
 
-        $aEmployerListtTest = [];
-
-
-        foreach ($testExiste1 as $testExiste){
-            $aEmployerListtT [] = [
-                'im' => $testExiste->getInformationIm(),
-                'categorie' => $testExiste->getInformationCategorie(),
-                'classe' => $testExiste->getInformationClasse(),
-                'corp' => $testExiste->getInformationCorp(),
-                'dateEffet' => $testExiste->getInformationDateEffet(),
-                'echelon' => $testExiste->getInformationEchelon(),
-                'emploiOccuper' => $testExiste->getInformationEmploiOccuper(),
-                'fonction' => $testExiste->getInformationFonction(),
-                'formation' => $testExiste->getInformationFormation(),
-                'grade' => $testExiste->getInformationGrade(),
-                'indice' => $testExiste->getInformationIndice(),
-                'diplome' => $testExiste->getInformationQualiteDiplome(),
-                'statut' => $testExiste->getInformationStatut(),
-                'titreHonorifique' => $testExiste->getInformationTitreHonorifique(),
-                'employerId' => $testExiste->getEmployerId(),
-            ];
-        }
-
-        $aEmployerListtTest [] = [
-            'id'=>$testExiste->getId(),
-            'im' => $testExiste->getInformationIm(),
-            'categorie' => $testExiste->getInformationCategorie(),
-            'classe' => $testExiste->getInformationClasse(),
-            'corp' => $testExiste->getInformationCorp(),
-            'dateEffet' => $testExiste->getInformationDateEffet(),
-            'echelon' => $testExiste->getInformationEchelon(),
-            'emploiOccuper' => $testExiste->getInformationEmploiOccuper(),
-            'fonction' => $testExiste->getInformationFonction(),
-            'formation' => $testExiste->getInformationFormation(),
-            'grade' => $testExiste->getInformationGrade(),
-            'indice' => $testExiste->getInformationIndice(),
-            'diplome' => $testExiste->getInformationQualiteDiplome(),
-            'statut' => $testExiste->getInformationStatut(),
-            'titreHonorifique' => $testExiste->getInformationTitreHonorifique(),
-            'employerId' => $testExiste->getEmployerId(),
-        ];
-
-        $cout = count($testExiste1);
-        for ($testIncriment = 0; $testIncriment < $cout; $testIncriment++) {
-            if ($request->get('id') == $aEmployerListtT[$testIncriment]['employerId']) {
-                $existe = 1;
-                $view = $this->view()
-                    ->setData(array('exist'=>$existe, 'employers' => $aEmployerList,'information' => $aEmployerListtTest))
-                    ->setTemplate('AppBundle:Information:plusEmployers.html.twig');
-
-                return $this->handleView($view);
+        $aInformationList =[];
+        foreach ($testExiste1 as $testExiste) {
+            if ($request->get('id') == $testExiste->getEmployerId()) {
+                $aInformationList [] = [
+                    'id'=>$testExiste->getId(),
+                    'im' => $testExiste->getInformationIm(),
+                    'categorie' => $testExiste->getInformationCategorie(),
+                    'classe' => $testExiste->getInformationClasse(),
+                    'corp' => $testExiste->getInformationCorp(),
+                    'dateEffet' => $testExiste->getInformationDateEffet(),
+                    'echelon' => $testExiste->getInformationEchelon(),
+                    'emploiOccuper' => $testExiste->getInformationEmploiOccuper(),
+                    'fonction' => $testExiste->getInformationFonction(),
+                    'formation' => $testExiste->getInformationFormation(),
+                    'grade' => $testExiste->getInformationGrade(),
+                    'indice' => $testExiste->getInformationIndice(),
+                    'diplome' => $testExiste->getInformationQualiteDiplome(),
+                    'statut' => $testExiste->getInformationStatut(),
+                    'titreHonorifique' => $testExiste->getInformationTitreHonorifique(),
+                    'employerId' => $testExiste->getEmployerId(),
+                ];
             }
         }
 
-        $view = $this->view()
-            ->setData(array('employers' => $aEmployerList, 'information' => $aEmployerListtTest))
-            ->setTemplate('AppBundle:Information:plusEmployers.html.twig');
+       if($aInformationList){
+           $existe = 1;
+           $view = $this->view()
+               ->setData(array('exist' => $existe, 'employers' => $aEmployerList, 'information' => $aInformationList))
+               ->setTemplate('AppBundle:Information:plusEmployers.html.twig');
 
-        return $this->handleView($view);
+           return $this->handleView($view);
+       }else{
+           $view = $this->view()
+               ->setData(array('employers' => $aEmployerList))
+               ->setTemplate('AppBundle:Information:plusEmployers.html.twig');
+
+           return $this->handleView($view);
+       }
     }
 
     /**
@@ -150,7 +127,7 @@ class InformationController extends FOSRestController
                 'diplome' => $information->getInformationQualiteDiplome(),
                 'statut' => $information->getInformationStatut(),
                 'titreHonorifique' => $information->getInformationTitreHonorifique(),
-                'employerId'=>$information->getEmployerId(),
+                'employerId' => $information->getEmployerId(),
             ];
         }
         $cout = count($testExiste);
@@ -193,9 +170,9 @@ class InformationController extends FOSRestController
             ->getManager()
             ->getRepository('AppBundle:Information')
             ->find($request->get('idInformation'));
-       
+
         $aInformationList [] = [
-            'id'=>$information->getId(),
+            'id' => $information->getId(),
             'im' => $information->getInformationIm(),
             'categorie' => $information->getInformationCategorie(),
             'classe' => $information->getInformationClasse(),
@@ -210,7 +187,7 @@ class InformationController extends FOSRestController
             'diplome' => $information->getInformationQualiteDiplome(),
             'statut' => $information->getInformationStatut(),
             'titreHonorifique' => $information->getInformationTitreHonorifique(),
-            'employerId'=>$information->getEmployerId(),
+            'employerId' => $information->getEmployerId(),
         ];
 
         $oEmployer = $this
@@ -230,11 +207,11 @@ class InformationController extends FOSRestController
             'sexe' => $oEmployer->getEmployerSexe(),
             'addresse' => $oEmployer->getEmployerAddresse(),
         ];
-        
-       
+
+
         $view = $this->view()
-                        ->setData(array('employers'=>$aEmployerList,'information' => $aInformationList))
-                        ->setTemplate('AppBundle:Information:preUpdateInformation.html.twig');
+            ->setData(array('employers' => $aEmployerList, 'information' => $aInformationList))
+            ->setTemplate('AppBundle:Information:preUpdateInformation.html.twig');
 
         return $this->handleView($view);
     }
@@ -255,7 +232,7 @@ class InformationController extends FOSRestController
             ->find($request->request->get('id'));
 
         if (empty($information)) {
-            return new JsonResponse(['Message' => 'Employer not found'], Response::HTTP_NOT_FOUND);
+            return new JsonResponse(['Message' => 'Information not found'], Response::HTTP_NOT_FOUND);
         }
 
         $form = $this->createForm(InformationType::class, $information);
