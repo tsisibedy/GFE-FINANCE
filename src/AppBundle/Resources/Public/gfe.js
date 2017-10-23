@@ -6,6 +6,8 @@ $(document).ready(function() {
     $("#msgIm").hide();
     $("#msgIndice").hide();
     $("#idInfo").hide();
+    $("#employerId").hide();
+    $("#employerId").val($("#userId").val());
     $("#test").click(function() {
         $("#search").val($("#editor-one").html());
     });
@@ -192,6 +194,5 @@ $(document).ready(function() {
             $("#msgIndice").hide();
         }
     });
-
-
+    
 });

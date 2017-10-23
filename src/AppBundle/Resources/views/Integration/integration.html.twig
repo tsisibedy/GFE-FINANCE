@@ -21,12 +21,12 @@
                     </div>
                     <div class="x_content">
                         <br/>
-                        <form class="form-horizontal form-label-left" action="{{ path('debut_integration') }}"
+                        <form class="form-horizontal form-label-left" action="{{ path('create_one_integration') }}"
                               method="post">
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Personnel</label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <select class="form-control" name="id" required>
+                                    <select class="form-control" required disabled="disabled" id="userId">
                                         {% for value in employers %}
                                             <option value="{{ value.id }}">{{ value.nom~' '~value.prenom }}</option>
                                         {% endfor %}
@@ -49,31 +49,101 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Lieu de naissance</label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control" value=""
+                                        <input type="text" class="form-control" value="{{ value.lieuNaissance }}"
                                                name="employerLieuNaissance"
-                                               placeholder="Lieu de naissance" required>
+                                               placeholder="Lieu de naissance" required disabled="disabled">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">CIN</label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control" id="employerCinNew" maxlength="12"
+                                        <input type="text" class="form-control" id="employerCinNew" value="{{ value.cin }}" maxlength="12"
                                                name="employerCin"
-                                               placeholder="CIN" required>
+                                               placeholder="CIN" required disabled="disabled">
                                         <span style="color: red;" id="msgCin">Cin doit etre des conbinnaison de 12 chiffre et ne peut pas contenir une letre.</span>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Sexe</label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <select class="form-control" name="employerSexe" required>
-                                            <option value="">Votre sexe</option>
-                                            <option value="femme">Femme</option>
-                                            <option value="homme">Homme</option>
+                                        <select class="form-control" name="employerSexe" required disabled="disabled">
+                                            <option value="{{ value.sexe }}">{{ value.sexe }}</option>
                                         </select>
                                     </div>
                                 </div>
                             {% endfor %}
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Contact</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control"
+                                           name="integrationContact"
+                                           placeholder="Contact" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Corp</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control"
+                                           name="integrationCorp"
+                                           placeholder="Corp" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Post Cadre</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control"
+                                           name="integrationPostCadre"
+                                           placeholder="Post Cadre" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Date d'integration</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" name="integrationDateIntegration"
+                                           class="form-control has-feedback-left"
+                                           id="single_cal2"
+                                           placeholder="Date d'integration" aria-describedby="inputSuccess2Status2">
+                                    <span class="fa fa-calendar-o form-control-feedback left"
+                                          aria-hidden="true"></span>
+                                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Lieu d'Integration'</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control"
+                                           name="integrationLieuIntegration"
+                                           placeholder="Lieu d'Integration'" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Cas Particulier</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control"
+                                           name="integrationCasParticulier"
+                                           placeholder="Cas Particulier" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Date d'Arret d'Integration</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" name="integrationDateArretIntegration"
+                                           class="form-control has-feedback-left"
+                                            id="single_cal4"
+                                           placeholder="Date d'Arret d'Integration" aria-describedby="inputSuccess2Status4">
+                                    <span class="fa fa-calendar-o form-control-feedback left"
+                                          aria-hidden="true"></span>
+                                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                                </div>
+                            </div>
+                           <div class="form-group">
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" id="employerId" class="form-control"
+                                           name="employerId"
+                                           placeholder="Cas Particulier" required>
+                                </div>
+                            </div>
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">

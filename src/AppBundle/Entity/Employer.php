@@ -78,7 +78,6 @@ class Employer
      */
     private $employerCin;
 
-
     /**
      * Get id
      *

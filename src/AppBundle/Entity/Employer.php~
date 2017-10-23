@@ -2,17 +2,13 @@
 
 namespace AppBundle\Entity;
 
-use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Employer
  *
  * @ORM\Table(name="employer")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployerRepository")
- * @Vich\Uploadable
  */
 class Employer
 {
@@ -24,7 +20,7 @@ class Employer
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
      * @var string
      *
@@ -81,7 +77,6 @@ class Employer
      * @ORM\Column(name="employer_cin", type="string", length=255)
      */
     private $employerCin;
-
 
     /**
      * Get id
@@ -284,5 +279,4 @@ class Employer
     {
         return $this->employerAddresse;
     }
-
 }

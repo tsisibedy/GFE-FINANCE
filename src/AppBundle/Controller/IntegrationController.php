@@ -11,13 +11,16 @@ use FOS\RestBundle\Controller\Annotations as Rest; // alias pour toutes les anno
 use FOS\RestBundle\View\ViewHandler;
 use FOS\RestBundle\Controller\FOSRestController;
 use AppBundle\Form\EmployerType;
+use AppBundle\Form\IntegrationType;
 use FOS\RestBundle\View\View;
 use AppBundle\Entity\Employer;
 use AppBundle\Entity\Information;
+use AppBundle\Entity\Integration;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class IntegrationController extends FOSRestController
 {
-
+    
     /**
      * @Rest\View()
      * @Rest\Get("/integration")
@@ -126,5 +129,28 @@ class IntegrationController extends FOSRestController
             ->setTemplate('AppBundle:Integration:integration.html.twig');
 
         return $this->handleView($view);
+    }
+    
+    /**
+     * @Rest\View()
+     * @Rest\Post("/one/create/integration")
+     */
+    public function createOneIntegrationAction(Request $request)
+    {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+        
+        
+        $integration = new Integration();
+
+        $form = $this->createForm(IntegrationType::class, $integration);
+        $form->submit($request->request->all());
+         
+        $oManager = $this->getDoctrine()->getManager();
+        $oManager->persist($integration);
+        $oManager->flush();
+     
+        return $this->redirect($this->generateUrl('show_all_employers'));
     }
 }
