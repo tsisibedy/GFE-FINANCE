@@ -76,6 +76,7 @@ class ImageController extends FOSRestController
             ->getManager()
             ->getRepository('AppBundle:Employer')
             ->findAll();
+            
         $phpExcelObject->setActiveSheetIndex(0)->setCellValue('A1', 'id');
             $phpExcelObject->setActiveSheetIndex(0)->setCellValue('B1', 'Nom');
             $phpExcelObject->setActiveSheetIndex(0)->setCellValue('C1', 'Prenom');
@@ -85,6 +86,13 @@ class ImageController extends FOSRestController
             $phpExcelObject->setActiveSheetIndex(0)->setCellValue('G1', 'Situation matrimoniale');
             $phpExcelObject->setActiveSheetIndex(0)->setCellValue('H1', 'Sexe');
             $phpExcelObject->setActiveSheetIndex(0)->setCellValue('I1', 'Addresse');
+            $phpExcelObject->setActiveSheetIndex(0)->setCellValue('J1', 'Contact');
+            $phpExcelObject->setActiveSheetIndex(0)->setCellValue('K1', 'Corp');
+            $phpExcelObject->setActiveSheetIndex(0)->setCellValue('L1', 'Post Cadre');
+            $phpExcelObject->setActiveSheetIndex(0)->setCellValue('M1', 'Date d\'ntegration');
+            $phpExcelObject->setActiveSheetIndex(0)->setCellValue('N1', 'Lieu d\'integration');
+            $phpExcelObject->setActiveSheetIndex(0)->setCellValue('O1', 'Cas Particulier');
+            $phpExcelObject->setActiveSheetIndex(0)->setCellValue('P1', 'Date Arret');
             
         $aEmployerList = [];
         $count = 2;
@@ -105,7 +113,7 @@ class ImageController extends FOSRestController
         foreach ($listIntegration as $integration) {
             foreach ($oEmployers as $oEmployer) {
                 if ($oEmployer->getId() == $integration->getEmployerId()) {
-                    
+                  
                     $phpExcelObject->setActiveSheetIndex(0)->setCellValue('A'.$count, $oEmployer->getId());
                     $phpExcelObject->setActiveSheetIndex(0)->setCellValue('B'.$count, $oEmployer->getEmployerNom());
                     $phpExcelObject->setActiveSheetIndex(0)->setCellValue('C'.$count, $oEmployer->getEmployerPrenom());
@@ -115,6 +123,13 @@ class ImageController extends FOSRestController
                     $phpExcelObject->setActiveSheetIndex(0)->setCellValue('G'.$count, $oEmployer->getEmployerSituation());
                     $phpExcelObject->setActiveSheetIndex(0)->setCellValue('H'.$count, $oEmployer->getEmployerSexe());
                     $phpExcelObject->setActiveSheetIndex(0)->setCellValue('I'.$count, $oEmployer->getEmployerAddresse());
+                    $phpExcelObject->setActiveSheetIndex(0)->setCellValue('J'.$count, $integration->getIntegrationContact());
+                    $phpExcelObject->setActiveSheetIndex(0)->setCellValue('K'.$count, $integration->getIntegrationCorp());
+                    $phpExcelObject->setActiveSheetIndex(0)->setCellValue('L'.$count, $integration->getIntegrationPostCadre());
+                    $phpExcelObject->setActiveSheetIndex(0)->setCellValue('M'.$count, $integration->getIntegrationDateIntegration());
+                    $phpExcelObject->setActiveSheetIndex(0)->setCellValue('N'.$count, $integration->getIntegrationLieuIntegration());
+                    $phpExcelObject->setActiveSheetIndex(0)->setCellValue('O'.$count, $integration->getIntegrationCasParticulier());
+                    $phpExcelObject->setActiveSheetIndex(0)->setCellValue('P'.$count, $integration->getIntegrationDateArretIntegration());
                     $count++;
                 }
             }
@@ -133,7 +148,7 @@ class ImageController extends FOSRestController
         // adding headers
         $dispositionHeader = $response->headers->makeDisposition(
             ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-            'integration-file.xls'
+            'liste-integration-personnel.xls'
         );
         $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
         $response->headers->set('Pragma', 'public');
