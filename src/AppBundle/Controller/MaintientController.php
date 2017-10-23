@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Maintient;
 use AppBundle\Form\InformationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -11,21 +12,20 @@ use FOS\RestBundle\Controller\Annotations as Rest; // alias pour toutes les anno
 use FOS\RestBundle\View\ViewHandler;
 use FOS\RestBundle\Controller\FOSRestController;
 use AppBundle\Form\EmployerType;
-use AppBundle\Form\IntegrationType;
+use AppBundle\Form\MaintientType;
 use FOS\RestBundle\View\View;
 use AppBundle\Entity\Employer;
 use AppBundle\Entity\Information;
-use AppBundle\Entity\Integration;
 use Symfony\Component\Validator\Constraints\DateTime;
 
-class IntegrationController extends FOSRestController
+class MaintientController extends FOSRestController
 {
 
     /**
      * @Rest\View()
-     * @Rest\Get("/integration")
+     * @Rest\Get("/maintient")
      */
-    public function integrationAction(Request $request)
+    public function maintientAction(Request $request)
     {
         $oEmployers = $this
             ->getDoctrine()
@@ -39,10 +39,10 @@ class IntegrationController extends FOSRestController
             ->getRepository('AppBundle:Information')
             ->findAll();
 
-        $listIntegration = $this
+        $listMaintient = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:Integration')
+            ->getRepository('AppBundle:Maintient')
             ->findAll();
 
         foreach ($oEmployers as $oEmployer) {
@@ -62,33 +62,32 @@ class IntegrationController extends FOSRestController
                 }
             }
         }
-        $integrationList = [];
-        foreach ($listIntegration as $integration) {
-            $integrationList [] = [
-                'id' => $integration->getId(),
-                'employerId' => $integration->getEmployerId(),
-                'contact' => $integration->getIntegrationContact(),
-                'corp' => $integration->getIntegrationCorp(),
-                'postCadre' => $integration->getIntegrationPostCadre(),
-                'dateIntegration' => $integration->getIntegrationDateIntegration(),
-                'lieuIntegration' => $integration->getIntegrationLieuIntegration(),
-                'casParticulier' => $integration->getIntegrationCasParticulier(),
-                'dateArret' => $integration->getIntegrationDateArretIntegration(),
+        $maintientList = [];
+        foreach ($listMaintient as $maintient) {
+            $maintientList [] = [
+                'id' => $maintient->getId(),
+                'employerId' => $maintient->getEmployerId(),
+                'corp' => $maintient->getMaintientCorp(),
+                'derniereSituation' => $maintient->getMaintientDeniereSituation(),
+                'status' => $maintient->getMaintientStatus(),
+                'dateDebut' => $maintient->getMaintientDateDebut(),
+                'durer' => $maintient->getMaintientDurer(),
+                'dateFin' => $maintient->getMaintientDateFin(),
             ];
         }
 
         $view = $this->view()
-            ->setData(array('employers' => $aEmployerList, 'integrationList' => $integrationList))
-            ->setTemplate('AppBundle:Integration:integration.html.twig');
+            ->setData(array('employers' => $aEmployerList, 'maintientList' => $maintientList))
+            ->setTemplate('AppBundle:Maintient:maintient.html.twig');
 
         return $this->handleView($view);
     }
 
     /**
      * @Rest\View()
-     * @Rest\Post("/debut/integration")
+     * @Rest\Post("/debut/maintient")
      */
-    public function debutIntegrationAction(Request $request)
+    public function debutMaintientAction(Request $request)
     {
         $oEmployers = $this
             ->getDoctrine()
@@ -145,33 +144,33 @@ class IntegrationController extends FOSRestController
 
 
         $view = $this->view()
-            ->setData(array('integration' => 1, 'employers' => $aEmployerList, 'information' => $aInformationList))
-            ->setTemplate('AppBundle:Integration:integration.html.twig');
+            ->setData(array('maintient' => 1, 'employers' => $aEmployerList, 'information' => $aInformationList))
+            ->setTemplate('AppBundle:Maintient:maintient.html.twig');
 
         return $this->handleView($view);
     }
 
     /**
      * @Rest\View()
-     * @Rest\Post("/one/create/integration")
+     * @Rest\Post("/one/create/maintient")
      */
-    public function createOneIntegrationAction(Request $request)
+    public function createOneMaintientAction(Request $request)
     {
         if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
 
 
-        $integration = new Integration();
+        $maintient = new Maintient();
 
-        $form = $this->createForm(IntegrationType::class, $integration);
+        $form = $this->createForm(MaintientType::class, $maintient);
         $form->submit($request->request->all());
 
         $oManager = $this->getDoctrine()->getManager();
-        $oManager->persist($integration);
+        $oManager->persist($maintient);
         $oManager->flush();
 
-        return $this->redirect($this->generateUrl('integration'));
+        return $this->redirect($this->generateUrl('maintient'));
     }
 
 

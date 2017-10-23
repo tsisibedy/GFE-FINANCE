@@ -24,3 +24,7 @@ integration:
 image:
     type: rest
     resource: AppBundle\Controller\ImageController
+
+maintient:
+    type: rest
+    resource: AppBundle\Controller\MaintientController

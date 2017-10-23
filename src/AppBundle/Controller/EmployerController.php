@@ -230,11 +230,10 @@ class EmployerController extends FOSRestController
         for ($i = 1; $i <= $nombrePage; $i++) {
             $aNombrePage[] = $i;
         }
-
+        
         $aEmployerList = [];
         $iIncrimentation = 0;
         foreach ($oEmployer as $toEmployer) {
-
             if ($pageElementDebut <= $iIncrimentation and $iIncrimentation <= $pageElementFin) {
                 $aEmployerList [] = [
                     'id' => $toEmployer->getId(),
