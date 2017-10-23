@@ -29,6 +29,23 @@ class InformationController extends FOSRestController
             ->getManager()
             ->getRepository('AppBundle:Employer')
             ->findAll();
+        
+        $image = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Image')
+            ->findAll();
+            
+        $imageList =[];
+        foreach ($image as $imageObjet) {
+            if ($imageObjet->getEmployerId() == $request->get('id')) {
+                $imageList [] = [
+                    'id' => $imageObjet->getId(),
+                    'imageName' => $imageObjet->getDevisName(),
+                ];
+            }
+        }
+            
         $aEmployerList =[];
         foreach ($oEmployers as $oEmployer) {
             if ($oEmployer->getId() == $request->get('id')) {
@@ -75,15 +92,27 @@ class InformationController extends FOSRestController
                 ];
             }
         }
+       
+        
+      
+       if ($aInformationList) {
+           if ($imageList) {
+               $existe = 1;
+               $view = $this->view()
+                   ->setData(array('exist' => $existe, 'employers' => $aEmployerList, 'information' => $aInformationList,'image'=>$imageList))
+                   ->setTemplate('AppBundle:Information:plusEmployers.html.twig');
+                
+               return $this->handleView($view);
+           } else {
+               $existe = 1;
+               $view = $this->view()
+                   ->setData(array('exist' => $existe, 'employers' => $aEmployerList, 'information' => $aInformationList))
+                   ->setTemplate('AppBundle:Information:plusEmployers.html.twig');
 
-       if($aInformationList){
-           $existe = 1;
-           $view = $this->view()
-               ->setData(array('exist' => $existe, 'employers' => $aEmployerList, 'information' => $aInformationList))
-               ->setTemplate('AppBundle:Information:plusEmployers.html.twig');
-
-           return $this->handleView($view);
-       }else{
+               return $this->handleView($view);
+           }
+           
+       } else {
            $view = $this->view()
                ->setData(array('employers' => $aEmployerList))
                ->setTemplate('AppBundle:Information:plusEmployers.html.twig');

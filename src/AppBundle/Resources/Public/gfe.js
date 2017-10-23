@@ -5,8 +5,11 @@ $(document).ready(function() {
     $("#msgPrenom").hide();
     $("#msgIm").hide();
     $("#msgIndice").hide();
+    $("#msgContact").hide();
     $("#idInfo").hide();
+    $(".hide").hide();
     $("#employerId").hide();
+    $("#fileToUpload").hide();
     $("#employerId").val($("#userId").val());
     $("#test").click(function() {
         $("#search").val($("#editor-one").html());
@@ -193,6 +196,45 @@ $(document).ready(function() {
         if (result == null) {
             $("#msgIndice").hide();
         }
+    });
+    
+    //information Contact
+    $("#contact").keyup(function() {
+        if (isNaN($("#contact").val())) {
+            $("#msgContact").show();
+        }
+        if (!isNaN($("#contact").val())) {
+            $("#msgContact").hide();
+        }
+        var str = $("#contact").val();
+        var patt1 = /[a-zA-Z]/;
+        var result = str.match(patt1);
+
+        if (result != null) {
+            $("#msgContact").show();
+        }
+    });
+
+    $("#contact").blur(function() {
+        if (isNaN($("#contact").val())) {
+            $("#contact").val('');
+            $("#msgContact").show();
+        }
+        var str = $("#contact").val();
+        var patt1 = /[a-zA-Z]/;
+        var result = str.match(patt1);
+
+        if (result != null) {
+            $("#contact").val('');
+            $("#msgContact").show();
+        }
+        if (result == null) {
+            $("#msgContact").hide();
+        }
+    });
+    
+    $("#file").click(function(){
+        $("#fileToUpload").click();
     });
     
 });

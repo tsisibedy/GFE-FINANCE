@@ -7,6 +7,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    app.path.product_images: /uploads/images/products
 
 framework:
     serializer:
@@ -91,8 +92,8 @@ fos_user:
 
 vich_uploader:
     db_driver: orm
-    mappings:
-        devis:
-            uri_prefix: /upload/
-            upload_destination: '%kernel.root_dir%/../web/bundles/upload/'
+    mappings: 
+        devis: 
+            uri_prefix: /devis/ 
+            upload_destination: '%kernel.root_dir%/../web/bundles/app/uploads/' 
             namer: vich_uploader.namer_uniqid

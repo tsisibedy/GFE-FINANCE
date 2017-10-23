@@ -56,9 +56,29 @@ class IntegrationController extends FOSRestController
                 }
             }
         }
-
+        
+        $listIntegration = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Integration')
+            ->findAll();
+            
+        foreach ($listIntegration as $integration) {
+            $integrationList [] = [
+                'id' => $integration->getId(),
+                'employerId' => $integration->getEmployerId(),
+                'contact' => $integration->getIntegrationContact(),
+                'corp' => $integration->getIntegrationCorp(),
+                'postCadre' => $integration->getIntegrationPostCadre(),
+                'dateIntegration' => $integration->getIntegrationDateIntegration(),
+                'lieuIntegration' => $integration->getIntegrationLieuIntegration(),
+                'casParticulier' => $integration->getIntegrationCasParticulier(),
+                'dateArret' => $integration->getIntegrationDateArretIntegration(),
+            ];
+        }
+        
         $view = $this->view()
-            ->setData(array('employers' => $aEmployerList))
+            ->setData(array('employers' => $aEmployerList,'integrationList'=>$integrationList))
             ->setTemplate('AppBundle:Integration:integration.html.twig');
 
         return $this->handleView($view);
@@ -151,6 +171,6 @@ class IntegrationController extends FOSRestController
         $oManager->persist($integration);
         $oManager->flush();
      
-        return $this->redirect($this->generateUrl('show_all_employers'));
+        return $this->redirect($this->generateUrl('integration'));
     }
 }

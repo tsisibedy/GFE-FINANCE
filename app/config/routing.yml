@@ -20,3 +20,7 @@ information:
 integration:
     type: rest
     resource: AppBundle\Controller\IntegrationController
+    
+image:
+    type: rest
+    resource: AppBundle\Controller\ImageController
