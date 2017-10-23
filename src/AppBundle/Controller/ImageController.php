@@ -63,14 +63,6 @@ class ImageController extends FOSRestController
       
         $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject();
 
-       $phpExcelObject->getProperties()->setCreator("liuggio")
-           ->setLastModifiedBy("Giulio De Donato")
-           ->setTitle("Office 2005 XLSX Test Document")
-           ->setSubject("Office 2005 XLSX Test Document")
-           ->setDescription("Test document for Office 2005 XLSX, generated using PHP classes.")
-           ->setKeywords("office 2005 openxml php")
-           ->setCategory("Test result file");
-        
             $oEmployers = $this
             ->getDoctrine()
             ->getManager()
@@ -101,9 +93,7 @@ class ImageController extends FOSRestController
             ->getManager()
             ->getRepository('AppBundle:Employer')
             ->findAll();
-        
             
-        
         $listIntegration = $this
             ->getDoctrine()
             ->getManager()
@@ -135,17 +125,11 @@ class ImageController extends FOSRestController
             }
         }
        
-            
-        
-       $phpExcelObject->getActiveSheet()->setTitle('Simple');
-       
-       $phpExcelObject->setActiveSheetIndex(0);
-
-        // create the writer
+        $phpExcelObject->getActiveSheet()->setTitle('Simple');
+        $phpExcelObject->setActiveSheetIndex(0);
         $writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel5');
-        // create the response
         $response = $this->get('phpexcel')->createStreamedResponse($writer);
-        // adding headers
+
         $dispositionHeader = $response->headers->makeDisposition(
             ResponseHeaderBag::DISPOSITION_ATTACHMENT,
             'liste-integration-personnel.xls'
