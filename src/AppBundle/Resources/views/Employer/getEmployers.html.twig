@@ -81,11 +81,23 @@
                 {% for employer in employers %}
                     <li>
                         <div class="block">
-                            <div class="tags">
-                                <a href="#" class="tag">
-                                    <span>N° : {{ employer.id }}</span>
-                                </a>
-                            </div>
+                            {% set break = false %}
+                            {% for img in image if not break%}
+                                {% if img.imageIdEmployer == employer.id%}
+                                    <div class="tags">
+                                        <img src="{{ asset('bundles/app/uploads/'~img.imageName) }}" style="width:60px;height:60px;border-radius:60px 60px 60px 60px;">
+                                    </div>
+                                    {% set break = true %}
+                                {% endif %}
+                            {% endfor %}
+                            {% if break == false %}
+                                <div class="tags">
+                                    <a href="#" class="tag">
+                                        <span>N° : {{ employer.id }}</span>
+                                    </a>
+                                </div>
+                            {% endif%}
+                           
                             <div class="block_content">
                                 <h2 class="title">
                                     <a>{{ employer.nom~' '~employer.prenom }}</a>

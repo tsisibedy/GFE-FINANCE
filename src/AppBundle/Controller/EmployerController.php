@@ -251,9 +251,24 @@ class EmployerController extends FOSRestController
             }
             $iIncrimentation++;
         }
+        
+        $image = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Image')
+            ->findAll();
+            
+        $imageList =[];
+        foreach ($image as $imageObjet) {
+            $imageList [] = [
+                'id' => $imageObjet->getId(),
+                'imageIdEmployer' => $imageObjet->getEmployerId(),
+                'imageName' => $imageObjet->getDevisName(),
+            ];
+        }
 
         $view = $this->view()
-            ->setData(array('count' => 'show_all_employers', 'employers' => $aEmployerList, 'page' => $aNombrePage))
+            ->setData(array('count' => 'show_all_employers', 'employers' => $aEmployerList, 'page' => $aNombrePage,'image'=>$imageList))
             ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
 
         return $this->handleView($view);
