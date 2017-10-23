@@ -203,6 +203,7 @@
                     <p class="text-muted font-13 m-b-30">
                       List des integrations faite par les personnels
                     </p>
+                    <a href="{{ path('app_image_exel') }}" class="btn btn-success" style="float:right;margin-right:10px;"><i class="fa fa-building-o"></i> Expoter en exel</a>
                     <table id="datatable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
@@ -214,7 +215,7 @@
                           <th>Lieu</th>
                           <th>Cas particulier</th>
                           <th>Date d'arret d'integration</th>
-                          <th>Actions</th>
+                          
                         </tr>
                       </thead>
 
@@ -234,7 +235,7 @@
                                     <td>{{ inter.lieuIntegration }}</td>
                                     <td>{{ inter.casParticulier }}</td>
                                     <td>{{ inter.dateArret }}</td>
-                                    <td><a href=""><i class="fa fa-building-o"></i> Voir details</a></td>
+                                    
                                 </tr>
                             {% endfor %}
                       </tbody>
