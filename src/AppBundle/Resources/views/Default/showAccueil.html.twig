@@ -1,7 +1,7 @@
 {% extends 'AppBundle::base.html.twig' %}
 
 {% block admin %}
-    <form action="{{ path('search_all_employers') }}" method="post">
+    <form action="{{ path('app_default_publier') }}" method="post">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
@@ -91,7 +91,7 @@
 
                 <div id="editor-one" class="editor-wrapper"></div>
 
-                <input type="text" id="search" name="search" style="display:none;"/>
+                <input type="text" id="public" name="publicationContenu" style="display:none;" required="required"/>
 
             </div>
         </div>
@@ -99,4 +99,24 @@
         <input type="submit" class="btn btn-primary" id="test" value="Publier"/>
     </form>
 
+    <ul class="messages">
+        {% for public in publier %}
+        <li>
+            <div class="message_date">
+
+                <p class="month">{{ public.date }}</p>
+            </div>
+            <div class="message_wrapper">
+                <h4 class="heading">A tous les ententions du personnels</h4>
+                <blockquote class="message">{{ public.publication|raw }}</blockquote>
+                <br />
+                <p class="url">
+                    <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
+                </p>
+            </div>
+        </li>
+            <br>
+            <br>
+        {% endfor %}
+    </ul>
 {% endblock %}

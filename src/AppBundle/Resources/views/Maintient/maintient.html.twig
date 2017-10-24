@@ -210,6 +210,7 @@
                     <th>Durer du maintient</th>
                     <th>Date fin</th>
                     <th>Status</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
 
@@ -227,6 +228,12 @@
                         <td>{{ inter.durer }}</td>
                         <td>{{ inter.dateFin }}</td>
                         <td>{{ inter.status }}</td>
+                        <td>
+                            <a href="{{ path('app_image_exelmaintient') }}" class="btn btn-success"
+                               style="float:right;margin-right:10px;background: red;"><i class="fa fa-building-o"></i> Refuser</a>
+                            <a href="{{ path('app_image_exelmaintient') }}" class="btn btn-success"
+                               style="float:right;margin-right:10px;"><i class="fa fa-building-o"></i> Valider</a>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>

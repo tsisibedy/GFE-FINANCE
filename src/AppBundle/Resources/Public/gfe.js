@@ -12,7 +12,7 @@ $(document).ready(function() {
     $("#fileToUpload").hide();
     $("#employerId").val($("#userId").val());
     $("#test").click(function() {
-        $("#search").val($("#editor-one").html());
+        $("#public").val($("#editor-one").html());
     });
     $(".avancer").click(function() {
         $("#avancer").slideToggle(500);
