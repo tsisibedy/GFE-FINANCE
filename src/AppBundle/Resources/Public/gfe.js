@@ -11,12 +11,24 @@ $(document).ready(function() {
     $("#employerId").hide();
     $("#fileToUpload").hide();
     $("#employerId").val($("#userId").val());
+    $(".hideDate").hide();
+    $(".hideSexe").hide();
+    $(".hideDate").val($("#single_cal4").val());
+    $(".hideSexe").val($("#sexeValue").val());
     $("#test").click(function() {
         $("#public").val($("#editor-one").html());
     });
     $(".avancer").click(function() {
         $("#avancer").slideToggle(500);
         $("#news").slideToggle();
+    });
+
+    $("#single_cal4").blur(function() {
+        $(".hideDate").val($("#single_cal4").val());
+    });
+
+    $("#sexeValue").change(function() {
+        $(".hideSexe").val($("#sexeValue").val());
     });
 
     //controlle ajout cin

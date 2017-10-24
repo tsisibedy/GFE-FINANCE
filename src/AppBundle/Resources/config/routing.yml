@@ -1,0 +1,23 @@
+accueil:
+    type: rest
+    resource: AppBundle\Controller\DefaultController
+
+employers:
+    type: rest
+    resource: AppBundle\Controller\EmployerController
+
+information:
+    type: rest
+    resource: AppBundle\Controller\InformationController
+
+integration:
+    type: rest
+    resource: AppBundle\Controller\IntegrationController
+
+image:
+    type: rest
+    resource: AppBundle\Controller\ImageController
+
+maintient:
+    type: rest
+    resource: AppBundle\Controller\MaintientController

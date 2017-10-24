@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\User;
+use AppBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,7 +34,7 @@ class EmployerController extends FOSRestController
         $oEmployer = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:Employer')
+            ->getRepository('AppBundle:User')
             ->findAllEmployers($request->get('search'));
 
         $coutEmployer = count($oEmployer);
@@ -88,7 +90,7 @@ class EmployerController extends FOSRestController
         }
 
         $view = $this->view()
-            ->setData(array('count' => 'app_employer_searchallemployers_1', 'search' => $test, 'employers' => $aEmployerList, 'page' => $aNombrePage))
+            ->setData(array('count' => 'search_all_employers', 'search' => $test, 'employers' => $aEmployerList, 'page' => $aNombrePage))
             ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
 
         return $this->handleView($view);
@@ -114,7 +116,7 @@ class EmployerController extends FOSRestController
         $oEmployer = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:Employer')
+            ->getRepository('AppBundle:User')
             ->findAllEmployers($search);
 
         if ($ordre == "ASC")
@@ -176,7 +178,7 @@ class EmployerController extends FOSRestController
         }
 
         $view = $this->view()
-            ->setData(array('count' => 'app_employer_richallemployers_1', 'search' => $search, 'ordre' => $ordre, 'employers' => $aEmployerList, 'page' => $aNombrePage))
+            ->setData(array('count' => 'rich_all_employers', 'search' => $search, 'ordre' => $ordre, 'employers' => $aEmployerList, 'page' => $aNombrePage))
             ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
 
         return $this->handleView($view);
@@ -194,10 +196,11 @@ class EmployerController extends FOSRestController
 
 
         $pageNum = $request->get('pageNum');
+
         $oEmployer = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:Employer')
+            ->getRepository('AppBundle:User')
             ->findAll();
 
         $coutEmployer = count($oEmployer);
@@ -286,7 +289,7 @@ class EmployerController extends FOSRestController
         $oEmployer = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:Employer')
+            ->getRepository('AppBundle:User')
             ->find($request->get('id'));
 
         if (empty($oEmployer)) {
@@ -310,136 +313,6 @@ class EmployerController extends FOSRestController
             ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
 
         return $this->handleView($view);
-    }
-
-    /**
-     * @Rest\View()
-     * @Rest\Get("/pre/create/employer")
-     */
-    public function preCreateEmployerAction(Request $request)
-    {
-        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
-        $oEmployer = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('AppBundle:Employer')
-            ->findAll();
-
-        $aEmployerList = [];
-        foreach ($oEmployer as $toEmployer) {
-            $aEmployerList [] = [
-                'id' => $toEmployer->getId(),
-                'nom' => $toEmployer->getEmployerNom(),
-                'prenom' => $toEmployer->getEmployerPrenom(),
-                'dateNaissance' => $toEmployer->getEmployerDateNaissance(),
-                'cin' => $toEmployer->getEmployerCin(),
-                'lieuNaissance' => $toEmployer->getEmployerLieuNaissance(),
-                'situation' => $toEmployer->getEmployerSituation(),
-                'sexe' => $toEmployer->getEmployerSexe(),
-                'addresse' => $toEmployer->getEmployerAddresse(),
-            ];
-        }
-
-        $view = $this->view()
-            ->setData(array('employers' => $aEmployerList))
-            ->setTemplate('AppBundle:Employer:preCreateEmployer.html.twig');
-
-        return $this->handleView($view);
-    }
-
-    /**
-     * @Rest\View()
-     * @Rest\Post("/one/create/employers")
-     */
-    public function createOneEmployerAction(Request $request)
-    {
-        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
-        $testExiste = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('AppBundle:Employer')
-            ->findAll();
-
-        $aEmployerList = [];
-        foreach ($testExiste as $toEmployer) {
-            $aEmployerList [] = [
-                'id' => $toEmployer->getId(),
-                'nom' => $toEmployer->getEmployerNom(),
-                'prenom' => $toEmployer->getEmployerPrenom(),
-                'dateNaissance' => $toEmployer->getEmployerDateNaissance(),
-                'cin' => $toEmployer->getEmployerCin(),
-                'lieuNaissance' => $toEmployer->getEmployerLieuNaissance(),
-                'situation' => $toEmployer->getEmployerSituation(),
-                'sexe' => $toEmployer->getEmployerSexe(),
-                'addresse' => $toEmployer->getEmployerAddresse(),
-            ];
-        }
-        $cout = count($testExiste);
-        $php_errormsg = "";
-        for ($testIncriment = 0; $testIncriment < $cout; $testIncriment++) {
-            if ($request->get('employerNom') == $aEmployerList[$testIncriment]['nom'] and $request->get('employerPrenom') == $aEmployerList[$testIncriment]['prenom']) {
-                $php_errormsg = "Personne exit deja dans la base de donnée";
-                $view = $this->view()
-                    ->setData(array('msg' => $php_errormsg, 'employers' => $aEmployerList))
-                    ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
-
-                return $this->handleView($view);
-            }
-            if ($request->get('employerCin') == $aEmployerList[$testIncriment]['cin']) {
-                $php_errormsg = "CIN exit deja dans la base de donnée";
-                $view = $this->view()
-                    ->setData(array('msg' => $php_errormsg, 'employers' => $aEmployerList))
-                    ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
-
-                return $this->handleView($view);
-            }
-        }
-
-        $employer = new Employer();
-
-        $form = $this->createForm(EmployerType::class, $employer);
-        $form->submit($request->request->all());
-
-        $oManager = $this->getDoctrine()->getManager();
-        $oManager->persist($employer);
-        $oManager->flush();
-
-        return $this->redirect($this->generateUrl('show_all_employers'));
-    }
-
-    /**
-     * @Rest\View(statusCode=Response::HTTP_NO_CONTENT)
-     * @Rest\Get("/one/remove/employer/{id}")
-     */
-    public function removeOneUserAction(Request $request)
-    {
-        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
-        $oEmployer = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('AppBundle:Employer')
-            ->find($request->get('id'));
-
-        if (empty($oEmployer)) {
-            return new JsonResponse(['Message' => 'Employer not found'], Response::HTTP_NOT_FOUND);
-        }
-
-        if ($oEmployer) {
-            $oManager = $this->getDoctrine()->getManager();
-            $oManager->remove($oEmployer);
-            $oManager->flush();
-
-            return $this->redirect($this->generateUrl('show_all_employers'));
-        }
     }
 
     /**
@@ -471,14 +344,14 @@ class EmployerController extends FOSRestController
 
         $oEmployer = $this
             ->get('doctrine.orm.entity_manager')
-            ->getRepository('AppBundle:Employer')
+            ->getRepository('AppBundle:User')
             ->find($request->get('id'));
 
         if (empty($oEmployer)) {
             return new JsonResponse(['Message' => 'Employer not found'], Response::HTTP_NOT_FOUND);
         }
 
-        $form = $this->createForm(EmployerType::class, $oEmployer);
+        $form = $this->createForm(UserType::class, $oEmployer);
         $form->submit($request->request->all());
 
         $Manager = $this->getDoctrine()->getManager();
@@ -488,22 +361,5 @@ class EmployerController extends FOSRestController
         return $this->redirect($this->generateUrl('show_all_employers'));
     }
 
-    private function arrayOrderBy(&$_toDatas, $_toSortingSettings)
-    {
-        $toSortingFuncArgs = [];
-        foreach ($_toSortingSettings as $zSortingField => $zSortingDirection) {
-            $toTmp = [];
-            foreach ($_toDatas as $zKey => $oData) {
-                $toTmp[$zKey] = $oData[$zSortingField];
-            }
-            $toSortingFuncArgs[] = $toTmp;
-            $toSortingFuncArgs[] = $zSortingDirection;
-            $toSortingFuncArgs[] = SORT_STRING;
-        }
-        $toSortingFuncArgs[] = &$_toDatas;
-        call_user_func_array('\array_multisort', $toSortingFuncArgs);
-
-        return array_pop($toSortingFuncArgs);
-    }
 
 }
