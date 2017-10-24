@@ -64,7 +64,7 @@ class ImageController extends FOSRestController
         $oEmployers = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:Employer')
+            ->getRepository('AppBundle:User')
             ->findAll();
 
         $listIntegration = $this
@@ -75,12 +75,6 @@ class ImageController extends FOSRestController
 
 
         $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject();
-
-        $oEmployers = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('AppBundle:Employer')
-            ->findAll();
 
         $phpExcelObject->setActiveSheetIndex(0)->setCellValue('A1', 'id');
         $phpExcelObject->setActiveSheetIndex(0)->setCellValue('B1', 'Nom');
@@ -157,7 +151,7 @@ class ImageController extends FOSRestController
         $oEmployers = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:Employer')
+            ->getRepository('AppBundle:User')
             ->findAll();
 
         $listMaintient = $this

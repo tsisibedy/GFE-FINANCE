@@ -27,7 +27,7 @@ class InformationController extends FOSRestController
         $oEmployers = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:Employer')
+            ->getRepository('AppBundle:User')
             ->findAll();
         
         $image = $this
@@ -222,7 +222,7 @@ class InformationController extends FOSRestController
         $oEmployer = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:Employer')
+            ->getRepository('AppBundle:User')
             ->find($request->get('idEmployer'));
 
         $aEmployerList [] = [

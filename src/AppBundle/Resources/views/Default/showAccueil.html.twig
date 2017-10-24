@@ -1,7 +1,7 @@
 {% extends 'AppBundle::base.html.twig' %}
 
 {% block admin %}
-    <form action="{{ path('app_default_publier') }}" method="post">
+    <form action="{{ path('ublier') }}" method="post">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
@@ -107,7 +107,7 @@
                 <p class="month">{{ public.date }}</p>
             </div>
             <div class="message_wrapper">
-                <h4 class="heading">A tous les ententions du personnels</h4>
+                <h4 class="heading">Cette publication est detiné à tous les personnels</h4>
                 <blockquote class="message">{{ public.publication|raw }}</blockquote>
                 <br />
                 <p class="url">

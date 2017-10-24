@@ -30,7 +30,7 @@ class MaintientController extends FOSRestController
         $oEmployers = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:Employer')
+            ->getRepository('AppBundle:User')
             ->findAll();
 
         $testExisteInfo = $this
@@ -92,7 +92,7 @@ class MaintientController extends FOSRestController
         $oEmployers = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:Employer')
+            ->getRepository('AppBundle:User')
             ->findAll();
 
         $aEmployerList = [];
@@ -159,7 +159,6 @@ class MaintientController extends FOSRestController
         if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
-
 
         $maintient = new Maintient();
 

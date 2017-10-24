@@ -18,7 +18,7 @@ class DefaultController extends FOSRestController
 {
     /**
      * @Rest\View()
-     * @Rest\Get("/")
+     * @Rest\Get("/accueil")
      */
     public function showAccueilAction(Request $request)
     {
@@ -63,7 +63,6 @@ class DefaultController extends FOSRestController
         $oManager->persist($publication);
         $oManager->flush();
 
-        return $this->redirect($this->generateUrl('app_default_showaccueil'));
+        return $this->redirect($this->generateUrl('show_accueil'));
     }
-
 }

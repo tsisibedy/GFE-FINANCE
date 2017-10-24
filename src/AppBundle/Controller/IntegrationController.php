@@ -30,7 +30,7 @@ class IntegrationController extends FOSRestController
         $oEmployers = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:Employer')
+            ->getRepository('AppBundle:User')
             ->findAll();
 
         $testExisteInfo = $this
@@ -44,7 +44,7 @@ class IntegrationController extends FOSRestController
             ->getManager()
             ->getRepository('AppBundle:Integration')
             ->findAll();
-
+        $aEmployerList = [];
         foreach ($oEmployers as $oEmployer) {
             foreach ($testExisteInfo as $testExisteInf) {
                 if ($oEmployer->getId() == $testExisteInf->getEmployerId()) {
@@ -93,7 +93,7 @@ class IntegrationController extends FOSRestController
         $oEmployers = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:Employer')
+            ->getRepository('AppBundle:User')
             ->findAll();
 
         $aEmployerList = [];

@@ -17,10 +17,6 @@
             <a href="#" style="float: right;" class="avancer">Recherche avancée</a>
         </form>
     </center>
-
-    <a href="{{ path('pre_create_employer') }}" id="news" class="btn btn-primary" style="float: right;"><i
-                class="fa fa-plus"></i> Nouveau</a>
-
     <div class="row" id="avancer" style="">
         <div class="col-md-12 col-xs-15" style="">
             <div class="x_panel" style="background:#2a6496;">
@@ -123,39 +119,9 @@
                                 <a href="{{ path('pre_update_employer',{'id':employer.id,'nom':employer.nom,'prenom':employer.prenom,'dateNaissance':employer.dateNaissance,'cin':employer.cin,'lieuNaissance':employer.lieuNaissance,'sexe':employer.sexe,'situation':employer.situation,'addresse':employer.addresse}) }}">
                                     <small type="submit">Modifier</small>
                                 </a>
-                                <a href="#">
-                                    <small data-toggle="modal" data-target="#supprimerEmployer{{ employer.id }}">
-                                        Supprimer
-                                    </small>
-                                </a>
                                 <a href="{{ path('plus_employers',{'id':employer.id}) }}">
                                     <small>Plus d'information</small>
                                 </a>
-                                <div id="supprimerEmployer{{ employer.id }}" class="modal fade" role="dialog">
-                                    <div class="modal-dialog">
-
-                                        <!-- Modal content-->
-                                        <div class="modal-content">
-                                            <div class="modal-header" style="background: red;">
-                                                <button type="button" class="close" data-dismiss="modal">&times;
-                                                </button>
-                                                <h4 class="modal-title" style="color:white;">Avertissement de
-                                                    suppression du {{ employer.nom~' '~employer.prenom }}</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Voulez vous vraiment supprimer cette personne de la liste?</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <a href="{{ path('remove_one_user',{'id':employer.id}) }}"
-                                                   style="background: red;color: white;" class="btn btn-default">Oui</a>
-                                                <button type="button" class="btn btn-default" data-dismiss="modal"
-                                                        style="background: green;color: white;">Non
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </li>

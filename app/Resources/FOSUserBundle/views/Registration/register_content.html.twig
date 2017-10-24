@@ -1,17 +1,14 @@
 {% trans_default_domain 'FOSUserBundle' %}
+
 <br>
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<h2 style="color: #000;text-align: center;">Inscription</h2>
 <br>
 <form action="{{ path("fos_user_registration_register") }}" class="fos_user_registration_register" method="post"
-      style="width: 400px;padding:25px;margin: auto;border: 1px solid #2a6496;">
+      style="width: 800px;padding:25px;margin: auto;border: 1px solid #2a6496;">
+
     {{ form_widget(form.username,{'attr':{'class': 'form-control', 'placeholder': 'Username', 'required': 'required'}}) }}
     <br><br>
     {{ form_widget(form.email,{'attr': {'class': 'form-control', 'placeholder': 'E-mail', 'required': 'required'}}) }}
@@ -20,9 +17,38 @@
     <br><br>
     {{ form_widget(form.plainPassword.second,{'attr': {'class': 'form-control', 'placeholder': 'Confirmer mot de passe', 'required': 'required'}}) }}
     <br><br>
+    {{ form_widget(form.employerNom,{'attr': {'class': 'form-control', 'placeholder': 'Nom', 'required': 'required'}}) }}
+    <br><br>
+    {{ form_widget(form.employerPrenom,{'attr': {'class': 'form-control', 'placeholder': 'Prenom', 'required': 'required'}}) }}
+    <br><br>
+    {{ form_widget(form.employerDateNaissance,{'attr':{'class':'hideDate'}}) }}
+    <center>
+    <input type="text" name="fos_user_registration_form[employerDateNaissance]"
+           class="form-control has-feedback-left"
+           id="single_cal4"
+           placeholder="Date de Naissance"
+           aria-describedby="inputSuccess2Status4" >
+    <br><br>
+    {{ form_widget(form.employerCin,{'attr': {'class': 'form-control', 'placeholder': 'CIN', 'required': 'required'}}) }}
+    <br><br>
+    {{ form_widget(form.employerLieuNaissance,{'attr': {'class': 'form-control', 'placeholder': 'Lieu de naissance', 'required': 'required'}}) }}
+    <br><br>
+        {{ form_widget(form.employerSexe,{'attr':{'class':'hideSexe'}}) }}
+
+        <select class="form-control" id="sexeValue" required>
+            <option value="">Votre sexe</option>
+            <option value="femme">Femme</option>
+            <option value="homme">Homme</option>
+        </select>
+
+    <br><br>
+    {{ form_widget(form.employerSituation,{'attr': {'class': 'form-control', 'placeholder': 'Situation matrimoniale', 'required': 'required'}}) }}
+    <br><br>
+    {{ form_widget(form.employerAddresse,{'attr': {'class': 'form-control', 'placeholder': 'Addresse', 'required': 'required'}}) }}
+    <br><br>
     {{ form_rest(form) }}
     <br>
     <center>
-        <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}"/>
+        <input type="submit" class="btn btn-primary" value="S'inscrire"/>
     </center>
 </form>
