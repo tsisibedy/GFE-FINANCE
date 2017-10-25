@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class MaintientRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function updateStatus($status,$idUser)
+    {
+        $qBDelege = $this->getEntityManager()->createQueryBuilder();
+        $qBDelege->update('AppBundle:Maintient', 'd')
+            ->set('d.maintientStatus', $status)
+            ->where('d.employerId = :idUser')
+            ->setParameter('idUser', $idUser)
+            ->getQuery()
+            ->execute();
+    }
 }

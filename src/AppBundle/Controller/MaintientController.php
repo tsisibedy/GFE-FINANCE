@@ -161,10 +161,11 @@ class MaintientController extends FOSRestController
         }
 
         $maintient = new Maintient();
+        $status = 0;
 
         $form = $this->createForm(MaintientType::class, $maintient);
         $form->submit($request->request->all());
-
+        $maintient->setMaintientStatus($status);
         $oManager = $this->getDoctrine()->getManager();
         $oManager->persist($maintient);
         $oManager->flush();
@@ -172,5 +173,23 @@ class MaintientController extends FOSRestController
         return $this->redirect($this->generateUrl('maintient'));
     }
 
+    /**
+     * @Rest\View()
+     * @Rest\Get("/status")
+     */
+    public function statusMaintientAction(Request $request)
+    {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
+        $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Maintient')
+            ->updateStatus($request->get('status'),$request->get('idUser'));
+
+        return $this->redirect($this->generateUrl('maintient'));
+    }
 
 }

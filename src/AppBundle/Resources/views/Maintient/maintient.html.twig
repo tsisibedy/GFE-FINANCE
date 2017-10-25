@@ -126,14 +126,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Status</label>
-                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control"
-                                           name="maintientStatus"
-                                           placeholder="Status" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                     <input type="text" id="employerId" class="form-control"
                                            name="employerId"
@@ -241,13 +233,20 @@
                             <td>{{ inter.dateDebut }}</td>
                             <td>{{ inter.durer }}</td>
                             <td>{{ inter.dateFin }}</td>
-                            <td>{{ inter.status }}</td>
-                            {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' %}
+                            {% if inter.status == 0 %}
+                                <td>En cour</td>
+                            {% elseif inter.status == 1 %}
+                                <td>Validé</td>
+                            {% else %}
+                                <td>Refugé</td>
+                            {% endif %}
+
+                            {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' and inter.status == 0%}
                                 <td>
-                                    <a href="" class="btn btn-success"
+                                    <a href="{{ path('status_maintient',{'status':3,'idUser':inter.employerId}) }}" class="btn btn-success"
                                        style="float:right;margin-right:10px;background: red;"><i
                                                 class="fa fa-ban"></i> Refuser</a>
-                                    <a href="" class="btn btn-success"
+                                    <a href="{{ path('status_maintient',{'status':1,'idUser':inter.employerId}) }}" class="btn btn-success"
                                        style="float:right;margin-right:10px;"><i class="fa fa-check-square"></i>
                                         Valider</a>
                                 </td>
