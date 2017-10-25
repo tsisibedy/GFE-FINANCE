@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
 class User extends BaseUser
 {
@@ -72,6 +73,11 @@ class User extends BaseUser
      * @ORM\Column(name="employer_cin", type="string", length=255)
      */
     private $employerCin;
+
+    /**
+     * @var array
+     */
+    protected $roles;
 
     public function __construct()
     {

@@ -1,6 +1,274 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-</div>
+{% for value in employers %}
+    {% if app.user.id ==  value.id %}
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Profil du
+                            <small>{{ value.nom~' '~value.prenom }}</small>
+                        </h2>
+                        <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary" style="float: right">Modification</a>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+                            <div class="profile_img">
+                                <div id="crop-avatar">
+            {{ app.user.id }}<br>
+                                    {{ value.id }}
+                                    {% if image is defined  and image is not empty%}
+                                        {% for images in image %}
+                                            <img class="img-responsive avatar-view"
+                                                 src="{{ asset('bundles/app/uploads/'~images.imageName) }}"
+                                                 alt="Avatar"
+                                                 title="Change the avatar" id="file">
+                                        {% endfor %}
+                                    {% else %}
+                                        {% if value.sexe == "femme" %}
+                                            <img class="img-responsive avatar-view"
+                                                 src="{{ asset('bundles/app/images/icon-female.png') }}"
+                                                 alt="Avatar"
+                                                 title="Change the avatar" id="file">
+                                        {% elseif value.sexe is sameas("homme") %}
+                                            <img class="img-responsive avatar-view"
+                                                 src="{{ asset('bundles/app/images/picture.jpg') }}" alt="Avatar"
+                                                 title="Change the avatar" id="file">
+                                        {% endif %}
+                                        {% if app.user.id ==  value.id %}
+                                            <form action="{{ path('image_create') }}" method="post"
+                                                  enctype="multipart/form-data">
+                                                <input type="file" name="file" id="fileToUpload"
+                                                       required="required">
+                                                <input type="text" name="employerId" value="{{ value.id }}"
+                                                       class="hide">
+                                                <input type="submit" value="Upload Image" name="submit"
+                                                       class="btn btn-success">
+                                            </form>
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <h3>{{ value.nom~' '~value.prenom }}</h3>
+
+                            <ul class="list-unstyled user_data">
+                                <li>
+                                    <i class="fa fa-external-link user-profile-icon"></i> {{ value.dateNaissance }}
+                                </li>
+
+                                <li>
+                                    <i class="fa fa-external-link user-profile-icon"></i> {{ value.lieuNaissance }}
+                                </li>
+
+                                <li>
+                                    <i class="fa fa-external-link user-profile-icon"></i> {{ value.cin }}
+                                </li>
+
+                                <li>
+                                    <i class="fa fa-external-link user-profile-icon"></i> {{ value.sexe }}
+                                </li>
+
+                                <li>
+                                    <i class="fa fa-external-link user-profile-icon"></i> {{ value.situation }}
+                                </li>
+
+                                <li><i class="fa fa-map-marker user-profile-icon"></i> {{ value.addresse }}
+                                </li>
+
+                            </ul>
+                            {% for info in information %}
+                                {% if app.user.id ==  value.id %}
+                                    <a class="btn btn-success"
+                                       href="{{ path('pre_update_information',{'idInformation':info.id,'idEmployer':value.id }) }}"><i
+                                                class="fa fa-edit m-right-xs"></i>Modifier information</a>
+                                    <br/>
+                                {% endif %}
+                            {% endfor %}
+
+                            <ul class="list-unstyled user_data">
+                                <li>
+                                    <p>Profil</p>
+                                    <div class="progress progress_sm">
+                                        <div class="progress-bar bg-green" role="progressbar"
+                                             data-transitiongoal="100"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- end of skills -->
+
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+
+                            <div class="profile_title">
+                                <div class="col-md-6">
+                                    <h2>Activité personnels</h2>
+                                </div>
+                            </div>
+
+
+                            <table class="data table table-striped no-margin">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Information</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for info in information %}
+                                    <tr>
+                                        <td>Imatricule</td>
+                                        <td class="hidden-phone">{{ info.im }}</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success"
+                                                     data-transitiongoal="35"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Categorie</td>
+                                        <td class="hidden-phone">{{ info.categorie }}</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success"
+                                                     data-transitiongoal="15"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Classe</td>
+                                        <td class="hidden-phone">{{ info.classe }}</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success"
+                                                     data-transitiongoal="57"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Corp</td>
+                                        <td class="hidden-phone">{{ info.corp }}</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success"
+                                                     data-transitiongoal="49"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date Effet</td>
+                                        <td class="hidden-phone">{{ info.dateEffet }}</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success"
+                                                     data-transitiongoal="70"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Echelon</td>
+                                        <td class="hidden-phone">{{ info.echelon }}</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success"
+                                                     data-transitiongoal="42"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Emploi Occuper</td>
+                                        <td class="hidden-phone">{{ info.emploiOccuper }}</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success"
+                                                     data-transitiongoal="90"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fonction</td>
+                                        <td class="hidden-phone">{{ info.fonction }}</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success"
+                                                     data-transitiongoal="88"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Formation</td>
+                                        <td class="hidden-phone">{{ info.formation }}</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success"
+                                                     data-transitiongoal="70"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Grade</td>
+                                        <td class="hidden-phone">{{ info.grade }}</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success"
+                                                     data-transitiongoal="35"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Indice</td>
+                                        <td class="hidden-phone">{{ info.indice }}</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success"
+                                                     data-transitiongoal="9"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Diplome</td>
+                                        <td class="hidden-phone">{{ info.diplome }}</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success"
+                                                     data-transitiongoal="58"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Statut</td>
+                                        <td class="hidden-phone">{{ info.statut }}</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success"
+                                                     data-transitiongoal="48"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Titre Honorifique</td>
+                                        <td class="hidden-phone">{{ info.titreHonorifique }}</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success"
+                                                     data-transitiongoal="10"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}

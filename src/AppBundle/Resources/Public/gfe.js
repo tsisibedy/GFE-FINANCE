@@ -31,6 +31,7 @@ $(document).ready(function() {
         $(".hideSexe").val($("#sexeValue").val());
     });
 
+
     //controlle ajout cin
     $("#employerCinNew").keyup(function() {
         if (12 < $("#employerCinNew").val().length) {
@@ -209,7 +210,7 @@ $(document).ready(function() {
             $("#msgIndice").hide();
         }
     });
-    
+
     //information Contact
     $("#contact").keyup(function() {
         if (isNaN($("#contact").val())) {
@@ -244,9 +245,9 @@ $(document).ready(function() {
             $("#msgContact").hide();
         }
     });
-    
+
     $("#file").click(function(){
         $("#fileToUpload").click();
     });
-    
+
 });

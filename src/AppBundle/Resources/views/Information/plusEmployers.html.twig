@@ -13,7 +13,7 @@
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
-                                
+
                             </ul>
                             <div class="clearfix"></div>
                         </div>
@@ -21,28 +21,36 @@
                             <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
                                 <div class="profile_img">
                                     <div id="crop-avatar">
-                                       
+
                                         {% if image is defined %}
                                             {% for images in image %}
                                                 <img class="img-responsive avatar-view"
-                                                 src="{{ asset('bundles/app/uploads/'~images.imageName) }}" alt="Avatar"
-                                                 title="Change the avatar" id="file">
+                                                     src="{{ asset('bundles/app/uploads/'~images.imageName) }}"
+                                                     alt="Avatar"
+                                                     title="Change the avatar" id="file">
                                             {% endfor %}
                                         {% else %}
                                             {% if value.sexe == "femme" %}
                                                 <img class="img-responsive avatar-view"
-                                                     src="{{ asset('bundles/app/images/icon-female.png') }}" alt="Avatar"
+                                                     src="{{ asset('bundles/app/images/icon-female.png') }}"
+                                                     alt="Avatar"
                                                      title="Change the avatar" id="file">
                                             {% elseif value.sexe is sameas("homme") %}
                                                 <img class="img-responsive avatar-view"
                                                      src="{{ asset('bundles/app/images/picture.jpg') }}" alt="Avatar"
                                                      title="Change the avatar" id="file">
                                             {% endif %}
-                                            <form action="{{ path('image_create') }}" method="post" enctype="multipart/form-data">
-                                                <input type="file" name="file" id="fileToUpload" required="required">
-                                                <input type="text" name="employerId" value="{{ value.id }}" class="hide">
-                                                <input type="submit" value="Upload Image" name="submit" class="btn btn-success">
-                                            </form>
+                                            {% if app.user.id ==  value.id %}
+                                                <form action="{{ path('image_create') }}" method="post"
+                                                      enctype="multipart/form-data">
+                                                    <input type="file" name="file" id="fileToUpload"
+                                                           required="required">
+                                                    <input type="text" name="employerId" value="{{ value.id }}"
+                                                           class="hide">
+                                                    <input type="submit" value="Upload Image" name="submit"
+                                                           class="btn btn-success">
+                                                </form>
+                                            {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
@@ -74,8 +82,12 @@
 
                                 </ul>
                                 {% for info in information %}
-                                <a class="btn btn-success" href="{{ path('pre_update_information',{'idInformation':info.id,'idEmployer':value.id }) }}"><i class="fa fa-edit m-right-xs"></i>Modifier information</a>
-                                <br/>
+                                    {% if app.user.id ==  value.id %}
+                                        <a class="btn btn-success"
+                                           href="{{ path('pre_update_information',{'idInformation':info.id,'idEmployer':value.id }) }}"><i
+                                                    class="fa fa-edit m-right-xs"></i>Modifier information</a>
+                                        <br/>
+                                    {% endif %}
                                 {% endfor %}
 
                                 <ul class="list-unstyled user_data">
@@ -259,7 +271,7 @@
             </div>
         {% endfor %}
     {% else %}
-    Conception et realisation d'une appliaction web du conseil national des bareaux
+        Conception et realisation d'une appliaction web du conseil national des bareaux
         <div class="row">
             <div class="col-md-12 col-xs-12" style="padding-left: 0px;">
                 <div class="x_panel">

@@ -10,4 +10,12 @@ namespace AppBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function findAllUsers($search)
+    {
+        $query = $this->_em->createQuery("SELECT m FROM AppBundle:User m where m.employerNom like :search or m.employerPrenom like :search or m.employerDateNaissance like :search or m.employerLieuNaissance like :search or m.employerCin like :search or m.employerSexe like :search or m.employerAddresse like :search or m.employerSituation like :search");
+        $query->setParameter('search', '%' . $search . '%');
+        $results = $query->getResult();
+        return $results;
+    }
 }

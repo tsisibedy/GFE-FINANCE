@@ -65,4 +65,6 @@ class DefaultController extends FOSRestController
 
         return $this->redirect($this->generateUrl('show_accueil'));
     }
+
+
 }

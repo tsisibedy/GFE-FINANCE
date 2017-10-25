@@ -11,17 +11,15 @@ use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations as Rest; // alias pour toutes les annotations
 use FOS\RestBundle\View\ViewHandler;
 use FOS\RestBundle\Controller\FOSRestController;
-use AppBundle\Form\EmployerType;
 use FOS\RestBundle\View\View;
-use AppBundle\Entity\Employer;
 use AppBundle\Entity\Information;
 
 class EmployerController extends FOSRestController
 {
     /**
      * @Rest\View()
-     * @Rest\Post("/all/search/employers")
-     * @Rest\Get("/all/search/employers")
+     * @Rest\Post("/all/search/employers", name="Post")
+     * @Rest\Get("/all/search/employers", name="Get")
      */
     public function searchAllEmployersAction(Request $request)
     {
@@ -35,7 +33,7 @@ class EmployerController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('AppBundle:User')
-            ->findAllEmployers($request->get('search'));
+            ->findAllUsers($request->get('search'));
 
         $coutEmployer = count($oEmployer);
         $pageLimiteContent = $this->getParameter('page_sige');
@@ -89,8 +87,23 @@ class EmployerController extends FOSRestController
             $iIncrimentation++;
         }
 
+        $image = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Image')
+            ->findAll();
+
+        $imageList =[];
+        foreach ($image as $imageObjet) {
+            $imageList [] = [
+                'id' => $imageObjet->getId(),
+                'imageIdEmployer' => $imageObjet->getEmployerId(),
+                'imageName' => $imageObjet->getDevisName(),
+            ];
+        }
+
         $view = $this->view()
-            ->setData(array('count' => 'search_all_employers', 'search' => $test, 'employers' => $aEmployerList, 'page' => $aNombrePage))
+            ->setData(array('count' => 'search_all_employersGet', 'search' => $test, 'employers' => $aEmployerList, 'page' => $aNombrePage,'image'=>$imageList))
             ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
 
         return $this->handleView($view);
@@ -98,9 +111,8 @@ class EmployerController extends FOSRestController
 
     /**
      * @Rest\View()
-     * @Rest\Post("/rich/search/employers")
-     * @Rest\Get("/rich/search/employers")
-     *
+     * @Rest\Post("/rich/search/employers", name="Post")
+     * @Rest\Get("/rich/search/employers", name="Get")
      */
     public function richAllEmployersAction(Request $request)
     {
@@ -117,7 +129,7 @@ class EmployerController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('AppBundle:User')
-            ->findAllEmployers($search);
+            ->findAllUsers($search);
 
         if ($ordre == "ASC")
             asort($oEmployer);
@@ -177,8 +189,23 @@ class EmployerController extends FOSRestController
             $iIncrimentation++;
         }
 
+        $image = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Image')
+            ->findAll();
+
+        $imageList =[];
+        foreach ($image as $imageObjet) {
+            $imageList [] = [
+                'id' => $imageObjet->getId(),
+                'imageIdEmployer' => $imageObjet->getEmployerId(),
+                'imageName' => $imageObjet->getDevisName(),
+            ];
+        }
+
         $view = $this->view()
-            ->setData(array('count' => 'rich_all_employers', 'search' => $search, 'ordre' => $ordre, 'employers' => $aEmployerList, 'page' => $aNombrePage))
+            ->setData(array('count' => 'rich_all_employersGet', 'search' => $search, 'ordre' => $ordre, 'employers' => $aEmployerList, 'page' => $aNombrePage,'image'=>$imageList))
             ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
 
         return $this->handleView($view);
@@ -308,8 +335,23 @@ class EmployerController extends FOSRestController
             'addresse' => $oEmployer->getEmployerAddresse(),
         ];
 
+        $image = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Image')
+            ->findAll();
+
+        $imageList =[];
+        foreach ($image as $imageObjet) {
+            $imageList [] = [
+                'id' => $imageObjet->getId(),
+                'imageIdEmployer' => $imageObjet->getEmployerId(),
+                'imageName' => $imageObjet->getDevisName(),
+            ];
+        }
+
         $view = $this->view($aEmployerList)
-            ->setTemplateVar('employers')
+            ->setData(array('employers' => $aEmployerList,'image'=>$imageList))
             ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
 
         return $this->handleView($view);
@@ -346,7 +388,8 @@ class EmployerController extends FOSRestController
             ->get('doctrine.orm.entity_manager')
             ->getRepository('AppBundle:User')
             ->find($request->get('id'));
-
+        $roles [] = $request->request->get('roles');
+        $oEmployer->setRoles($roles);
         if (empty($oEmployer)) {
             return new JsonResponse(['Message' => 'Employer not found'], Response::HTTP_NOT_FOUND);
         }
@@ -360,6 +403,9 @@ class EmployerController extends FOSRestController
 
         return $this->redirect($this->generateUrl('show_all_employers'));
     }
+
+
+
 
 
 }

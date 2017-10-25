@@ -28,7 +28,9 @@
                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                     <select class="form-control" required disabled="disabled" id="userId">
                                         {% for value in employers %}
-                                            <option value="{{ value.id }}">{{ value.nom~' '~value.prenom }}</option>
+                                            {% if app.user.id == value.id %}
+                                                <option value="{{ value.id }}">{{ value.nom~' '~value.prenom }}</option>
+                                            {% endif %}
                                         {% endfor %}
                                     </select>
                                 </div>
@@ -173,16 +175,25 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Personnel</label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
                                         <select class="form-control" name="id" required>
+                                            {% set break = false %}
                                             {% for value in employers %}
-                                                <option value="{{ value.id }}">{{ value.nom~' '~value.prenom }}</option>
+                                                {% if app.user.id == value.id %}
+                                                    {% set break = true %}
+                                                    <option value="{{ value.id }}">{{ value.nom~' '~value.prenom }}</option>
+                                                {% endif %}
                                             {% endfor %}
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                        <button type="submit" class="btn btn-primary">Commencer l'integration</button>
-                                    </div>
+                                    {% if break == true %}
+                                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                            <button type="submit" class="btn btn-primary">Commencer le maintient
+                                            </button>
+                                        </div>
+                                    {% else %}
+                                        <span>Vous devez completer vos information avant de faire un maintient</span>
+                                    {% endif %}
                                 </div>
 
                             </form>
@@ -210,31 +221,39 @@
                     <th>Durer du maintient</th>
                     <th>Date fin</th>
                     <th>Status</th>
-                    <th>Action</th>
+                    {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' %}
+                        <th>Action</th>
+                    {% endif %}
                 </tr>
                 </thead>
 
                 <tbody>
                 {% for inter in maintientList %}
-                    <tr>
-                        {% for employer in employers %}
-                            {% if employer.id == inter.employerId %}
-                                <td>{{ employer.nom~' '~employer.prenom }}</td>
+                    {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' or inter.employerId == app.user.id %}
+                        <tr>
+                            {% for employer in employers %}
+                                {% if employer.id == inter.employerId %}
+                                    <td>{{ employer.nom~' '~employer.prenom }}</td>
+                                {% endif %}
+                            {% endfor %}
+                            <td>{{ inter.corp }}</td>
+                            <td>{{ inter.derniereSituation }}</td>
+                            <td>{{ inter.dateDebut }}</td>
+                            <td>{{ inter.durer }}</td>
+                            <td>{{ inter.dateFin }}</td>
+                            <td>{{ inter.status }}</td>
+                            {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' %}
+                                <td>
+                                    <a href="" class="btn btn-success"
+                                       style="float:right;margin-right:10px;background: red;"><i
+                                                class="fa fa-ban"></i> Refuser</a>
+                                    <a href="" class="btn btn-success"
+                                       style="float:right;margin-right:10px;"><i class="fa fa-check-square"></i>
+                                        Valider</a>
+                                </td>
                             {% endif %}
-                        {% endfor %}
-                        <td>{{ inter.corp }}</td>
-                        <td>{{ inter.derniereSituation }}</td>
-                        <td>{{ inter.dateDebut }}</td>
-                        <td>{{ inter.durer }}</td>
-                        <td>{{ inter.dateFin }}</td>
-                        <td>{{ inter.status }}</td>
-                        <td>
-                            <a href="" class="btn btn-success"
-                               style="float:right;margin-right:10px;background: red;"><i class="fa fa-building-o"></i> Refuser</a>
-                            <a href="" class="btn btn-success"
-                               style="float:right;margin-right:10px;"><i class="fa fa-building-o"></i> Valider</a>
-                        </td>
-                    </tr>
+                        </tr>
+                    {% endif %}
                 {% endfor %}
                 </tbody>
             </table>

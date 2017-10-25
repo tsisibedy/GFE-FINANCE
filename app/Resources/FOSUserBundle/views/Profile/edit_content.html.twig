@@ -17,8 +17,22 @@
     <br><br>
     {{ form_widget(form.current_password,{'attr': {'class': 'form-control', 'placeholder': 'Mot de passe', 'required': 'required'}}) }}
     <br><br>
+
+    {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' %}
+        <div class="form-group">
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <select class="form-control" name="roles" required>
+                    <option value="">Choisir votre acces</option>
+                    <option value="ROLE_SUPER_ADMIN">Administrateur</option>
+                    <option value="ROLE_USER">Personnel</option>
+                </select>
+            </div>
+        </div>
+    {% endif %}
+    <br>
+    <br>
     {{ form_rest(form) }}
     <center>
-        <input type="submit" class="btn btn-primary" value="{{ 'profile.edit.submit'|trans }}" />
+        <input type="submit" class="btn btn-primary" value="{{ 'profile.edit.submit'|trans }}"/>
     </center>
 </form>

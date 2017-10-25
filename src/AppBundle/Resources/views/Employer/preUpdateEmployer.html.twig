@@ -22,7 +22,8 @@
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nom</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" id="employerNomNew" name="employerNom" value="{{ nom }}"
+                                <input type="text" class="form-control" id="employerNomNew" name="employerNom"
+                                       value="{{ nom }}"
                                        placeholder="Nom" required>
                                 <span style="color: red;" id="msgNom">Nom ne peut pas contenir une chiffre.</span>
                             </div>
@@ -30,7 +31,8 @@
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Prenom</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" id="employerPrenomNew" name="employerPrenom" value="{{ prenom }}"
+                                <input type="text" class="form-control" id="employerPrenomNew" name="employerPrenom"
+                                       value="{{ prenom }}"
                                        placeholder="Prenom" required>
                                 <span style="color: red;" id="msgPrenom">Prenom ne peut pas contenir une chiffre.</span>
                             </div>
@@ -57,7 +59,8 @@
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">CIN</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" value="{{ cin }}" id="employerCinNew" maxlength="12" name="employerCin"
+                                <input type="text" class="form-control" value="{{ cin }}" id="employerCinNew"
+                                       maxlength="12" name="employerCin"
                                        placeholder="CIN" required>
                                 <span style="color: red;" id="msgCin">Cin doit etre des conbinnaison de 12 chiffre et ne peut pas contenir une letre.</span>
                             </div>
@@ -94,15 +97,17 @@
                                        placeholder="Addresse" required>
                             </div>
                         </div>
+
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                                 <a href="{{ path('show_all_employers') }}" class="btn btn-primary">Annuler</a>
                                 <button type="reset" class="btn btn-primary">Reset</button>
-                                <button type="submit" class="btn btn-success">Modifier</button>
+                                {% if app.user.id ==  id %}
+                                    <button type="submit" class="btn btn-success">Modifier</button>
+                                {% endif %}
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>
