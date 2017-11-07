@@ -21,9 +21,9 @@
                         <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
                             <div class="profile_img">
                                 <div id="crop-avatar">
-            {{ app.user.id }}<br>
-                                    {{ value.id }}
-                                    {% if image is defined  and image is not empty%}
+                                    <br>
+
+                                    {% if image is defined  and image is not empty %}
                                         {% for images in image %}
                                             <img class="img-responsive avatar-view"
                                                  src="{{ asset('bundles/app/uploads/'~images.imageName) }}"

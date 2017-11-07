@@ -44,7 +44,7 @@ class MaintientController extends FOSRestController
             ->getManager()
             ->getRepository('AppBundle:Maintient')
             ->findAll();
-
+        $aEmployerList = [];
         foreach ($oEmployers as $oEmployer) {
             foreach ($testExisteInfo as $testExisteInf) {
                 if ($oEmployer->getId() == $testExisteInf->getEmployerId()) {

@@ -350,11 +350,59 @@ class EmployerController extends FOSRestController
             ];
         }
 
+
+
         $view = $this->view($aEmployerList)
             ->setData(array('employers' => $aEmployerList,'image'=>$imageList))
             ->setTemplate('AppBundle:Employer:getEmployers.html.twig');
 
         return $this->handleView($view);
+    }
+
+    /**
+     * @Rest\View()
+     * @Rest\Get("/one/create/employer/")
+     */
+    public function createOneAction(Request $request)
+    {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
+
+        $view = $this->view()
+            ->setTemplate('AppBundle:Employer:preCreateEmployer.html.twig');
+
+        return $this->handleView($view);
+    }
+
+    /**
+     * @Rest\View()
+     * @Rest\Post("/create/force/employer/")
+     */
+    public function createOneForceAction(Request $request)
+    {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
+        $form->submit($request->request->all());
+
+        $array [] = $request->request->get('roles');
+        $user->setUsername($request->request->get('username'));
+        $user->setEmail($request->request->get('email'));
+        $user->setPlainPassword($request->request->get('password'));
+        $user->setEnabled(true);
+        $user->setRoles($array);
+
+        $userManager = $this->get('fos_user.user_manager');
+
+        $userManager->updateUser($user);
+
+
+        return $this->redirect($this->generateUrl('show_all_employers'));
     }
 
     /**
