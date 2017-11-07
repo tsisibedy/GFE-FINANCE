@@ -17,8 +17,10 @@
             <a href="#" style="float: right;" class="avancer">Recherche avancée</a>
         </form>
     </center>
-    <a href="{{ path('create_one') }}" id="news" class="btn btn-primary" style="float: right;"><i
-                class="fa fa-plus"></i> Nouveau</a>
+    {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' %}
+        <a href="{{ path('create_one') }}" id="news" class="btn btn-primary" style="float: right;"><i
+                    class="fa fa-plus"></i> Nouveau</a>
+    {% endif %}
     <div class="row" id="avancer" style="">
         <div class="col-md-12 col-xs-15" style="">
             <div class="x_panel" style="background:#2a6496;">
