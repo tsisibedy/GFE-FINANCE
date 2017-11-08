@@ -3,7 +3,9 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Maintient;
+use AppBundle\Entity\Titularisation;
 use AppBundle\Form\InformationType;
+use AppBundle\Form\TitularisationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,14 +20,14 @@ use AppBundle\Entity\Employer;
 use AppBundle\Entity\Information;
 use Symfony\Component\Validator\Constraints\DateTime;
 
-class MaintientController extends FOSRestController
+class TitularisationController extends FOSRestController
 {
 
     /**
      * @Rest\View()
-     * @Rest\Get("/maintient")
+     * @Rest\Get("/titularisation")
      */
-    public function maintientAction(Request $request)
+    public function titularisationAction(Request $request)
     {
         if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
@@ -46,7 +48,7 @@ class MaintientController extends FOSRestController
         $listMaintient = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:Maintient')
+            ->getRepository('AppBundle:Titularisation')
             ->findAll();
         $aEmployerList = [];
         foreach ($oEmployers as $oEmployer) {
@@ -66,32 +68,32 @@ class MaintientController extends FOSRestController
                 }
             }
         }
-        $maintientList = [];
-        foreach ($listMaintient as $maintient) {
-            $maintientList [] = [
-                'id' => $maintient->getId(),
-                'employerId' => $maintient->getEmployerId(),
-                'corp' => $maintient->getMaintientCorp(),
-                'derniereSituation' => $maintient->getMaintientDeniereSituation(),
-                'status' => $maintient->getMaintientStatus(),
-                'dateDebut' => $maintient->getMaintientDateDebut(),
-                'durer' => $maintient->getMaintientDurer(),
-                'dateFin' => $maintient->getMaintientDateFin(),
+        $titularisationList = [];
+        foreach ($listMaintient as $titularisation) {
+            $titularisationList [] = [
+                'id' => $titularisation->getId(),
+                'employerId' => $titularisation->getEmployerId(),
+                'postCadre' => $titularisation->getTitularisationPostCadre(),
+                'corp' => $titularisation->getTitularisationCorp(),
+                'status' => $titularisation->getTitularisationStatus(),
+                'lieu' => $titularisation->getTitularisationLieu(),
+                'dateDebut' => $titularisation->getTitularisationDateDebut(),
+                'dateFin' => $titularisation->getTitularisationDateFin(),
             ];
         }
 
         $view = $this->view()
-            ->setData(array('employers' => $aEmployerList, 'maintientList' => $maintientList))
-            ->setTemplate('AppBundle:Maintient:maintient.html.twig');
+            ->setData(array('employers' => $aEmployerList, 'titularisationList' => $titularisationList))
+            ->setTemplate('AppBundle:Titularisation:titularisation.html.twig');
 
         return $this->handleView($view);
     }
 
     /**
      * @Rest\View()
-     * @Rest\Post("/debut/maintient")
+     * @Rest\Post("/debut/titularisation")
      */
-    public function debutMaintientAction(Request $request)
+    public function debutTitularisationAction(Request $request)
     {
         if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
@@ -152,40 +154,40 @@ class MaintientController extends FOSRestController
 
 
         $view = $this->view()
-            ->setData(array('maintient' => 1, 'employers' => $aEmployerList, 'information' => $aInformationList))
-            ->setTemplate('AppBundle:Maintient:maintient.html.twig');
+            ->setData(array('titularisation' => 1, 'employers' => $aEmployerList, 'information' => $aInformationList))
+            ->setTemplate('AppBundle:Titularisation:titularisation.html.twig');
 
         return $this->handleView($view);
     }
 
     /**
      * @Rest\View()
-     * @Rest\Post("/one/create/maintient")
+     * @Rest\Post("/one/create/titularisation")
      */
-    public function createOneMaintientAction(Request $request)
+    public function createOneTitularisationAction(Request $request)
     {
         if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
 
-        $maintient = new Maintient();
+        $titularisation = new Titularisation();
         $status = 0;
 
-        $form = $this->createForm(MaintientType::class, $maintient);
+        $form = $this->createForm(TitularisationType::class, $titularisation);
         $form->submit($request->request->all());
-        $maintient->setMaintientStatus($status);
+        $titularisation->setTitularisationStatus($status);
         $oManager = $this->getDoctrine()->getManager();
-        $oManager->persist($maintient);
+        $oManager->persist($titularisation);
         $oManager->flush();
 
-        return $this->redirect($this->generateUrl('maintient'));
+        return $this->redirect($this->generateUrl('titularisation'));
     }
 
     /**
      * @Rest\View()
-     * @Rest\Get("/status")
+     * @Rest\Get("/statusTitularisation")
      */
-    public function statusMaintientAction(Request $request)
+    public function statusTitularisationAction(Request $request)
     {
         if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
@@ -194,10 +196,10 @@ class MaintientController extends FOSRestController
         $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:Maintient')
+            ->getRepository('AppBundle:Titularisation')
             ->updateStatus($request->get('status'),$request->get('idUser'),$request->get('id'));
 
-        return $this->redirect($this->generateUrl('maintient'));
+        return $this->redirect($this->generateUrl('titularisation'));
     }
 
 }

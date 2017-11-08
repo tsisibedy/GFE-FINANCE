@@ -22,6 +22,10 @@ class DefaultController extends FOSRestController
      */
     public function showAccueilAction(Request $request)
     {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $listPublication = $this
             ->getDoctrine()
             ->getManager()

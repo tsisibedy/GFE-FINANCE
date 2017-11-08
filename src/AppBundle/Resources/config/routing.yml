@@ -21,3 +21,7 @@ image:
 maintient:
     type: rest
     resource: AppBundle\Controller\MaintientController
+
+titularisation:
+    type: rest
+    resource: AppBundle\Controller\TitularisationController

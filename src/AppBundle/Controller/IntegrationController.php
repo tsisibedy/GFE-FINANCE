@@ -27,6 +27,10 @@ class IntegrationController extends FOSRestController
      */
     public function integrationAction(Request $request)
     {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $oEmployers = $this
             ->getDoctrine()
             ->getManager()
@@ -90,6 +94,10 @@ class IntegrationController extends FOSRestController
      */
     public function debutIntegrationAction(Request $request)
     {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $oEmployers = $this
             ->getDoctrine()
             ->getManager()

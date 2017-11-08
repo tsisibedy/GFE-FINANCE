@@ -5,12 +5,12 @@
     <br>
     <br>
     <br>
-    {% if maintient is defined %}
+    {% if titularisation is defined %}
         <div class="row">
             <div class="col-md-12 col-xs-12" style="padding-left: 0px;">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Maintient d'un personnel etape finale
+                        <h2>Titularisation d'un personnel etape finale
 
                         </h2>
                         <ul class="nav navbar-right panel_toolbox">
@@ -21,7 +21,7 @@
                     </div>
                     <div class="x_content">
                         <br/>
-                        <form class="form-horizontal form-label-left" action="{{ path('create_one_maintient') }}"
+                        <form class="form-horizontal form-label-left" action="{{ path('create_one_titularisation') }}"
                               method="post">
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Personnel</label>
@@ -77,25 +77,25 @@
                                 </div>
                             {% endfor %}
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Corp</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Post cadre</label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                     <input type="text" class="form-control"
-                                           name="maintientCorp"
-                                           placeholder="Corp" required>
+                                           name="titularisationPostCadre"
+                                           placeholder="Post cadre" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Derniere situattion</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Corp</label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                     <input type="text" class="form-control"
-                                           name="maintientDeniereSituation"
-                                           placeholder="Derniere situattion" required>
+                                           name="titularisationCorp"
+                                           placeholder="Corp" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Date de debut</label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" name="maintientDateDebut"
+                                    <input type="text" name="titularisationDateDebut"
                                            class="form-control has-feedback-left"
                                            id="single_cal2"
                                            placeholder="Date debut" aria-describedby="inputSuccess2Status2">
@@ -105,17 +105,17 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Durer</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Lieu</label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                     <input type="text" class="form-control"
-                                           name="maintientDurer"
-                                           placeholder="Durer" required>
+                                           name="titularisationLieu"
+                                           placeholder="Lieu" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Date fin</label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" name="maintientDateFin"
+                                    <input type="text" name="titularisationDateFin"
                                            class="form-control has-feedback-left"
                                            id="single_cal4"
                                            placeholder="Date de fin"
@@ -150,7 +150,7 @@
                 <div class="col-md-12 col-xs-12" style="padding-left: 0px;">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Maintient d'un personnel etape 1
+                            <h2>Titularisation d'un personnel etape 1
 
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
@@ -161,7 +161,7 @@
                         </div>
                         <div class="x_content">
                             <br/>
-                            <form class="form-horizontal form-label-left" action="{{ path('debut_maintient') }}"
+                            <form class="form-horizontal form-label-left" action="{{ path('debut_titularisation') }}"
                                   method="post" style="box-shadow: 0px 0px 10px;padding: 30px;width: 900px;">
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Personnel</label>
@@ -180,11 +180,11 @@
                                 <div class="form-group">
                                     {% if break == true %}
                                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                            <button type="submit" class="btn btn-primary">Commencer le maintient
+                                            <button type="submit" class="btn btn-primary">Commencer le titularisation
                                             </button>
                                         </div>
                                     {% else %}
-                                        <span>Vous devez completer vos information avant de faire un maintient</span>
+                                        <span>Vous devez completer vos information avant de faire un titularisation</span>
                                     {% endif %}
                                 </div>
 
@@ -197,22 +197,22 @@
         </center>
         <div class="x_content">
             <p class="text-muted font-13 m-b-30">
-                List des maintient faite par les personnels
+                List des titularisation faite par les personnels
             </p>
 
-            <a href="{{ path('xel_maintient') }}" class="btn btn-success"
+            <a href="{{ path('xel_titularisation') }}" class="btn btn-success"
                style="float:right;margin-right:10px;"><i class="fa fa-building-o"></i> Expoter en exel</a>
 
             <table id="datatable" class="table table-striped table-bordered">
                 <thead>
                 <tr>
                     <th>Nom et prenom</th>
+                    <th>Post cadres</th>
                     <th>Corps</th>
-                    <th>Derniere situation</th>
-                    <th>Date de debut</th>
-                    <th>Durer du maintient</th>
-                    <th>Date fin</th>
-                    <th>Status</th>
+                    <th>Lieu</th>
+                    <th>Statust</th>
+                    <th>Date debut</th>
+                    <th>Date de fin</th>
                     {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' %}
                         <th>Action</th>
                     {% endif %}
@@ -220,7 +220,7 @@
                 </thead>
 
                 <tbody>
-                {% for inter in maintientList %}
+                {% for inter in titularisationList %}
                     {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' or inter.employerId == app.user.id %}
                         <tr>
                             {% for employer in employers %}
@@ -228,11 +228,9 @@
                                     <td>{{ employer.nom~' '~employer.prenom }}</td>
                                 {% endif %}
                             {% endfor %}
+                            <td>{{ inter.postCadre }}</td>
                             <td>{{ inter.corp }}</td>
-                            <td>{{ inter.derniereSituation }}</td>
-                            <td>{{ inter.dateDebut }}</td>
-                            <td>{{ inter.durer }}</td>
-                            <td>{{ inter.dateFin }}</td>
+                            <td>{{ inter.lieu }}</td>
                             {% if inter.status == 0 %}
                                 <td>En cour</td>
                             {% elseif inter.status == 1 %}
@@ -240,13 +238,17 @@
                             {% else %}
                                 <td>Refugé</td>
                             {% endif %}
+                            <td>{{ inter.dateDebut }}</td>
+                            <td>{{ inter.dateFin }}</td>
 
-                            {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' and inter.status == 0%}
+                            {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' and inter.status == 0 %}
                                 <td>
-                                    <a href="{{ path('status_maintient',{'status':3,'idUser':inter.employerId,'id':inter.id}) }}" class="btn btn-success"
+                                    <a href="{{ path('status_titularisation',{'status':3,'idUser':inter.employerId,'id':inter.id}) }}"
+                                       class="btn btn-success"
                                        style="float:right;margin-right:10px;background: red;"><i
                                                 class="fa fa-ban"></i> Refuser</a>
-                                    <a href="{{ path('status_maintient',{'status':1,'idUser':inter.employerId,'id':inter.id}) }}" class="btn btn-success"
+                                    <a href="{{ path('status_titularisation',{'status':1,'idUser':inter.employerId,'id':inter.id}) }}"
+                                       class="btn btn-success"
                                        style="float:right;margin-right:10px;"><i class="fa fa-check-square"></i>
                                         Valider</a>
                                 </td>

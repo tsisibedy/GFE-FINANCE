@@ -24,6 +24,10 @@ class InformationController extends FOSRestController
      */
     public function plusEmployersAction(Request $request)
     {
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $oEmployers = $this
             ->getDoctrine()
             ->getManager()

@@ -451,9 +451,4 @@ class EmployerController extends FOSRestController
 
         return $this->redirect($this->generateUrl('show_all_employers'));
     }
-
-
-
-
-
 }
