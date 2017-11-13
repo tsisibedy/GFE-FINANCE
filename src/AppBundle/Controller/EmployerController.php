@@ -394,7 +394,7 @@ class EmployerController extends FOSRestController
         $user->setUsername($request->request->get('username'));
         $user->setEmail($request->request->get('email'));
         $user->setPlainPassword($request->request->get('password'));
-        $user->setEnabled(true);
+        $user->setEnabled(1);
         $user->setRoles($array);
 
         $userManager = $this->get('fos_user.user_manager');
