@@ -108,6 +108,9 @@
                                         <span>Date de naissance</span> : <a>{{ employer.dateNaissance }}</a>
                                     </div>
                                     <div class="byline">
+                                        <span>Age</span> : <a>{{ "now"|date('Y')-employer.dateNaissance|date('Y') }} ans</a>
+                                    </div>
+                                    <div class="byline">
                                         <span>CIN</span> : <a>{{ employer.cin }}</a>
                                     </div>
                                     <div class="byline">

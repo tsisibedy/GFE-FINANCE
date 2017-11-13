@@ -25,3 +25,7 @@ maintient:
 titularisation:
     type: rest
     resource: AppBundle\Controller\TitularisationController
+
+retraite:
+    type: rest
+    resource: AppBundle\Controller\RetraiteController

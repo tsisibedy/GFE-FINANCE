@@ -5,12 +5,12 @@
     <br>
     <br>
     <br>
-    {% if titularisation is defined %}
+    {% if retraite is defined %}
         <div class="row">
             <div class="col-md-12 col-xs-12" style="padding-left: 0px;">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Titularisation d'un personnel etape finale
+                        <h2>Retraite d'un personnel etape finale
 
                         </h2>
                         <ul class="nav navbar-right panel_toolbox">
@@ -21,7 +21,7 @@
                     </div>
                     <div class="x_content">
                         <br/>
-                        <form class="form-horizontal form-label-left" action="{{ path('create_one_titularisation') }}"
+                        <form class="form-horizontal form-label-left" action="{{ path('create_one_retraite') }}"
                               method="post">
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Personnel</label>
@@ -77,49 +77,36 @@
                                 </div>
                             {% endfor %}
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Post cadre</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Chapitre</label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                     <input type="text" class="form-control"
-                                           name="titularisationPostCadre"
-                                           placeholder="Post cadre" required>
+                                           name="retraiteChapitre"
+                                           placeholder="Chapitre" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Corp</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Derniere situation</label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                     <input type="text" class="form-control"
-                                           name="titularisationCorp"
-                                           placeholder="Corp" required>
+                                           name="retraiteDerniereSituation"
+                                           placeholder="Derniere situation" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Date de debut</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Cas particulier</label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" name="titularisationDateDebut"
+                                    <input type="text" class="form-control"
+                                           name="retraiteCasParticulier"
+                                           placeholder="Cas particulier" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Date de depart</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" name="retraiteDateDebut"
                                            class="form-control has-feedback-left"
                                            id="single_cal2"
-                                           placeholder="Date debut" aria-describedby="inputSuccess2Status2">
-                                    <span class="fa fa-calendar-o form-control-feedback left"
-                                          aria-hidden="true"></span>
-                                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Lieu</label>
-                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control"
-                                           name="titularisationLieu"
-                                           placeholder="Lieu" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Date fin</label>
-                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" name="titularisationDateFin"
-                                           class="form-control has-feedback-left"
-                                           id="single_cal4"
-                                           placeholder="Date de fin"
-                                           aria-describedby="inputSuccess2Status4">
+                                           placeholder="Date de depart" aria-describedby="inputSuccess2Status2">
                                     <span class="fa fa-calendar-o form-control-feedback left"
                                           aria-hidden="true"></span>
                                     <span id="inputSuccess2Status" class="sr-only">(success)</span>
@@ -135,7 +122,7 @@
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                                    <button type="submit" class="btn btn-primary">Lancer la demande</button>
                                 </div>
                             </div>
 
@@ -150,8 +137,7 @@
                 <div class="col-md-12 col-xs-12" style="padding-left: 0px;">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Titularisation d'un personnel etape 1
-
+                            <h2>Retraite d'un personnel etape 1
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -161,30 +147,54 @@
                         </div>
                         <div class="x_content">
                             <br/>
-                            <form class="form-horizontal form-label-left" action="{{ path('debut_titularisation') }}"
+                            <form class="form-horizontal form-label-left" action="{{ path('debut_retraite') }}"
                                   method="post" style="box-shadow: 0px 0px 10px;padding: 30px;width: 900px;">
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Personnel</label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
                                         <select class="form-control" name="id" required>
                                             {% set break = false %}
+                                            {% set status = 4 %}
+
+                                            {% for inter in retraiteList %}
+                                                {% if app.user.id == inter.employerId %}
+                                                    {% if inter.status == 0 %}
+                                                        {% set status = 0 %}
+                                                    {% elseif inter.status == 1 %}
+                                                        {% set status = 1 %}
+                                                    {% elseif inter.status == 2 %}
+                                                        {% set status = 2 %}
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+
                                             {% for value in employers %}
                                                 {% if app.user.id == value.id %}
-                                                    {% set break = true %}
-                                                    <option value="{{ value.id }}">{{ value.nom~' '~value.prenom }}</option>
+                                                    {% if status == 4 or status == 2 %}
+                                                        {% set break = true %}
+                                                        <option value="{{ value.id }}">{{ value.nom~' '~value.prenom }}</option>
+                                                    {% endif %}
                                                 {% endif %}
                                             {% endfor %}
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    {% if break == true %}
+                                    {% if break == true and status == 2 or status == 4 %}
                                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                            <button type="submit" class="btn btn-primary">Commencer le titularisation
+                                            <button type="submit" class="btn btn-primary">Commencer le demande de
+                                                retraite
                                             </button>
                                         </div>
-                                    {% else %}
-                                        <span>Vous devez completer vos information avant de faire un titularisation</span>
+                                    {% endif %}
+                                    <br>
+                                    <br>
+                                    {% if status == 0 %}
+                                        <span>Votre demande de retraite est en cour de validation</span>
+                                    {% elseif status == 1 %}
+                                        <span>Votre demande de retraite a été validée</span>
+                                    {% elseif status == 2 %}
+                                        <span>Votre demande de retraite a été refugée</span>
                                     {% endif %}
                                 </div>
 
@@ -197,22 +207,21 @@
         </center>
         <div class="x_content">
             <p class="text-muted font-13 m-b-30">
-                List des titularisation faite par les personnels
+                List des demande de retraites
             </p>
-
-            <a href="{{ path('xel_titularisation') }}" class="btn btn-success"
-               style="float:right;margin-right:10px;"><i class="fa fa-building-o"></i> Expoter en exel</a>
-
+            {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' %}
+                <a href="{{ path('xel_retraite') }}" class="btn btn-success"
+                   style="float:right;margin-right:10px;"><i class="fa fa-building-o"></i> Expoter en exel</a>
+            {% endif %}
             <table id="datatable" class="table table-striped table-bordered">
                 <thead>
                 <tr>
                     <th>Nom et prenom</th>
-                    <th>Post cadres</th>
-                    <th>Corps</th>
-                    <th>Lieu</th>
-                    <th>Statust</th>
-                    <th>Date debut</th>
-                    <th>Date de fin</th>
+                    <th>Chapitre</th>
+                    <th>Derniere situation</th>
+                    <th>Cas particulier</th>
+                    <th>Status</th>
+                    <th>Date de depart</th>
                     {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' %}
                         <th>Action</th>
                     {% endif %}
@@ -220,7 +229,7 @@
                 </thead>
 
                 <tbody>
-                {% for inter in titularisationList %}
+                {% for inter in retraiteList %}
                     {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' or inter.employerId == app.user.id %}
                         <tr>
                             {% for employer in employers %}
@@ -228,9 +237,9 @@
                                     <td>{{ employer.nom~' '~employer.prenom }}</td>
                                 {% endif %}
                             {% endfor %}
-                            <td>{{ inter.postCadre }}</td>
-                            <td>{{ inter.corp }}</td>
-                            <td>{{ inter.lieu }}</td>
+                            <td>{{ inter.chapitre }}</td>
+                            <td>{{ inter.derniereSituation }}</td>
+                            <td>{{ inter.casParticulier }}</td>
                             {% if inter.status == 0 %}
                                 <td>En cour</td>
                             {% elseif inter.status == 1 %}
@@ -239,15 +248,14 @@
                                 <td>Refugé</td>
                             {% endif %}
                             <td>{{ inter.dateDebut }}</td>
-                            <td>{{ inter.dateFin }}</td>
 
                             {% if app.user.roles[0] == 'ROLE_SUPER_ADMIN' and inter.status == 0 %}
                                 <td>
-                                    <a href="{{ path('status_titularisation',{'status':2,'idUser':inter.employerId,'id':inter.id}) }}"
+                                    <a href="{{ path('status_retraite',{'status':2,'idUser':inter.employerId,'id':inter.id}) }}"
                                        class="btn btn-success"
                                        style="float:right;margin-right:10px;background: red;"><i
                                                 class="fa fa-ban"></i> Refuser</a>
-                                    <a href="{{ path('status_titularisation',{'status':1,'idUser':inter.employerId,'id':inter.id}) }}"
+                                    <a href="{{ path('status_retraite',{'status':1,'idUser':inter.employerId,'id':inter.id}) }}"
                                        class="btn btn-success"
                                        style="float:right;margin-right:10px;"><i class="fa fa-check-square"></i>
                                         Valider</a>
